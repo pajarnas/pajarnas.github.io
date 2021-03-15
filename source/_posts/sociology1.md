@@ -1,5 +1,5 @@
 ---
-title: Sociology (I): Globalization of Social Change and Continuity
+title: Sociology (I) Globalization of Social Change and Continuity
 date: 03/14/2021
 updated: 
 tags: sociology
