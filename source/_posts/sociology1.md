@@ -2,8 +2,8 @@
 title: Sociology (I) Globalization of Social Change and Continuity
 date: 03/14/2021
 updated: 
-tags: sociology
-categories: notes
+tags: notes
+categories: sociology
 keywords: globalization, global age, fluid, social structure, consumption
 description: no social change is more important than globalization
 top_img: 
@@ -112,11 +112,15 @@ It highlights serval important social realities and aspects of the field of soci
 
 # The social construction of reality
 
-The discussion of agency and structure leads to another basic concept in sociology: **the social construction of reality**. For example, in the realm of consumption, it is people as designers, manufactures, consumers, and bloggers-who create the world o fashion. 
+The discussion of agency and structure leads to another basic concept in sociology: **the social construction of reality**. The agents are "dangerous giants" that could destroy a social structure. people at the agency end of the continuum are seen as creating social reality, basically Marco-level phenomena, through their thoughts and actions. The reality comes to have a life and become a structure that is partly separate from the people who created it and exist in it. Of course, the people can refuse to accept these constraints and controls and create new social realities. It is the continuous loop that is the heart of **agency-structure** and **micro-macro relationships**, the social world , and the field of sociology.  For example, in the realm of consumption, it is people as **designers, manufactures, consumers, and bloggers-who create the world o fashion**. 
+
+## Refuse to social constructions
+
+Some people do not go along with the **constraints** of the fashion industry, like H&M. They do not wear what the industry wants them to wear. Many people have their own sense. Others ignore fashion altogether. These people create their own society reality. In fact, in a process as cool hunting, scouts for the fashion industry seek out new and interesting wats of dressing, often focusing own what young people in the suburbs and the inner cities are wearing. 
 
 ## Social structures and processes
 
-The social structures are enduring and regular social arrangements, such as the family and the state. When social structures change, they change very slowly. Social processes are the dynamic and ever0changing aspects of the social world. 
+The social structures are enduring and regular social arrangements, such as the family and the state. When social structures change, they change very slowly. Social processes are the dynamic and ever changing aspects of the social world. 
 
 # **Sociology's purpose: science or social reform?**
 
