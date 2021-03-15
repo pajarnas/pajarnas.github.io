@@ -72,7 +72,7 @@ A critical look at the ways in which they are structured. These sites may be set
 
 Sociology has always concerned itself with the social aspects and implications of **technology**, or the interplay of machines, tools, skills, and procedures for the accomplishment of tasks. Sociologists are devoting an increasing amount of attention to the digital world that has emerged as a result of new technologies already mentioned in this chapter, such as computers, smartphones, the Internet, and social networking sites. 
 
-![](20210314174332.png)
+![](/img/20210314174332.png)
 
 ## Intersecting and augmenting
 
