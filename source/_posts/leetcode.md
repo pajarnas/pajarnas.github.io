@@ -10,10 +10,8 @@ tags:
   - medium
 categories: 
   - interview
-  - leetcode
 keywords: 
-  - java, 
-  - leetcode
+  - java
   - solution
 description: 
 top_img: 

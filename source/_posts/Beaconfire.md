@@ -3,8 +3,7 @@ title: Beaconfire Interview Experience
 date: 03/19/2021
 updated: 
 tags: 
-  - notes, 
-  - leetcode
+  - notes
   - interview
 categories: interview
 keywords: 
