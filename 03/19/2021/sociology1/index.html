@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beaconfire Interview Experience | Saige Blog</title><meta name="keywords" content="java, oop, leetcode"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Beaconfire Interview ExperiencePart IAbstract Class and InterfaceData abstraction is the process of hiding certain details and showing only essential information to the user. Abstraction can be achiev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Beaconfire Interview Experience">
+<meta property="og:url" content="http://pajarnas.github.io/03/19/2021/sociology1/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="Beaconfire Interview ExperiencePart IAbstract Class and InterfaceData abstraction is the process of hiding certain details and showing only essential information to the user. Abstraction can be achiev">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-03-19T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-19T08:31:22.255Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes, leetcode, interview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/03/19/2021/sociology1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '03-19-2021 03:31:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Beaconfire Interview Experience</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-19T05:00:00.000Z" title="Created 03-19-2021 00:00:00">03-19-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-19T08:31:22.255Z" title="Updated 03-19-2021 03:31:22">03-19-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/interview/">interview</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Beaconfire-Interview-Experience"><a href="#Beaconfire-Interview-Experience" class="headerlink" title="Beaconfire Interview Experience"></a><strong>Beaconfire Interview Experience</strong></h1><h1 id="Part-I"><a href="#Part-I" class="headerlink" title="Part I"></a><strong>Part I</strong></h1><h1 id="Abstract-Class-and-Interface"><a href="#Abstract-Class-and-Interface" class="headerlink" title="Abstract Class and Interface"></a>Abstract Class and Interface</h1><p>Data <strong>abstraction</strong> is the process of hiding certain details and showing only essential information to the user. Abstraction can be achieved with either <strong>abstract classes</strong> or <strong>interfaces</strong>. </p>
+<h2 id="abstract-classes"><a href="#abstract-classes" class="headerlink" title="abstract classes"></a>abstract classes</h2><ul>
+<li><p><strong>Abstract class:</strong> is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class). </p>
+</li>
+<li><p>It can not be <strong>instantiated</strong> by <strong>keyword</strong> “<strong>new</strong>“. The normal class can be <strong>instantiated</strong> by <strong>keyword</strong> “<strong>new</strong>“. </p>
+</li>
+<li><p>It would need <strong>constructors</strong> since it requires the memory allocation for the <strong>members</strong> or <strong>properties</strong>.  </p>
+</li>
+<li><p><strong>Abstract method:</strong> can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).</p>
+</li>
+</ul>
+<p>An abstract class can have both abstract and regular methods:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Abstract class</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Abstract method (does not have a body)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">animalSound</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// Regular method</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Zzz&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Subclass (inherit from Animal)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pig</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">animalSound</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// The body of animalSound() is provided here</span></span><br><span class="line">    System.out.println(<span class="string">&quot;The pig says: wee wee&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Pig myPig = <span class="keyword">new</span> Pig(); <span class="comment">// Create a Pig object</span></span><br><span class="line">    myPig.animalSound();</span><br><span class="line">    myPig.sleep();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="interfaces"><a href="#interfaces" class="headerlink" title="interfaces"></a>interfaces</h2><p>Interface in Java is similar to class but, it contains only abstract methods and fields which are final and static.</p>
+<ul>
+<li>An interface is a <strong>reference type</strong> in Java. It is similar to class. <strong>It is a collection of abstract methods.</strong></li>
+<li>An interface cannot be  <strong>instantiate</strong>.</li>
+<li>An interface does <strong>not</strong> contain any <strong>constructors</strong>.</li>
+<li>An interface cannot contain <strong>instance fields</strong>. The only <strong>fields</strong> that can appear in an interface must be <strong>declared both static and final</strong>.</li>
+<li>An interface is not extended by a class; it is <strong>implemented</strong> by a class.</li>
+<li>An interface can extend multiple interfaces.</li>
+</ul>
+<h1 id="final-modifier"><a href="#final-modifier" class="headerlink" title="final modifier"></a>final modifier</h1><p>The final keyword can be used with a class, method, and variables. </p>
+<ul>
+<li>If it is used with class then it prevents inheritance by not allowing you to create subclasses. </li>
+<li>If it is used with methods then it prevents overriding, you cannot override a final method in Java. </li>
+<li>If it is used with variables then they are treated as constant because you cannot change their value once assigned.</li>
+<li>The final variable can only be assigned during the class instantiate cycle. </li>
+</ul>
+<h1 id="Overloading-and-overriding"><a href="#Overloading-and-overriding" class="headerlink" title="Overloading and overriding"></a>Overloading and overriding</h1><p><strong>Overloading</strong> : If two or more methods have same name, but different argument then it is called method overloading.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Number of Arguments</strong></th>
+<th>Overloaded method can have different number of arguments</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Date type</strong></td>
+<td>Overload method can have different data type for argument</td>
+</tr>
+<tr>
+<td><strong>Return type</strong></td>
+<td>Return type can be changed but either number of argument or data type of argument should also be changed.</td>
+</tr>
+<tr>
+<td><strong>Order of arguments</strong></td>
+<td>If you change sequence of arguments then it is also valid method overloading provided you have different data types arguments.</td>
+</tr>
+<tr>
+<td><strong>Constructor</strong></td>
+<td>Can be overloaded</td>
+</tr>
+</tbody></table>
+<p><strong>Overriding</strong>: </p>
+<ul>
+<li><p>If subclass is having same method as base class then it is known as method overriding Or in another words.</p>
+</li>
+<li><p>If subclass provides specific implementation to any method which is present in its one of parents classes then it is known as method overriding.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Arguments</strong></th>
+<th>Must not change</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Return type</strong></td>
+<td>Can’t change except for covariant (subtype) returns</td>
+</tr>
+<tr>
+<td><strong>Access Modifier</strong></td>
+<td>Must not be more restrictive. Can be less restrictive.</td>
+</tr>
+<tr>
+<td><strong>Exceptions</strong></td>
+<td>Can reduce or eliminate but must not throw new/broader checked exceptions</td>
+</tr>
+<tr>
+<td><strong>Constructor</strong></td>
+<td>Can not be overridden</td>
+</tr>
+<tr>
+<td><strong>Static method</strong></td>
+<td>Can not be overridden</td>
+</tr>
+<tr>
+<td><strong>final method</strong></td>
+<td>Can not be overridden</td>
+</tr>
+</tbody></table>
+<h1 id="array-list-vs-linked-list"><a href="#array-list-vs-linked-list" class="headerlink" title="array list vs linked list"></a>array list vs linked list</h1><p><strong>Linked List</strong> are linear data structures where the elements are <strong>not</strong> stored in <strong>contiguous</strong> locations and every element is a separate object with a data part and address part. </p>
+<ul>
+<li><p>The elements are linked using pointers and addresses. </p>
+</li>
+<li><p>Each element is known as a <strong>node</strong>. </p>
+</li>
+<li><p>Due to the dynamicity and ease of insertions and deletions, they are preferred over the arrays. </p>
+</li>
+</ul>
+<p><strong>Array List</strong> is a part of the <strong>collection framework</strong>. </p>
+<ul>
+<li><p>It is present in the <strong>java.util</strong> package and provides us dynamic arrays in Java. </p>
+</li>
+<li><p>Though, it may be slower than standard arrays but can be helpful in programs where lots of manipulation in the array is needed. </p>
+</li>
+<li><p>We can dynamically add and remove items. It automatically resizes itself. </p>
+</li>
+</ul>
+<h2 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h2><table>
+<thead>
+<tr>
+<th align="left">ArrayList</th>
+<th align="left">LinkedList</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">This class uses a dynamic array to store the elements in it. With the introduction of <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/generics-in-java/">generics</a>, this class supports the storage of all types of objects.</td>
+<td align="left">This class uses a <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/doubly-linked-list/">doubly linked list</a> to store the elements in it. Similar to the ArrayList, this class also supports the storage of all types of objects.</td>
+</tr>
+<tr>
+<td align="left">Manipulating ArrayList takes more time due to the internal implementation. Whenever we remove an element, internally, the array is traversed and the memory bits are shifted.</td>
+<td align="left">Manipulating LinkedList takes less time compared to ArrayList because, in a doubly-linked list, there is no concept of shifting the memory bits. The list is traversed and the reference link is changed.</td>
+</tr>
+<tr>
+<td align="left">This class implements a <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/list-interface-java-examples/">List interface</a>. Therefore, this acts as a list.</td>
+<td align="left">This class implements both the <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/list-interface-java-examples/">List interface</a> and the <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/deque-interface-java-example/">Deque interface</a>. Therefore, it can act as a list and a deque.</td>
+</tr>
+<tr>
+<td align="left">This class works better when the application demands storing the data and accessing it.</td>
+<td align="left">This class works better when the application demands manipulation of the stored data.</td>
+</tr>
+</tbody></table>
+<h1 id="array-vs-array-list"><a href="#array-vs-array-list" class="headerlink" title="array vs array list"></a>array vs array list</h1><p>An array is a collection of items stored at contiguous memory locations. </p>
+<ul>
+<li>The idea is to store multiple items of the same type together. </li>
+<li>However, the limitation of the array is that the size of the array is predefined and fixed.</li>
+</ul>
+<h2 id="Difference-1"><a href="#Difference-1" class="headerlink" title="Difference"></a>Difference</h2><ul>
+<li>An array is basic functionality provided by Java. ArrayList is part of collection framework in Java. Therefore array members are accessed using [], while ArrayList has a set of methods to access elements and modify them.</li>
+<li>Array is a fixed size data structure while ArrayList is not. One need not to mention the size of Arraylist while creating its object. Even if we specify some initial capacity, we can add more elements.</li>
+<li>Array can contain both primitive data types as well as objects of a class depending on the definition of the array. However, ArrayList only supports object entries, not the primitive data types.<br>Note: When we do arraylist.add(1); : it converts the primitive int data type into an Integer object. </li>
+<li>Since ArrayList can’t be created for primitive data types, members of ArrayList are always references to objects at different memory locations (See <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/g-fact-46/">this</a> for details). Therefore in ArrayList, the actual objects are never stored at contiguous locations. References of the actual objects are stored at contiguous locations.<br>In array, it depends whether the arrays is of primitive type or object type. In case of primitive types, actual values are contiguous locations, but in case of objects, allocation is similar to ArrayList.</li>
+<li>Java ArrayList supports many additional operations like <a target="_blank" rel="noopener" href="http://java.util.arraylist.indexof(/">indexOf()</a> in java/), <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/arraylist-linkedlist-remove-methods-java-examples/">remove()</a>, etc. These functions are not supported by Arrays.</li>
+</ul>
+<h1 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h1><p> It provides the basic implementation of the Map interface of Java. It stores the data in <strong>(Key, Value) pairs</strong>, and you can access them by an index of another type (e.g. an Integer). One object is used as a key (index) to another object (value). If you try to insert the duplicate key, it will replace the element of the corresponding key.</p>
+<h2 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h2><p>handle collisions </p>
+<ul>
+<li><p>closed addressing(open hashing)</p>
+<p>In Open Hashing each cell in the array points to a list containg the collisions. The hashing has produced the same index for all items in the linked list.</p>
+</li>
+<li><p>open addressing(close hashing)</p>
+<p>In Closed Hashing you use only one array for everything. You store the collisions in the same array. The trick is to use some smart way to jump from collision to collision until you find what you want. And do this in a reproducible / deterministic way.</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHashMap</span> </span>&#123;</span><br><span class="line">    <span class="comment">// for better re-sizing is taken as 2^4</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SIZE = <span class="number">16</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Entry table[] = <span class="keyword">new</span> Entry[SIZE];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">       * To store the Map data in key and value pair.</span></span><br><span class="line"><span class="comment">       * Used linked list approach to avoid the collisions</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String key;</span><br><span class="line">        String value;</span><br><span class="line">        Entry next;</span><br><span class="line"></span><br><span class="line">        Entry(String k, String v) &#123;</span><br><span class="line">            key = k;</span><br><span class="line">            value = v;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.value = value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">       * Returns the entry mapped to key in the HashMap.</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Entry <span class="title">get</span><span class="params">(String k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> hash = k.hashCode() % SIZE;</span><br><span class="line">        Entry e = table[hash];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Bucket is identified by hashCode and traversed the bucket</span></span><br><span class="line">        <span class="comment">// till element is not found.</span></span><br><span class="line">        <span class="keyword">while</span>(e != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(e.key.equals(k)) &#123;</span><br><span class="line">                <span class="keyword">return</span> e;</span><br><span class="line">            &#125;</span><br><span class="line">            e = e.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">       * If the map previously contained a mapping for the key, the old</span></span><br><span class="line"><span class="comment">       * value is replaced.</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(String k, String v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> hash = k.hashCode() % SIZE;</span><br><span class="line">        Entry e = table[hash];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(e != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// If we will insert duplicate key-value pair,</span></span><br><span class="line">            <span class="comment">// Old value will be replaced by new one.</span></span><br><span class="line">            <span class="keyword">if</span>(e.key.equals(k)) &#123;</span><br><span class="line">                e.value = v;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// Collision: insert new element at the end of list</span></span><br><span class="line">                <span class="comment">// in the same bucket</span></span><br><span class="line">                <span class="keyword">while</span>(e.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    e = e.next;</span><br><span class="line">                &#125;</span><br><span class="line">                Entry entryInOldBucket = <span class="keyword">new</span> Entry(k, v);</span><br><span class="line">                e.next = entryInOldBucket;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// create new bucket for new element in the map.</span></span><br><span class="line">            Entry entryInNewBucket = <span class="keyword">new</span> Entry(k, v);</span><br><span class="line">            table[hash] = entryInNewBucket;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MyHashMap myHashMap = <span class="keyword">new</span> MyHashMap();</span><br><span class="line"></span><br><span class="line">        myHashMap.put(<span class="string">&quot;Awadh&quot;</span>, <span class="string">&quot;SSE&quot;</span>);</span><br><span class="line">        myHashMap.put(<span class="string">&quot;Rahul&quot;</span>, <span class="string">&quot;SSE&quot;</span>);</span><br><span class="line">        myHashMap.put(<span class="string">&quot;Sattu&quot;</span>, <span class="string">&quot;SE&quot;</span>);</span><br><span class="line">        myHashMap.put(<span class="string">&quot;Gaurav&quot;</span>, <span class="string">&quot;SE&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Entry e = myHashMap.get(<span class="string">&quot;Awadh&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;&quot;</span>+e.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Part-II"><a href="#Part-II" class="headerlink" title="Part II"></a><strong>Part II</strong></h1><p>Destination City</p>
+<p>Next Greater Element I</p>
+<p>Number of Longest Increasing Subsequence</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Shiqi Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/03/19/2021/sociology1/">http://pajarnas.github.io/03/19/2021/sociology1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes-leetcode-interview/">notes, leetcode, interview</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/03/14/2021/beaconfire_coding/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Sociology (I) Globalization of Social Change and Continuity</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Beaconfire-Interview-Experience"><span class="toc-text">Beaconfire Interview Experience</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-I"><span class="toc-text">Part I</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Abstract-Class-and-Interface"><span class="toc-text">Abstract Class and Interface</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#abstract-classes"><span class="toc-text">abstract classes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#interfaces"><span class="toc-text">interfaces</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#final-modifier"><span class="toc-text">final modifier</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Overloading-and-overriding"><span class="toc-text">Overloading and overriding</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#array-list-vs-linked-list"><span class="toc-text">array list vs linked list</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Difference"><span class="toc-text">Difference</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#array-vs-array-list"><span class="toc-text">array vs array list</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Difference-1"><span class="toc-text">Difference</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Implement"><span class="toc-text">Implement</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-II"><span class="toc-text">Part II</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/03/19/2021/sociology1/" title="Beaconfire Interview Experience">Beaconfire Interview Experience</a><time datetime="2021-03-19T05:00:00.000Z" title="Created 03-19-2021 00:00:00">03-19-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/03/14/2021/beaconfire_coding/" title="Sociology (I) Globalization of Social Change and Continuity">Sociology (I) Globalization of Social Change and Continuity</a><time datetime="2021-03-14T06:00:00.000Z" title="Created 03-14-2021 00:00:00">03-14-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/03/14/2021/sociology/" title="Hello world! This is me.">Hello world! This is me.</a><time datetime="2021-03-14T06:00:00.000Z" title="Created 03-14-2021 00:00:00">03-14-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
