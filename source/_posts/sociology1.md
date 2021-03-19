@@ -1,11 +1,11 @@
 ---
-title: Sociology (I) Globalization of Social Change and Continuity
-date: 03/14/2021
+title: Beaconfire Interview Experience
+date: 03/19/2021
 updated: 
-tags: notes
-categories: sociology
-keywords: globalization, global age, fluid, social structure, consumption
-description: no social change is more important than globalization
+tags: notes, leetcode, interview
+categories: interview
+keywords: java, oop, leetcode
+description: 
 top_img: 
 comments: 
 cover: 
@@ -23,109 +23,257 @@ highlight_shrink:
 aside:
 ---
 
-# **Central concerns for a 21 century sociology**
+# **Beaconfire Interview Experience**
 
-# Globalization 
+# **Part I**
 
-We are living in the "global age" (Albrow 1996). Society is a complex pattern of social relationships that is bounded in space and persists over time, has traditionally been the largest unit of analysis in sociology. The transnational structures are becoming more important than individual societies. Why? For example, OPEC is more important to the rest of the world's well-being than are the organization's key member societies, such as Abu Dhabi or even Saudi Arabia.
+# Abstract Class and Interface
 
+Data **abstraction** is the process of hiding certain details and showing only essential information to the user. Abstraction can be achieved with either **abstract classes** or **interfaces**. 
 
+## abstract classes
 
-## Social fluid
+- **Abstract class:** is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class). 
+- It can not be **instantiated** by **keyword** "**new**". The normal class can be **instantiated** by **keyword** "**new**". 
+- It would need **constructors** since it requires the memory allocation for the **members** or **properties**.  
 
-People are more "fluid". That is, they move farther, more easily, and more quickly than ever before. The movement of products of all types is also more fluid as as result of the existence of massive container ships, cargo jets, and package delivery services such as FedEx and UPS. 
+- **Abstract method:** can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
 
+An abstract class can have both abstract and regular methods:
 
+```java
+// Abstract class
+abstract class Animal {
+  // Abstract method (does not have a body)
+  public abstract void animalSound();
+  // Regular method
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
 
-## Social structure expedited or impede the fluid
+// Subclass (inherit from Animal)
+class Pig extends Animal {
+  public void animalSound() {
+    // The body of animalSound() is provided here
+    System.out.println("The pig says: wee wee");
+  }
+}
 
-These flows can be expedited (/ˈekspəˌdīt/ speed up) by structures of various types. For example, the EU is an example of a social structure that serves to ease the flow of citizens among member nations. There are also structure that impede various kinds of global flows. For example, national borders, passports and passport controls.
+class Main {
+  public static void main(String[] args) {
+    Pig myPig = new Pig(); // Create a Pig object
+    myPig.animalSound();
+    myPig.sleep();
+  }
+}
+```
 
+## interfaces
 
+Interface in Java is similar to class but, it contains only abstract methods and fields which are final and static.
 
-In sum, **globalization** is defined by increasingly fluid global flows and the structures and the social structure expedited or impede the fluid. 
+- An interface is a **reference type** in Java. It is similar to class. **It is a collection of abstract methods.**
+- An interface cannot be  **instantiate**.
+- An interface does **not** contain any **constructors**.
+- An interface cannot contain **instance fields**. The only **fields** that can appear in an interface must be **declared both static and final**.
+- An interface is not extended by a class; it is **implemented** by a class.
+- An interface can extend multiple interfaces.
 
+# final modifier
 
+The final keyword can be used with a class, method, and variables. 
 
-# Consumption
+- If it is used with class then it prevents inheritance by not allowing you to create subclasses. 
+- If it is used with methods then it prevents overriding, you cannot override a final method in Java. 
+- If it is used with variables then they are treated as constant because you cannot change their value once assigned.
+- The final variable can only be assigned during the class instantiate cycle. 
 
-Beginning in the 1950s, another major social change took place in the US and other developed countries. The central feature of many capitalist economies began to shift from production and work to **consumption**, or the process by which people obtain and utilize goods and services. 
+# Overloading and overriding
 
+**Overloading** : If two or more methods have same name, but different argument then it is called method overloading.
 
+| **Number of Arguments** | Overloaded method can have different number of arguments     |
+| ----------------------- | ------------------------------------------------------------ |
+| **Date type**           | Overload method can have different data type for argument    |
+| **Return type**         | Return type can be changed but either number of argument or data type of argument should also be changed. |
+| **Order of arguments**  | If you change sequence of arguments then it is also valid method overloading provided you have different data types arguments. |
+| **Constructor**         | Can be overloaded                                            |
 
-## Economical
+**Overriding**: 
 
-For example, a good example is the iPhone, which has revolutionized culture in innumerable ways. Consumption and globalization are also deeply intertwined. Much of what we consume in the developed world comes from other countries. For example, the US imported $440 billion worth of good from China. Tourists is often the sampling of the foods of foreign lands, as well as the purchase of souvenirs.
+- If subclass is having same method as base class then it is known as method overriding Or in another words.
 
-## McDonaldization
+- If subclass provides specific implementation to any method which is present in its one of parents classes then it is known as method overriding.
 
-- *Efficiency*. 
-- *Calculability*.
-- *Predictability*.
-- *Control*
+| **Arguments**       | Must not change                                              |
+| ------------------- | ------------------------------------------------------------ |
+| **Return type**     | Can’t change except for covariant (subtype) returns          |
+| **Access Modifier** | Must not be more restrictive. Can be less restrictive.       |
+| **Exceptions**      | Can reduce or eliminate but must not throw new/broader checked exceptions |
+| **Constructor**     | Can not be overridden                                        |
+| **Static method**   | Can not be overridden                                        |
+| **final method**    | Can not be overridden                                        |
 
-## Critiquing Consumption
+# array list vs linked list
 
-A critical look at the ways in which they are structured. These sites may be set up to lead people to consume certain things and not others, to consume more than they might have intended, and to go into debt. Sociologists are also interested in how consumers use shopping malls and e0tailers in ways that were no t anticipated by their designers. For example, shoppers wader through shopping malls and their many shops, which have been designed to spur consumption, without buying anything. 
+**Linked List** are linear data structures where the elements are **not** stored in **contiguous** locations and every element is a separate object with a data part and address part. 
 
-# The digital world
+- The elements are linked using pointers and addresses. 
 
-Sociology has always concerned itself with the social aspects and implications of **technology**, or the interplay of machines, tools, skills, and procedures for the accomplishment of tasks. Sociologists are devoting an increasing amount of attention to the digital world that has emerged as a result of new technologies already mentioned in this chapter, such as computers, smartphones, the Internet, and social networking sites. 
+- Each element is known as a **node**. 
 
-![](/img/20210314174332.png)
+- Due to the dynamicity and ease of insertions and deletions, they are preferred over the arrays. 
 
-## Intersecting and augmenting
+**Array List** is a part of the **collection framework**. 
 
-Two forms of the living are increasingly intersecting and augmenting each other. This is specially important in NA, where the percentage of the population with access to the Internet is highest. While social networking sites can bring about greater interaction, they also come between people and affect the nature of interaction. For example, Twitter limits each message to 140 chars, but face-to-face communication has no such limits. On the other hand, face-to-face communication is limited to a shared physical space.
+- It is present in the **java.util** package and provides us dynamic arrays in Java. 
 
-## Mediated Interaction
+- Though, it may be slower than standard arrays but can be helpful in programs where lots of manipulation in the array is needed. 
 
-Technology such as the Internet and the smartphone comes between the people who are communicating, while there is no such interference in nonmedicated interaction. People who are shy and insecure when it comes to dating or sex, for example, may be much more comfortable relating to others on mediated websites. People also spend **more time** on the media. We also **multitask** among serval online and offline interactions simultaneously, such as in class or while doing homework. Internet also affects the nature of consumption. More of it is taking place on such sites as **eBay and Amazon**. 
+- We can dynamically add and remove items. It automatically resizes itself. 
 
-# Globalization, consumption, the digital world, and you
+## Difference 
 
-- You live a truly global existence in a college or university. 
-- As consumers, you and your classmates are likely well acquainted with college bookstore another nearby shopping mall.
-- An increasing portion of your education is obtained through the inherently global Internet.
+| ArrayList                                                    | LinkedList                                                   |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| This class uses a dynamic array to store the elements in it. With the introduction of [generics](https://www.geeksforgeeks.org/generics-in-java/), this class supports the storage of all types of objects. | This class uses a [doubly linked list](https://www.geeksforgeeks.org/doubly-linked-list/) to store the elements in it. Similar to the ArrayList, this class also supports the storage of all types of objects. |
+| Manipulating ArrayList takes more time due to the internal implementation. Whenever we remove an element, internally, the array is traversed and the memory bits are shifted. | Manipulating LinkedList takes less time compared to ArrayList because, in a doubly-linked list, there is no concept of shifting the memory bits. The list is traversed and the reference link is changed. |
+| This class implements a [List interface](https://www.geeksforgeeks.org/list-interface-java-examples/). Therefore, this acts as a list. | This class implements both the [List interface](https://www.geeksforgeeks.org/list-interface-java-examples/) and the [Deque interface](https://www.geeksforgeeks.org/deque-interface-java-example/). Therefore, it can act as a list and a deque. |
+| This class works better when the application demands storing the data and accessing it. | This class works better when the application demands manipulation of the stored data. |
 
-# **Sociology: continuity and change**
+# array vs array list
 
-This chapter has emphasized recent social changes and their impact on society and on sociology, but there is also much continuity in society , as well as in the field of sociology. 
+An array is a collection of items stored at contiguous memory locations. 
 
-# Sociological Imagination
+- The idea is to store multiple items of the same type together. 
+- However, the limitation of the array is that the size of the array is predefined and fixed.
 
-Social world study has always required **imagination** of he part of sociologists. For example, "war on Terror" might look defensible from the perspective of an American, especially one who live thorough 9/11, but it would look quite different if you imagined yourself in the place of an innocent Muslim caught in the middle of that war. The **sociology imagination** that gives a distinctive sociological, rather than personal, way of looking at data or reflecting on the world around them. 
+## Difference
 
-## Private troubles and public issues
+- An array is basic functionality provided by Java. ArrayList is part of collection framework in Java. Therefore array members are accessed using [], while ArrayList has a set of methods to access elements and modify them.
+- Array is a fixed size data structure while ArrayList is not. One need not to mention the size of Arraylist while creating its object. Even if we specify some initial capacity, we can add more elements.
+- Array can contain both primitive data types as well as objects of a class depending on the definition of the array. However, ArrayList only supports object entries, not the primitive data types.
+  Note: When we do arraylist.add(1); : it converts the primitive int data type into an Integer object. 
+- Since ArrayList can’t be created for primitive data types, members of ArrayList are always references to objects at different memory locations (See [this](https://www.geeksforgeeks.org/g-fact-46/) for details). Therefore in ArrayList, the actual objects are never stored at contiguous locations. References of the actual objects are stored at contiguous locations.
+  In array, it depends whether the arrays is of primitive type or object type. In case of primitive types, actual values are contiguous locations, but in case of objects, allocation is similar to ArrayList.
+- Java ArrayList supports many additional operations like [indexOf()](http://java.util.arraylist.indexof() in java/), [remove()](https://www.geeksforgeeks.org/arraylist-linkedlist-remove-methods-java-examples/), etc. These functions are not supported by Arrays.
 
-The sociology imagination may be most useful in helping sociologists see the linkage between private troubles and public issues. For example, the Great Recession would be useful in alerting society to the fact that the increasing levels of individual consumption and debt, seen at the time as private issues, would soon morph into a public issue.
+# HashMap
 
-## The micro-macro relationship
+ It provides the basic implementation of the Map interface of Java. It stores the data in **(Key, Value) pairs**, and you can access them by an index of another type (e.g. an Integer). One object is used as a key (index) to another object (value). If you try to insert the duplicate key, it will replace the element of the corresponding key.
 
-The interest in personal troubles and public issues in a specific  example of a larger and more basic sociological concern with the relationship between microscopic social phenomena, and macroscopic social phenomena, such as groups, organizations, cultures, society, and the world, as well as the relationships among them. 
+## Implement 
 
+handle collisions 
 
+- closed addressing(open hashing)
 
-## The agency-structure relationship
+  In Open Hashing each cell in the array points to a list containg the collisions. The hashing has produced the same index for all items in the linked list.
 
-It highlights serval important social realities and aspects of the field of sociology. 
+- open addressing(close hashing)
 
-# The social construction of reality
+  In Closed Hashing you use only one array for everything. You store the collisions in the same array. The trick is to use some smart way to jump from collision to collision until you find what you want. And do this in a reproducible / deterministic way.
 
-The discussion of agency and structure leads to another basic concept in sociology: **the social construction of reality**. The agents are "dangerous giants" that could destroy a social structure. people at the agency end of the continuum are seen as creating social reality, basically Marco-level phenomena, through their thoughts and actions. The reality comes to have a life and become a structure that is partly separate from the people who created it and exist in it. Of course, the people can refuse to accept these constraints and controls and create new social realities. It is the continuous loop that is the heart of **agency-structure** and **micro-macro relationships**, the social world , and the field of sociology.  For example, in the realm of consumption, it is people as **designers, manufactures, consumers, and bloggers-who create the world o fashion**. 
+```java
+public class MyHashMap {
+    // for better re-sizing is taken as 2^4
+    private static final int SIZE = 16;
 
-## Refuse to social constructions
+    private Entry table[] = new Entry[SIZE];
 
-Some people do not go along with the **constraints** of the fashion industry, like H&M. They do not wear what the industry wants them to wear. Many people have their own sense. Others ignore fashion altogether. These people create their own society reality. In fact, in a process as cool hunting, scouts for the fashion industry seek out new and interesting wats of dressing, often focusing own what young people in the suburbs and the inner cities are wearing. 
+    /**
+       * To store the Map data in key and value pair.
+       * Used linked list approach to avoid the collisions
+       */
+    class Entry {
+        final String key;
+        String value;
+        Entry next;
 
-## Social structures and processes
+        Entry(String k, String v) {
+            key = k;
+            value = v;
+        }
 
-The social structures are enduring and regular social arrangements, such as the family and the state. When social structures change, they change very slowly. Social processes are the dynamic and ever changing aspects of the social world. 
+        public String getValue() {
+            return value;
+        }
 
-# **Sociology's purpose: science or social reform?**
+        public void setValue(String value) {
+            this.value = value;
+        }
 
-Comet was famous not only for examine the relationship between structure and process but also for arguing that such study ought to be scientific. He believed that the social world was dominated by laws and that sociology's task was to uncover those laws. 
+        public String getKey() {
+            return key;
+        }
+    }
 
-# **Sociology, the other social sciences, and common sense**
+    /**
+       * Returns the entry mapped to key in the HashMap.
+       */
+    public Entry get(String k) {
+        int hash = k.hashCode() % SIZE;
+        Entry e = table[hash];
 
-Sociology is one of the social sciences-that is, its is one of the fields that studies various aspects of the social world.
+        // Bucket is identified by hashCode and traversed the bucket
+        // till element is not found.
+        while(e != null) {
+            if(e.key.equals(k)) {
+                return e;
+            }
+            e = e.next;
+        }
+        return null;
+    }
+
+    /**
+       * If the map previously contained a mapping for the key, the old
+       * value is replaced.
+       */
+    public void put(String k, String v) {
+        int hash = k.hashCode() % SIZE;
+        Entry e = table[hash];
+
+        if(e != null) {
+            // If we will insert duplicate key-value pair,
+            // Old value will be replaced by new one.
+            if(e.key.equals(k)) {
+                e.value = v;
+            } else {
+                // Collision: insert new element at the end of list
+                // in the same bucket
+                while(e.next != null) {
+                    e = e.next;
+                }
+                Entry entryInOldBucket = new Entry(k, v);
+                e.next = entryInOldBucket;
+            }
+        } else {
+            // create new bucket for new element in the map.
+            Entry entryInNewBucket = new Entry(k, v);
+            table[hash] = entryInNewBucket;
+        }
+    }
+
+    public static void main(String[] args) {
+        MyHashMap myHashMap = new MyHashMap();
+
+        myHashMap.put("Awadh", "SSE");
+        myHashMap.put("Rahul", "SSE");
+        myHashMap.put("Sattu", "SE");
+        myHashMap.put("Gaurav", "SE");
+
+        Entry e = myHashMap.get("Awadh");
+        System.out.println(""+e.getValue());
+    }
+}
+```
+
+# **Part II**
+
+Destination City
+
+Next Greater Element I
+
+Number of Longest Increasing Subsequence
