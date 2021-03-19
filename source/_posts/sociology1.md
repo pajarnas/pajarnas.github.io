@@ -2,9 +2,15 @@
 title: Beaconfire Interview Experience
 date: 03/19/2021
 updated: 
-tags: notes, leetcode, interview
+tags: 
+  - notes, 
+  - leetcode
+  - interview
 categories: interview
-keywords: java, oop, leetcode
+keywords: 
+  - java
+  - oop
+  - leetcode
 description: 
 top_img: 
 comments: 
@@ -276,4 +282,4 @@ Destination City
 
 Next Greater Element I
 
-Number of Longest Increasing Subsequence
+Number of Longest Increasing Subsequence 

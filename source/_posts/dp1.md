@@ -2,9 +2,19 @@
 title: Dynamic Programming Leetcode
 date: 03/19/2021
 updated: 
-tags: notes, leetcode, interview, dynamic programming, medium
-categories: interview, leetcode
-keywords: java, leetcode, solution
+tags: 
+  - notes
+  - leetcode
+  - interview
+  - dynamic programming
+  - medium
+categories: 
+  - interview
+  - leetcode
+keywords: 
+  - java, 
+  - leetcode
+  - solution
 description: 
 top_img: 
 comments: 
