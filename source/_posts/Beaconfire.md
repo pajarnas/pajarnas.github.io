@@ -132,6 +132,8 @@ The final keyword can be used with a class, method, and variables.
 
 **Array List** is a part of the **collection framework**. 
 
+Unlike arrays, arraylists can automatically adjust its capacity when we add or remove elements from it. Hence, arraylists are also known as **dynamic arrays**.
+
 - It is present in the **java.util** package and provides us dynamic arrays in Java. 
 
 - Though, it may be slower than standard arrays but can be helpful in programs where lots of manipulation in the array is needed. 

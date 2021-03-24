@@ -9,7 +9,7 @@ tags:
   - dynamic programming
   - medium
 categories: 
-  - interview
+  - leetcode
 keywords: 
   - java
   - solution
