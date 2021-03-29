@@ -1,5 +1,5 @@
 ---
-title: Sociology (I) Globalization of Social Change and Continuity
+title: Sociology Notes (I) Globalization of Social Change and Continuity
 date: 03/14/2021
 updated: 
 tags: notes
@@ -129,3 +129,7 @@ Comet was famous not only for examine the relationship between structure and pro
 # **Sociology, the other social sciences, and common sense**
 
 Sociology is one of the social sciences-that is, its is one of the fields that studies various aspects of the social world.
+
+# **Reference**
+
+Ritzer, G. (2016). *Essentials of sociology*.(2nd ed.,  pp. 1-21) 
