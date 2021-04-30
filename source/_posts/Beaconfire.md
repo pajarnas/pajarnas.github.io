@@ -32,67 +32,9 @@ aside:
 
 # **Part I**
 
-# Abstract Class and Interface
+- 
 
-Data **abstraction** is the process of hiding certain details and showing only essential information to the user. Abstraction can be achieved with either **abstract classes** or **interfaces**. 
-
-## abstract classes
-
-- **Abstract class:** is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class). 
-- It can not be **instantiated** by **keyword** "**new**". The normal class can be **instantiated** by **keyword** "**new**". 
-- It would need **constructors** since it requires the memory allocation for the **members** or **properties**.  
-
-- **Abstract method:** can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
-
-An abstract class can have both abstract and regular methods:
-
-```java
-// Abstract class
-abstract class Animal {
-  // Abstract method (does not have a body)
-  public abstract void animalSound();
-  // Regular method
-  public void sleep() {
-    System.out.println("Zzz");
-  }
-}
-
-// Subclass (inherit from Animal)
-class Pig extends Animal {
-  public void animalSound() {
-    // The body of animalSound() is provided here
-    System.out.println("The pig says: wee wee");
-  }
-}
-
-class Main {
-  public static void main(String[] args) {
-    Pig myPig = new Pig(); // Create a Pig object
-    myPig.animalSound();
-    myPig.sleep();
-  }
-}
-```
-
-## interfaces
-
-Interface in Java is similar to class but, it contains only abstract methods and fields which are final and static.
-
-- An interface is a **reference type** in Java. It is similar to class. **It is a collection of abstract methods.**
-- An interface cannot be  **instantiate**.
-- An interface does **not** contain any **constructors**.
-- An interface cannot contain **instance fields**. The only **fields** that can appear in an interface must be **declared both static and final**.
-- An interface is not extended by a class; it is **implemented** by a class.
-- An interface can extend multiple interfaces.
-
-# final modifier
-
-The final keyword can be used with a class, method, and variables. 
-
-- If it is used with class then it prevents inheritance by not allowing you to create subclasses. 
-- If it is used with methods then it prevents overriding, you cannot override a final method in Java. 
-- If it is used with variables then they are treated as constant because you cannot change their value once assigned.
-- The final variable can only be assigned during the class instantiate cycle. 
+- e. 
 
 # Overloading and overriding
 
