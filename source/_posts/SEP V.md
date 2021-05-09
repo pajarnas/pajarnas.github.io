@@ -30,27 +30,29 @@ aside:
 
 # Preview
 
-# Joining Multiple Tables
+Working with
 
-Using Aliases for Table Names
+# Subqueries
 
-Combining Data from Multiple Tables - Joins
+● Introduction to Subqueries
+● Using a Subquery as a Derived Table
+● Using a Subquery as an Expression
+● Using a Subquery to Correlate Data
+● Using EXISTS and NOT EXISTS
 
-Combining Multiple Result Sets
+# Working with Objects ● Creating Objects
 
-Recommended Practices
+● Altering Objects
+● Renaming Objects
+● Dropping Objects
 
-# Grouping and Summarizing Data
+# Data Integrity 
 
-Listing the TOP n Values
+● Entity Integrity
+● Referential integrity
+● Different Constraints
+● SQL Server Day 3 Assignment
 
-Using Aggregate Functions
-
-GROUP BY Fundamentals
-
-Having Clause
-
-Recommended Practices
 
 # In Class Note
 

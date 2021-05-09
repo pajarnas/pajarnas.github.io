@@ -30,36 +30,19 @@ aside:
 
 # Preview
 
-# Joining Multiple Tables
+# Modifying Data 
 
-Using Aliases for Table Names
+Using Transactions
+Inserting Data
+Updating Data
+Deleting Data
+Truncate
+Performance Considerations
 
-Combining Data from Multiple Tables - Joins
+# Programming Objects 
 
-Combining Multiple Result Sets
-
-Recommended Practices
-
-# Grouping and Summarizing Data
-
-Listing the TOP n Values
-
-Using Aggregate Functions
-
-GROUP BY Fundamentals
-
-Having Clause
-
-Recommended Practices
-
-# In Class Note
-
-
-
-Joins
-
-inner join, 
-
-outer,
-
-cross
+Statements
+Views
+Stored Procedures
+Functions (User Defined & System Defined)
+Trigger SQL Server Day 4 Assignment

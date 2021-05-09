@@ -63,3 +63,8 @@ inner join,
 outer,
 
 cross
+
+When do you use inner join instead of outer join?
+
+
+
