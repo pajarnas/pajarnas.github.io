@@ -133,9 +133,9 @@ PolyBase allows you to simply use Transact-SQL to join the data.
 
 PolyBase does not require you to install additional software to your Hadoop environment. You query external data by using the same T-SQL syntax used to query a database table. The support actions implemented by PolyBase all happen transparently. The query author does not need any knowledge about the external source.
 
-## PolyBase uses
+## PolyBase uses sdasasddsa as  add wechat and 
 
-PolyBase enables the following scenarios in SQL Server:
+as PolyBase enables the following scenarios in SQL Server:
 
 - **Query data stored in Hadoop from a SQL Server instance or PDW.** Users are storing data in cost-effective distributed and scalable systems, such as Hadoop. PolyBase makes it easy to query the data by using T-SQL.
 - **Query data stored in Azure blob storage.** Azure blob storage is a convenient place to store data for use by Azure services. PolyBase makes it easy to access the data by using T-SQL.
