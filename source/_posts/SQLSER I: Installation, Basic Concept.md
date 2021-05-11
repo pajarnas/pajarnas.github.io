@@ -1,14 +1,12 @@
 ---
 
-title: SEP I: MS SQL Server Installation and Basic Knowledge
+title: SQL Server I: MS SQL Server Installation and Basic Knowledge
 date: 05/03/2021
 updated: 
 tags: 
   - notes
-  - SEP
-  - Full-Stack
-  - MSSQLSERVER
-categories: SEP
+  - SQL Server
+categories: SQL Server
 keywords: 
   - java
   - oop

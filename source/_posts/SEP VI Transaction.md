@@ -30,9 +30,7 @@ aside:
 
 # Preview
 
-
-
-
+Working with
 
 # Subqueries
 
@@ -76,7 +74,7 @@ View is a virtual table whose contents (columns and rows) are defined by a query
 
 In a database, a **view** is the **result set** of a *stored* query on the data, which the [database](https://en.wikipedia.org/wiki/Database) users can query just as they would in a persistent database collection object. This pre-established query command is kept in the database dictionary. Unlike ordinary *base tables* in a [relational database](https://en.wikipedia.org/wiki/Relational_database), a view does not form part of the [physical schema](https://en.wikipedia.org/wiki/Database_design): as a result set, it is a virtual table computed or collated dynamically from data in the database when access to that view is requested. Changes applied to the data in a relevant *underlying table* are reflected in the data shown in subsequent invocations of the view. In some [NoSQL](https://en.wikipedia.org/wiki/NoSQL) databases, views are the only way to query data[*[how?](https://en.wikipedia.org/wiki/Wikipedia:Please_clarify)*].
 
-### Advantages:
+Views can provide advantages over tables:
 
 - Views can **represent a subset of the data** contained in a table. Consequently, **a view can limit the degree of exposure of the underlying tables to the outer world:** a given user may have permission to query the view, while denied access to the rest of the base table.
 - Views can [join](https://en.wikipedia.org/wiki/Join_(SQL)) and simplify multiple tables into a single virtual table.
@@ -84,12 +82,6 @@ In a database, a **view** is the **result set** of a *stored* query on the data,
 - Views can **hide the complexity of data**. For example, a view could appear as Sales2000 or Sales2001, transparently [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) the actual underlying table.
 - Views **take very little space to store**; the database contains **only the definition of a view**, not a copy of all the data that it presents.
 - Depending on the [SQL](https://en.wikipedia.org/wiki/SQL) engine used, views can provide extra security.
-
-### Disadvantage:
-
-- it can not accept the parameters (which can cause SQL injection)
-- It can not be recursive
-- modifing data using view not gives the desired reuslt always if there are mulitiple base tables
 
 ## Can data be modified through views?
 

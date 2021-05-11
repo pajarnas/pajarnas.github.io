@@ -1,13 +1,16 @@
 ---
-title: SEP III: Joining Multiple Tables and Grouping and Summarizing Data
+title: SQL Server IV: SP, UDF, View, CTE, Temp Table, Table Variable
 date: 05/05/2021
-updated: 
+updated: 05/11/2021
 tags: 
-  - notes
-  - SEP
-  - Full-StackI
-  - Transact-SQL
-categories: SEP
+  - View
+  - User Defined Function
+  - Stored Procedure
+  - CTE
+  - Temporary Table
+  - Table Variable
+
+categories: SQL Server
 keywords: 
 description: 
 top_img: 
@@ -28,55 +31,32 @@ aside:
 
 ---
 
-# Preview
+# Modifying Data 
 
+Using Transactions
+Inserting Data
+Updating Data
+Deleting Data
+Truncate
+Performance Considerations
 
+# Programming Objects 
 
+Statements
+Views
+Stored Procedures
+Functions (User Defined & System Defined)
+Trigger SQL Server Day 4 Assignment
 
-
-# Subqueries
-
-● Introduction to Subqueries
-● Using a Subquery as a Derived Table
-● Using a Subquery as an Expression
-● Using a Subquery to Correlate Data
-● Using EXISTS and NOT EXISTS
-
-# Working with Objects ● Creating Objects
-
-● Altering Objects
-● Renaming Objects
-● Dropping Objects
-
-# Data Integrity 
-
-● Entity Integrity
-● Referential integrity
-● Different Constraints
-● SQL Server Day 3 Assignment
-
-
-# Assignment 
-
-
-
-Joins
-
-inner join, 
-
-outer,
-
-cross
+# View
 
 ## What is View? What are the benefits of using views?
-
-
 
 View is a virtual table whose contents (columns and rows) are defined by a query.
 
 In a database, a **view** is the **result set** of a *stored* query on the data, which the [database](https://en.wikipedia.org/wiki/Database) users can query just as they would in a persistent database collection object. This pre-established query command is kept in the database dictionary. Unlike ordinary *base tables* in a [relational database](https://en.wikipedia.org/wiki/Relational_database), a view does not form part of the [physical schema](https://en.wikipedia.org/wiki/Database_design): as a result set, it is a virtual table computed or collated dynamically from data in the database when access to that view is requested. Changes applied to the data in a relevant *underlying table* are reflected in the data shown in subsequent invocations of the view. In some [NoSQL](https://en.wikipedia.org/wiki/NoSQL) databases, views are the only way to query data[*[how?](https://en.wikipedia.org/wiki/Wikipedia:Please_clarify)*].
 
-### Advantages:
+Views can provide advantages over tables:
 
 - Views can **represent a subset of the data** contained in a table. Consequently, **a view can limit the degree of exposure of the underlying tables to the outer world:** a given user may have permission to query the view, while denied access to the rest of the base table.
 - Views can [join](https://en.wikipedia.org/wiki/Join_(SQL)) and simplify multiple tables into a single virtual table.
@@ -84,12 +64,6 @@ In a database, a **view** is the **result set** of a *stored* query on the data,
 - Views can **hide the complexity of data**. For example, a view could appear as Sales2000 or Sales2001, transparently [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) the actual underlying table.
 - Views **take very little space to store**; the database contains **only the definition of a view**, not a copy of all the data that it presents.
 - Depending on the [SQL](https://en.wikipedia.org/wiki/SQL) engine used, views can provide extra security.
-
-### Disadvantage:
-
-- it can not accept the parameters (which can cause SQL injection)
-- It can not be recursive
-- modifing data using view not gives the desired reuslt always if there are mulitiple base tables
 
 ## Can data be modified through views?
 
@@ -101,6 +75,8 @@ You can modify the data of an underlying base table through a view, as long as t
   - A computation. The column cannot be computed from an expression that uses other columns. Columns that are formed by using the set operators UNION, UNION ALL, CROSSJOIN, EXCEPT, and INTERSECT amount to a computation and are also not updatable.
 - The columns being modified are not affected by GROUP BY, HAVING, or DISTINCT clauses.
 - TOP is not used anywhere in the *select_statement* of the view together with the WITH CHECK OPTION clause.
+
+# Stored Procedure
 
 ## What is stored procedure and what are the benefits of using it?
 
@@ -174,6 +150,8 @@ In a practical sense a view is an alias to an sql statement where as a procedure
 | 4         | Can not perform modification to any table.                   | Can perform modification to one or several tables.           |
 | 5         | Can be used (sometimes) as the target for Insert, update, delete queries. | Can not be used as the target for Insert, update, delete queries. |
 
+# Function
+
 ## What is the difference between stored procedure and functions?
 
 Stored Procedures are pre-compiled objects which are compiled for the first time and its compiled format is saved, which executes (compiled code) whenever it is called. 
@@ -200,8 +178,6 @@ A user-defined function is a Transact-SQL or common language runtime (CLR) routi
 |               **can't call SP** from function.               |              We **can call function** from SP.               |
 |      We can use UDF in SELECT/ WHERE/ HAVING statement.      |     We can't use SP in SELECT/ WHERE/ HAVING statement.      |
 |             We can't use Try-Catch block in UDF.             |  We can use exception handling using Try-Catch block in SP.  |
-
-
 
 
 
@@ -271,48 +247,103 @@ GO
 
 No. A stored procedure is a module of code. It does 'something' and may or may not return anything. It may also return multiple data sets. So really you can't select from it, because it isn't an object that you can select from. You can return the results of a stored procedure into a table, and then select from th
 
-## What is Trigger? What types of Triggers are there?
+# Common Table Expression
 
-A trigger is a special type of stored procedure that automatically runs when an event occurs in the database server. 
+## Use
 
-Two main types of triggers based on DDL or DML events: 
+- Create a recursive query.
 
-The **DML** Triggers and the **DDL** triggers. The DDL triggers will be fired in response to different Data Definition Language (DDL) events, such as executing CREATE, ALTER, DROP, GRANT, DENY, and REVOKE T-SQL statements. 
+- Temporary View. Substitute for a view when the general use of a view is not required; that is, you do not have to store the definition in metadata.
 
-The **DDL** trigger can respond to the DDL actions by preventing these changes from affecting the database, perform another action in response to these DDL actions or recording these changes that are executed against the database.
+- The query can be divided into separate, simple, logical building blocks. These simple blocks can then be used to build more complex, interim CTEs until the final result set is generated. 
+- We can also use CTE if the scope of a table is very limited.
 
-Two main types of triggers based on timing of events: After or For trigger and Instead of trigger
+- CTEs can be defined in user-defined routines, such as functions, stored procedures, triggers, or views.
 
-If the trigger is fired, a special type of virtual tables called **Inserted** and **Deleted** tables will be used to keep the data values before and after the modification. The trigger statement will work under the scope of the same transaction that fires that trigger. This means that the transaction will not be committed completely until the trigger statement is completed successfully. On the other hand, the transaction will be rolled back if the trigger statement fails.
+## Benefits
 
+- **Readability** and **manageability** of **complex** SQL Statements
 
+  The query can be divided into separate,  simple, logical building blocks. These simple blocks can then be used to build more complex, interim CTEs until the final result set is generated. 
 
-## What are the scenarios to use Triggers?
+- Similar to VIEWs and even more to Derived Tables
 
-1. When you need to build a decent audit solution.
-2. When you need to validate inserted or updated data in batches instead of row by row.
-3. When you need to  use triggers to implement referential integrity across databases. 
-4. When you need to be sure that certain events always happen when data is inserted, updated or deleted. 
-5. When you need recursion.
+- Over time most of the CTEs will be used for this purpose
 
+Example 1:
 
+```sql
+-- Ex: List all Sales Persons and their number of orders.
+WITH Sales_CTE (SalesPersonID, NumberOfOrders, MaxDate)
+AS
+(
+    SELECT SalesPersonID, COUNT(*), MAX(OrderDate)
+    FROM Sales.SalesOrderHeader
+    GROUP BY SalesPersonID
+)
+SELECT * FROM Sales_CTE 
+```
 
-## What is the difference between Trigger and Stored Procedure?
+Example 2 (Recusi):
 
+```sql
+-- There is a table with employee details. It stores the employee name with corresponding employee ID, manager ID and salary. 
+-- NRequirement is to display the employee whose empid is 3 and all the employees and sub employees working under him/her.
+-- The easiest way is use recursive cte
+-- <non-recursive SELECT>
+-- UNION ALL
+-- <SELECT referencing CTE>
 
+WITH Emp_CTE(EmployeeID, ManagerID, Salary)
+AS
+(
+		SELECT EmployeeID, ManagerID, Salary FROM Employee WHERE EmployeeID = 3  
+  	
+  	UNION ALL
+  
+  	SELECT e.EmployeeID, e.ManagerID, e.Salary FROM Employee AS e 
+      JOINEmp_CTE AS cte
+  	ON e.ManagerID = cte.EmployeeID    CT    
+)
+SELECT * FROM Emp_CTE
+-- https://youtu.be/N3ChrpDRcXY?t=369
+-- PPT Day3 
+```
 
-**TRIGGER:-**
+# Temporary Table
 
-- Trigger executes **implicitly**. Whenever an event INSERT, UPDATE, and DELETE occurs it executed automatically.
-- We **cannot define a trigger inside another trigger**.
-- **Transaction statements** are not allowed in the trigger.
-- We **cannot return value** in a trigger.
+Temporary tables are defined just like regular tables, only they are automatically stored in the tempdb database.
 
-**STORED PROCEDURE:-**
+Temporary tables causes performance issues. 
 
-- A Procedure executed explicitly when the user using statements such as exec, EXECUTE, etc.
-- We can define procedures inside another procedure. Also, we can use functions inside the stored procedure.
-- Transaction statements such as COMMIT, ROLLBACK, and SAVEPOINT are allowed in the procedure.
-- Stored procedures return a zero or N value. However, we can pass values as parameters.
-- Return keyword used to exit the procedure.
+Microsoft recommends table variables as a replacement of temporary tables when the data set is not very large 
+
+## Types
+
+- Local : Local temporary tables are prefixed with a single # sign 
+
+  A local temporary table exists only for the duration of a connection or, if defined inside a compound statement, for the duration of the compound statement.
+
+  
+
+- Global: global temporary tables with a double ## sign.
+
+  A global temporary table remains in the database permanently, but the rows exist only within a given connection. When connection is closed, the data in the global temporary table disappears. However, the table definition remains with the database for access when database is opened next time.
+
+# Table Variable
+
+- A table variable is a **data type** that can be used **within a Transact-SQL batch, stored procedure, or function**—and is created and defined **similarly to a table**, only with a **strictly defined lifetime scope**. 
+- The lifetime of the table variable only lasts for the duration of the batch, function, or stored procedure.
+- Table variables will be created in temp db.
+- ILike regular variables, table variables are visible only within the batch where they were created. Table variables can be used for working with small temporary data, for passing a list of values to stored procedures or functions, for auditing, etc.
+
+# Difference Table Variable, Temporary Table
+
+- Unlike regular tables or temporary tables, table variables **can’t have indexes or FOREIGN KEY constraints added** to them.
+
+- Table variables do allow some constraints to be used in the table **definition (PRIMARY KEY, UNIQUE, CHECK)**.
+
+- Table variable make sure in **one singe block** 
+
+  
 
