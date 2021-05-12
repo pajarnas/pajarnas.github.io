@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops | Saige Blog</title><meta name="keywords" content="RESULT SET,SELECT,JOIN,Set Ops,Subquery,Group,identity Column,DELETE/TRUNCATE,Aggregate Functions"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Result Set Result set is a set of data, could be empty or not, returned by a select statement, or a stored procedure, that is saved in RAM or displayed on the screen. A result set is a set of records,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops">
+<meta property="og:url" content="http://pajarnas.github.io/05/05/2021/SQLSER%20III:%20Select,%20Join,%20Subquery,Aggregate,%20Delete/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="Result Set Result set is a set of data, could be empty or not, returned by a select statement, or a stored procedure, that is saved in RAM or displayed on the screen. A result set is a set of records,">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-05-05T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-10T05:00:00.000Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="RESULT SET">
+<meta property="article:tag" content="SELECT">
+<meta property="article:tag" content="JOIN">
+<meta property="article:tag" content="Set Ops">
+<meta property="article:tag" content="Subquery">
+<meta property="article:tag" content="Group">
+<meta property="article:tag" content="identity Column">
+<meta property="article:tag" content="DELETE&#x2F;TRUNCATE">
+<meta property="article:tag" content="Aggregate Functions">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/05/05/2021/SQLSER%20III:%20Select,%20Join,%20Subquery,Aggregate,%20Delete/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '05-10-2021 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-05-05T05:00:00.000Z" title="Created 05-05-2021 00:00:00">05-05-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-10T05:00:00.000Z" title="Updated 05-10-2021 00:00:00">05-10-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SQL-Server/">SQL Server</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Result-Set"><a href="#Result-Set" class="headerlink" title="Result Set"></a>Result Set</h1><ol>
+<li>Result set is <strong>a set of data,</strong> could be empty or not, <strong>returned by a select statement, or a stored procedure,</strong> that is <strong>saved in RAM or displayed on the screen</strong>.</li>
+<li>A result set is a set of records, including not only the data itself, <strong>but also metadata like column names, types and sizes</strong>.</li>
+</ol>
+<p>A TSQL script can have 0 to multiple result sets. </p>
+<p>Use the following command can export the result set into file. </p>
+<p>​        <code>sqlcmd -i c:\sql\myquery.sql -o c:\sql\myoutput.txt</code></p>
+<h1 id="UNION-UNION-ALL-Other-SET-Operator"><a href="#UNION-UNION-ALL-Other-SET-Operator" class="headerlink" title="UNION, UNION ALL, Other SET Operator"></a>UNION, UNION ALL, Other SET Operator</h1><ol>
+<li><p>Both SET operators. </p>
+</li>
+<li><p><strong>Union</strong> and <strong>Union All</strong> are all for <strong>combining result set</strong> (returned by a SELECT statement, or a stored procedure) together, <strong>vertically</strong>.</p>
+</li>
+<li><p><strong>UNION</strong> <strong>removes duplicate records</strong> (where all columns in the results are the same), <strong>UNION ALL does not</strong>.</p>
+</li>
+<li><p><strong>Union</strong> will <strong>sort</strong> the result <strong>by the order of first column by default</strong>, while Union will remain the original sequence by default. </p>
+</li>
+<li><p>UNION ALL has better performance, since the database server must <strong>do additional work to remove the duplicate rows</strong>, but usually you do not want the duplicates (especially when developing reports).</p>
+</li>
+</ol>
+<p>​        <em>Note: When using Union and Union All, you need to make sure the numbers of columns and date type of each column from all result set should be the same.</em></p>
+<h2 id="Other-Set-Ops"><a href="#Other-Set-Ops" class="headerlink" title="Other Set Ops"></a>Other Set Ops</h2><pre><code>    1. **INTERSECT**: Takes the data from both result sets which are in common only.
+    2. **EXCEPT**: Takes the data from first result set, but not the second (i.e. no matching to each other)
+    3. MINUS. 
+</code></pre>
+<p>​        <em>It both returns NULL set when there is no data meeting the condition.</em></p>
+<h1 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h1><h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h2><ol>
+<li><p>Querying from More Than One Data Source </p>
+</li>
+<li><p>The JOIN keyword allows you to <strong>combine data from multiple tables and/or views into a single result set</strong>. <strong>It joins a column or columns from one table to another table, evaluating whether there is a match.</strong> <strong>Horizontally</strong></p>
+</li>
+<li><p>With the JOIN keyword, you join two tables based on a join condition. Most often you’ll see a join condition testing the equality of one column in one table compared to another column in the second table.</p>
+</li>
+<li><p>joined columns do not need to have the same name, only compatible data types.</p>
+</li>
+<li><p>SQL Server join types fall into three categories: *<strong>inner*, <em>outer</em>, and *cross</strong>. Self join is not a category. <strong>Left, Right and Full are outer joins</strong>.</p>
+</li>
+<li><p>Joins is preferred than subquery because perforemce is high.</p>
+</li>
+</ol>
+<h2 id="Difference-between-INNER-JOIN-and-FULL-JOIN"><a href="#Difference-between-INNER-JOIN-and-FULL-JOIN" class="headerlink" title="Difference between INNER JOIN and FULL JOIN?"></a>Difference between INNER JOIN and FULL JOIN?</h2><p>Suppose you have two tables, with a single column each, and data as follows:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A    B</span><br><span class="line"><span class="operator">-</span>    <span class="operator">-</span></span><br><span class="line"><span class="number">1</span>    <span class="number">3</span></span><br><span class="line"><span class="number">2</span>    <span class="number">4</span></span><br><span class="line"><span class="number">3</span>    <span class="number">5</span></span><br><span class="line"><span class="number">4</span>    <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p>Note that (1,2) are unique to A, (3,4) are common, and (5,6) are unique to B.</p>
+<h3 id="Inner-join"><a href="#Inner-join" class="headerlink" title="Inner join"></a><strong>Inner join</strong></h3><p>An inner join using either of the equivalent queries gives the intersection of the two tables, i.e. the two rows they have in common.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">INNER</span> <span class="keyword">JOIN</span> b <span class="keyword">on</span> a.a <span class="operator">=</span> b.b;</span><br><span class="line"><span class="keyword">select</span> a.<span class="operator">*</span>, b.<span class="operator">*</span>  <span class="keyword">from</span> a,b <span class="keyword">where</span> a.a <span class="operator">=</span> b.b;</span><br><span class="line"></span><br><span class="line">a <span class="operator">|</span> b</span><br><span class="line"><span class="comment">--+--</span></span><br><span class="line"><span class="number">3</span> <span class="operator">|</span> <span class="number">3</span></span><br><span class="line"><span class="number">4</span> <span class="operator">|</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Left-outer-join"><a href="#Left-outer-join" class="headerlink" title="Left outer join"></a><strong>Left outer join</strong></h3><p>A left outer join will give all rows in A, plus any common rows in B.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b <span class="keyword">on</span> a.a <span class="operator">=</span> b.b;</span><br><span class="line"><span class="keyword">select</span> a.<span class="operator">*</span>, b.<span class="operator">*</span>  <span class="keyword">from</span> a,b <span class="keyword">where</span> a.a <span class="operator">=</span> b.b(<span class="operator">+</span>);</span><br><span class="line"></span><br><span class="line">a <span class="operator">|</span>  b</span><br><span class="line"><span class="comment">--+-----</span></span><br><span class="line"><span class="number">1</span> <span class="operator">|</span> <span class="keyword">null</span></span><br><span class="line"><span class="number">2</span> <span class="operator">|</span> <span class="keyword">null</span></span><br><span class="line"><span class="number">3</span> <span class="operator">|</span>    <span class="number">3</span></span><br><span class="line"><span class="number">4</span> <span class="operator">|</span>    <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Right-outer-join"><a href="#Right-outer-join" class="headerlink" title="Right outer join"></a><strong>Right outer join</strong></h3><p>A right outer join will give all rows in B, plus any common rows in A.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">RIGHT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b <span class="keyword">on</span> a.a <span class="operator">=</span> b.b;</span><br><span class="line"><span class="keyword">select</span> a.<span class="operator">*</span>, b.<span class="operator">*</span>  <span class="keyword">from</span> a,b <span class="keyword">where</span> a.a(<span class="operator">+</span>) <span class="operator">=</span> b.b;</span><br><span class="line"></span><br><span class="line">a    <span class="operator">|</span>  b</span><br><span class="line"><span class="comment">-----+----</span></span><br><span class="line"><span class="number">3</span>    <span class="operator">|</span>  <span class="number">3</span></span><br><span class="line"><span class="number">4</span>    <span class="operator">|</span>  <span class="number">4</span></span><br><span class="line"><span class="keyword">null</span> <span class="operator">|</span>  <span class="number">5</span></span><br><span class="line"><span class="keyword">null</span> <span class="operator">|</span>  <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Full-outer-join"><a href="#Full-outer-join" class="headerlink" title="Full outer join"></a><strong>Full outer join</strong></h3><p>A full outer join will give you the union of A and B, i.e. all the rows in A and all the rows in B. If something in A doesn’t have a corresponding datum in B, then the B portion is null, and vice versa.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> b <span class="keyword">on</span> a.a <span class="operator">=</span> b.b;</span><br><span class="line"></span><br><span class="line"> a   <span class="operator">|</span>  b</span><br><span class="line"><span class="comment">-----+-----</span></span><br><span class="line">   <span class="number">1</span> <span class="operator">|</span> <span class="keyword">null</span></span><br><span class="line">   <span class="number">2</span> <span class="operator">|</span> <span class="keyword">null</span></span><br><span class="line">   <span class="number">3</span> <span class="operator">|</span>    <span class="number">3</span></span><br><span class="line">   <span class="number">4</span> <span class="operator">|</span>    <span class="number">4</span></span><br><span class="line"><span class="keyword">null</span> <span class="operator">|</span>    <span class="number">6</span></span><br><span class="line"><span class="keyword">null</span> <span class="operator">|</span>    <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Cross-join"><a href="#Cross-join" class="headerlink" title="Cross join"></a>Cross join</h3><p>A CROSS join produces a cartesian product, by matching up every row from the first set with every row from the second set:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM a CROSS JOIN b </span><br><span class="line"></span><br><span class="line"> a   |  b</span><br><span class="line">-----+-----</span><br><span class="line">   1 | 		3</span><br><span class="line">   1 | 		4</span><br><span class="line">   1 |    5</span><br><span class="line">   1 |    6</span><br><span class="line">	 2 |    3</span><br><span class="line">   2 |    4</span><br><span class="line">  </span><br><span class="line">				... and so on</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Self-Join"><a href="#Self-Join" class="headerlink" title="Self Join"></a>Self Join</h3><p>Self Join is used to join a table to itself after temporally renaming. There’s not key word like “SELF JOIN”, self join is achieved by key word like “WHERE”.</p>
+<p>​        </p>
+<h2 id="Difference-between-Union-and-Join"><a href="#Difference-between-Union-and-Join" class="headerlink" title="Difference between Union and Join"></a>Difference between Union and Join</h2><p><strong>Union</strong> is used to combine multiple queries into <strong>a single query</strong> with <strong>all the records of queries and the same column forms</strong>. (<strong>Vertically</strong>)</p>
+<p><strong>Join</strong> is used to combine data from multiple queries with the column names of all queries. The number of rows depends on the kinds of joins and the queries. (<strong>Horizontally</strong>)</p>
+<p>a. <strong>from diff tables or result set</strong></p>
+<p>​        JOIN combines data from many tables based on a matched condition between them.    </p>
+<p>​        UNION combines the result-set of two or more SELECT statements, or procedures.</p>
+<p>b. columns or rows</p>
+<p>​        JOIN combines data into <strong>new columns</strong>.    </p>
+<p>​        UNION combines data into <strong>new rows</strong></p>
+<p>c. Number of columns</p>
+<p>​        JOIN: Number of columns selected from each table <strong>may not be same.</strong></p>
+<p>​        UNION: Number of columns selected from each table <strong>should be same.</strong></p>
+<p>*d. </p>
+<p>​        Datatypes of corresponding columns selected from each table can be different.</p>
+<p>​        Datatypes of corresponding columns selected from each table should be same.</p>
+<p>*e.</p>
+<p>​        It may not return distinct columns.    </p>
+<p>​        It returns distinct rows.</p>
+<h1 id="WHERE-Clause-Having-Clause"><a href="#WHERE-Clause-Having-Clause" class="headerlink" title="WHERE Clause, Having Clause"></a>WHERE Clause, Having Clause</h1><p>A WHERE clause in SQL specifies that a SQL DML statement <strong>should only affect rows that meet specified criteria</strong>. The criteria are expressed in the form of predicates. WHERE clauses are not mandatory clauses of SQL DML statements, but can be used to limit the number of rows affected by a SQL DML statement or returned by a query. In brief SQL <strong>WHERE clause is used to extract only those results from a SQL statement,</strong> such as: SELECT, INSERT, UPDATE, or DELETE statement.</p>
+<p>A HAVING clause in SQL specifies that an SQL SELECT statement must only return rows <strong>where aggregate values meet the specified conditions</strong>.</p>
+<p>WHERE is taken into account <strong>at an earlier stage of a query execution</strong>, <strong>filtering the rows read from the tables</strong>. If a query contains GROUP BY, data from the tables are grouped and aggregated. After the aggregating operation, HAVING is applied, f<strong>iltering out the rows that don’t match the specified conditions.</strong> </p>
+<p>Therefore, <strong>WHERE applies to data read from tables</strong>, and <strong>HAVING should only apply to aggregated data, which are not known in the initial stage of a query</strong>.</p>
+<p>To view the present condition formed by the GROUP BY clause, the HAVING clause is used.</p>
+<p>WHERE could <strong>only work on columns that already exist in original queries</strong>, after FROM and before key words like “GROUP BY”. Having could be used on columns t<strong>hat don’t exist in original queries, but created during the former processes</strong>. <strong>Having shall be written after GROUP BY</strong> (all in specific sequence).</p>
+<h1 id="SELECT-Advanced"><a href="#SELECT-Advanced" class="headerlink" title="SELECT Advanced"></a>SELECT Advanced</h1><h2 id="SELECT-OVER"><a href="#SELECT-OVER" class="headerlink" title="*SELECT-OVER"></a>*SELECT-OVER</h2><p>Determines the <strong>partitioning and ordering</strong> of a <strong>rowset</strong> before the associated window function is applied. That is, the OVER clause defines a window or user-specified set of rows within a query result set. A window function then computes a value for each row in the window. You can use the OVER clause with functions to compute aggregated values such as moving averages, cumulative aggregates, running totals, or a top N per group results.</p>
+<h2 id="SELECT-GROUP-BY"><a href="#SELECT-GROUP-BY" class="headerlink" title="SELECT-GROUP BY"></a>SELECT-GROUP BY</h2><p>A SELECT statement clause that <strong>divides the query result into groups of rows</strong>, usually for the purpose of performing one or more aggregations on each group. The <strong>SELECT statement returns one row per group.</strong></p>
+<h2 id="Multiple-group-by-columns"><a href="#Multiple-group-by-columns" class="headerlink" title="* Multiple group by columns"></a>* <strong>Multiple group by columns</strong></h2><p>Yes, there could be. If there <strong>are multiple columns following GROUP BY</strong>, S<strong>QL will put the rows with the same values in all those columns in the same group</strong>.</p>
+<p>A GROUP BY statement in SQL specifies that a SQL SELECT statement partitions result rows into groups, based on their values in one or several columns. </p>
+<p>Typically, grouping is used to apply some sort of aggregate function for each group.</p>
+<ul>
+<li><p>Group By Col_A means put all those with the same value for Col_A the one group.</p>
+</li>
+<li><p>Group By Col_A, Col_B means put all those with the same values for both Col_A and Col_B in the one group.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Table: Subject_Selection</span><br><span class="line"></span><br><span class="line">+---------+----------+----------+</span><br><span class="line">| Subject | Semester | Attendee |</span><br><span class="line">+---------+----------+----------+</span><br><span class="line">| ITB001  |        1 | John     |</span><br><span class="line">| ITB001  |        1 | Bob      |</span><br><span class="line">| ITB001  |        1 | Mickey   |</span><br><span class="line">| ITB001  |        2 | Jenny    |</span><br><span class="line">| ITB001  |        2 | James    |</span><br><span class="line">| MKB114  |        1 | John     |</span><br><span class="line">| MKB114  |        1 | Erica    |</span><br><span class="line">+---------+----------+----------+</span><br><span class="line"></span><br><span class="line">group by Subject :</span><br><span class="line"></span><br><span class="line">+---------+-------+</span><br><span class="line">| Subject | Count |</span><br><span class="line">+---------+-------+</span><br><span class="line">| ITB001  |     5 |</span><br><span class="line">| MKB114  |     2 |</span><br><span class="line">+---------+-------+</span><br><span class="line"></span><br><span class="line"># of rows with subject &#x3D; ITB001 is 5</span><br><span class="line"></span><br><span class="line">group by Subject, Semester:</span><br><span class="line"></span><br><span class="line">+---------+----------+-------+</span><br><span class="line">| Subject | Semester | Count |</span><br><span class="line">+---------+----------+-------+</span><br><span class="line">| ITB001  |        1 |     3 |</span><br><span class="line">| ITB001  |        2 |     2 |</span><br><span class="line">| MKB114  |        1 |     2 |</span><br><span class="line">+---------+----------+-------+</span><br><span class="line"></span><br><span class="line"># of rows with subject &#x3D; ITB001 and Semester&#x3D;1 is 3</span><br><span class="line"># of rows with subject &#x3D; ITB001 and Semester&#x3D;2 is 2</span><br><span class="line"></span><br><span class="line">Therefore, it is possible group by mutiple columns. </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Identity-Column"><a href="#Identity-Column" class="headerlink" title="Identity Column"></a>Identity Column</h1><ul>
+<li>Identity column is autogenerated column in a table. Identity column will will not get reset to initial value incase of delete but truncate will reset value to its initial value. </li>
+<li>Identity column will will not get reset to initial value incase of delete but truncate will reset value to its initial value.</li>
+</ul>
+<p>The term <strong>seed</strong> refers to the internal value SQL Server uses to generate the next value in the sequence. </p>
+<p>By default, an identity column’s first value is 1 and each new value increments by one (1, 2, 3, 4, and so on).</p>
+<p>identity column generates sequential values for new records using a seed value.</p>
+<p>An identity column is a column in a database table that is made up of values generated by the database.</p>
+<ul>
+<li><p>The DELETE will not reseed the identity value, the new inserted row will start with the identity with just deleted</p>
+</li>
+<li><p>The TRUNCATE will reseed the identity value, the new inserted row will start with the inital value 1. </p>
+</li>
+</ul>
+<p>Example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> #Person</span><br><span class="line">(</span><br><span class="line">	person_id <span class="type">INT</span> <span class="keyword">IDENTITY</span>(<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    first_name <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    last_name <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    gender <span class="type">CHAR</span>(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="DELETE-TRUNCATE"><a href="#DELETE-TRUNCATE" class="headerlink" title="DELETE\TRUNCATE"></a>DELETE\TRUNCATE</h1><h2 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h2><p>Removes one or more rows from a table or view in SQL Server.</p>
+<h2 id="TRUNCATE"><a href="#TRUNCATE" class="headerlink" title="TRUNCATE"></a>TRUNCATE</h2><p>Removes all rows from a table or specified partitions of a table, without logging the individual row deletions. </p>
+<h2 id="Difference"><a href="#Difference" class="headerlink" title="Difference"></a>Difference</h2><ul>
+<li><p>TRUNCATE TABLE is similar to the DELETE statement with no WHERE clause; however, TRUNCATE TABLE is faster and uses fewer system and transaction log resources.</p>
+</li>
+<li><p>Truncate reseeds identity values, whereas delete doesn’t.</p>
+</li>
+<li><p>Truncate removes all records and doesn’t fire triggers.</p>
+</li>
+<li><p>Truncate is faster compared to delete as it makes less use of the transaction log.</p>
+</li>
+<li><p>Truncate is not possible when a table is referenced by a Foreign Key or tables are used in replication or with indexed views.</p>
+</li>
+</ul>
+<p>TRUNCATE Table_Name would remove all rows from Table_Name, without logging the individual row deletions, </p>
+<p>​    reseeds identity values. It would not work if a table is referenced by a Foreign Key or tables are used </p>
+<p>​    in replication or with indexed views.</p>
+<h2 id="Delete-from-table-name-and-truncate-table-table-name"><a href="#Delete-from-table-name-and-truncate-table-table-name" class="headerlink" title="Delete from table_name and truncate table table_name"></a>Delete from table_name and truncate table table_name</h2><p>DELETE FROM Table_Name removes all rows from Table_Name, would not ressed identity values, If you wish the delete to be automatic, you need to change your schema so that the foreign key constraint is ON DELETE CASCADE.</p>
+<p>TRUNCATE Table_Name would remove all rows from Table_Name, without logging the individual row deletions, reseeds identity values. It would not work if a table is referenced by a Foreign Key or tables are used in replication or with indexed views.</p>
+<p>The DELETE command is used to remove rows from a table. A WHERE clause can be used to only remove some rows. If no WHERE condition is specified, all rows will be removed. After performing a DELETE operation you need to COMMIT or ROLLBACK the transaction to make the change permanent or to undo it. Note that this operation will cause all DELETE triggers on the table to fire.</p>
+<p>TRUNCATE removes all rows from a table. The operation cannot be rolled back and no triggers will be fired. As such, TRUCATE is faster and doesn’t use as much undo space as a DELETE.</p>
+<h1 id="Subquery"><a href="#Subquery" class="headerlink" title="Subquery"></a>Subquery</h1><p>The following is an example showing both a subquery <code>SELECT</code> and a join <code>SELECT</code> that return the same result set and execution plan:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">USE AdventureWorks2016;</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="comment">/* SELECT statement built using a subquery. */</span></span><br><span class="line"><span class="keyword">SELECT</span> [Name]</span><br><span class="line"><span class="keyword">FROM</span> Production.Product</span><br><span class="line"><span class="keyword">WHERE</span> ListPrice <span class="operator">=</span></span><br><span class="line">    (<span class="keyword">SELECT</span> ListPrice</span><br><span class="line">     <span class="keyword">FROM</span> Production.Product</span><br><span class="line">     <span class="keyword">WHERE</span> [Name] <span class="operator">=</span> <span class="string">&#x27;Chainring Bolts&#x27;</span> );</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="comment">/* SELECT statement built using a join that returns</span></span><br><span class="line"><span class="comment">   the same result set. */</span></span><br><span class="line"><span class="keyword">SELECT</span> Prd1.[Name]</span><br><span class="line"><span class="keyword">FROM</span> Production.Product <span class="keyword">AS</span> Prd1</span><br><span class="line">     <span class="keyword">JOIN</span> Production.Product <span class="keyword">AS</span> Prd2</span><br><span class="line">       <span class="keyword">ON</span> (Prd1.ListPrice <span class="operator">=</span> Prd2.ListPrice)</span><br><span class="line"><span class="keyword">WHERE</span> Prd2.[Name] <span class="operator">=</span> <span class="string">&#x27;Chainring Bolts&#x27;</span>;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<h2 id="Nested-in-the-outer-SELECT-statement"><a href="#Nested-in-the-outer-SELECT-statement" class="headerlink" title="Nested in the outer SELECT statement"></a>Nested in the outer SELECT statement</h2><p>A subquery nested in the outer SELECT statement has the following components:</p>
+<ul>
+<li>A regular <code>SELECT</code> query including the regular select list components.</li>
+<li>A regular <code>FROM</code> clause including one or more table or view names.</li>
+<li>An optional <code>WHERE</code> clause.</li>
+<li>An optional <code>GROUP BY</code> clause.</li>
+<li>An optional <code>HAVING</code> clause.</li>
+</ul>
+<p>The SELECT query of a subquery <strong>is always enclosed in parentheses</strong>. It cannot include a <code>COMPUTE</code> or <code>FOR BROWSE</code> clause, and may only include an <strong><code>ORDER BY</code> clause when a TOP clause is also specified</strong>.</p>
+<h2 id="Nested-inside-the-WHERE-or-HAVING-clause-or-inside-another-subquery"><a href="#Nested-inside-the-WHERE-or-HAVING-clause-or-inside-another-subquery" class="headerlink" title="Nested inside the WHERE or HAVING clause or inside another subquery"></a>Nested inside the <code>WHERE</code> or <code>HAVING</code> clause or inside another subquery</h2><p>A subquery can be nested inside the <code>WHERE</code> or <code>HAVING</code> clause of an outer <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> statement, or inside another subquery. A subquery can appear anywhere an expression can be used, <strong>if it returns a single value.</strong></p>
+<p>If a table appears <strong>only in a subquery and not in the outer query</strong>, then <strong>columns from that table cannot be included in the output</strong> (the select list of the outer query).</p>
+<h2 id="Usual-Formats"><a href="#Usual-Formats" class="headerlink" title="Usual Formats"></a>Usual Formats</h2><ul>
+<li><code>WHERE expression \[NOT] IN (subquery)</code></li>
+<li><code>WHERE expression comparison_operator \[ANY | ALL] (subquery)</code></li>
+<li><code>WHERE \[NOT] EXISTS (subquery)</code></li>
+</ul>
+<p>In some Transact-SQL statements, the subquery can be evaluated as if it were an independent query. Conceptually, the subquery results are substituted into the outer query (although this is not necessarily how SQL Server actually processes Transact-SQL statements with subqueries).</p>
+<p>There are three basic types of subqueries. Those that:</p>
+<ul>
+<li>Operate on lists introduced with <code>IN</code>, or those that a comparison operator modified by <code>ANY</code> or <code>ALL</code>.</li>
+<li>Are introduced with an unmodified comparison operator and must return a single value.</li>
+<li>Are existence tests introduced with <code>EXISTS</code>.</li>
+</ul>
+<h2 id="Comparison-operators-modified-by-ANY-SOME-or-ALL"><a href="#Comparison-operators-modified-by-ANY-SOME-or-ALL" class="headerlink" title="Comparison operators modified by ANY, SOME, or ALL"></a>Comparison operators modified by <code>ANY</code>, <code>SOME</code>, or <code>ALL</code></h2><p>Comparison operators that introduce a subquery can be modified by the keywords <code>ALL</code> or <code>ANY</code>. <code>SOME</code> is an ISO standard equivalent for <code>ANY</code>.</p>
+<p>Subqueries introduced with a modified comparison operator return a list of zero or more values and can include a <code>GROUP BY</code> or <code>HAVING</code> clause. These subqueries can be restated with <code>EXISTS</code>.</p>
+<ul>
+<li><code>&gt;ALL</code> means greater than every value.</li>
+<li><code>&gt;ANY</code> means greater than at least one value, that is, greater than the minimum. So <code>&gt;ANY (1, 2, 3)</code> means greater than 1. </li>
+</ul>
+<p>The following query provides an example of a subquery introduced with a comparison operator modified by <code>ANY</code>. It finds the products whose list prices are greater than or equal to the maximum list price of any product subcategory.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">USE AdventureWorks2016;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">SELECT</span> [Name]</span><br><span class="line"><span class="keyword">FROM</span> Production.Product</span><br><span class="line"><span class="keyword">WHERE</span> ListPrice <span class="operator">&gt;=</span> <span class="keyword">ANY</span></span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">MAX</span> (ListPrice)</span><br><span class="line">     <span class="keyword">FROM</span> Production.Product</span><br><span class="line">     <span class="keyword">GROUP</span> <span class="keyword">BY</span> ProductSubcategoryID);</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;&gt;ANY</code> means not = a, or not = b, or not = c</li>
+<li><code>NOT IN</code> means not = a, and not = b, and not = c</li>
+<li><code>&lt;&gt;ALL</code> means the same as <code>NOT IN</code></li>
+</ul>
+<h2 id="EXISTS"><a href="#EXISTS" class="headerlink" title="EXISTS"></a>EXISTS</h2><p>The NOT EXISTS in SQL Server will check the Subquery for rows existence, and if there are no rows then it will return TRUE, otherwise FALSE. Or we can simply say, SQL Server Not Exists operator will return the results exactly opposite to the result returned by the Subquery.</p>
+<h1 id="Grouping-and-Summarizing-Data"><a href="#Grouping-and-Summarizing-Data" class="headerlink" title="Grouping and Summarizing Data"></a>Grouping and Summarizing Data</h1><p>Listing the TOP n Values</p>
+<p>Using Aggregate Functions</p>
+<p>GROUP BY Fundamentals</p>
+<p>Having Clause</p>
+<p>Recommended Practices</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Shiqi Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/05/05/2021/SQLSER%20III:%20Select,%20Join,%20Subquery,Aggregate,%20Delete/">http://pajarnas.github.io/05/05/2021/SQLSER%20III:%20Select,%20Join,%20Subquery,Aggregate,%20Delete/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RESULT-SET/">RESULT SET</a><a class="post-meta__tags" href="/tags/SELECT/">SELECT</a><a class="post-meta__tags" href="/tags/JOIN/">JOIN</a><a class="post-meta__tags" href="/tags/Set-Ops/">Set Ops</a><a class="post-meta__tags" href="/tags/Subquery/">Subquery</a><a class="post-meta__tags" href="/tags/Group/">Group</a><a class="post-meta__tags" href="/tags/identity-Column/">identity Column</a><a class="post-meta__tags" href="/tags/DELETE-TRUNCATE/">DELETE/TRUNCATE</a><a class="post-meta__tags" href="/tags/Aggregate-Functions/">Aggregate Functions</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/05/10/2021/SQLSER%20V:%20Index,%20Constraint,%20Normallization,%20Transacation/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">SQL Server V Index, Constraint, Normallization</div></div></a></div><div class="next-post pull-right"><a href="/05/05/2021/SQLSER%20IV:%20SP,%20UDF,%20View,%20CTE,%20Temp%20Table,%20Table%20Variable/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">SQL Server IV SP, UDF, View, CTE, Temp Table, Table Variable</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Result-Set"><span class="toc-text">Result Set</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UNION-UNION-ALL-Other-SET-Operator"><span class="toc-text">UNION, UNION ALL, Other SET Operator</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-Set-Ops"><span class="toc-text">Other Set Ops</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JOIN"><span class="toc-text">JOIN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Concept"><span class="toc-text">Concept</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Difference-between-INNER-JOIN-and-FULL-JOIN"><span class="toc-text">Difference between INNER JOIN and FULL JOIN?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inner-join"><span class="toc-text">Inner join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Left-outer-join"><span class="toc-text">Left outer join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Right-outer-join"><span class="toc-text">Right outer join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Full-outer-join"><span class="toc-text">Full outer join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cross-join"><span class="toc-text">Cross join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Self-Join"><span class="toc-text">Self Join</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Difference-between-Union-and-Join"><span class="toc-text">Difference between Union and Join</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WHERE-Clause-Having-Clause"><span class="toc-text">WHERE Clause, Having Clause</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SELECT-Advanced"><span class="toc-text">SELECT Advanced</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SELECT-OVER"><span class="toc-text">*SELECT-OVER</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SELECT-GROUP-BY"><span class="toc-text">SELECT-GROUP BY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multiple-group-by-columns"><span class="toc-text">* Multiple group by columns</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Identity-Column"><span class="toc-text">Identity Column</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DELETE-TRUNCATE"><span class="toc-text">DELETE\TRUNCATE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DELETE"><span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TRUNCATE"><span class="toc-text">TRUNCATE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Difference"><span class="toc-text">Difference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delete-from-table-name-and-truncate-table-table-name"><span class="toc-text">Delete from table_name and truncate table table_name</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Subquery"><span class="toc-text">Subquery</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nested-in-the-outer-SELECT-statement"><span class="toc-text">Nested in the outer SELECT statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nested-inside-the-WHERE-or-HAVING-clause-or-inside-another-subquery"><span class="toc-text">Nested inside the WHERE or HAVING clause or inside another subquery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usual-Formats"><span class="toc-text">Usual Formats</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparison-operators-modified-by-ANY-SOME-or-ALL"><span class="toc-text">Comparison operators modified by ANY, SOME, or ALL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXISTS"><span class="toc-text">EXISTS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Grouping-and-Summarizing-Data"><span class="toc-text">Grouping and Summarizing Data</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/11/2021/Front-End%20I:%20Introduction,Http,Elements/" title="Front-End I Introduction, Http, Elements">Front-End I Introduction, Http, Elements</a><time datetime="2021-05-11T05:00:00.000Z" title="Created 05-11-2021 00:00:00">05-11-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/10/2021/SQLSER%20V:%20Index,%20Constraint,%20Normallization,%20Transacation/" title="SQL Server V Index, Constraint, Normallization">SQL Server V Index, Constraint, Normallization</a><time datetime="2021-05-10T05:00:00.000Z" title="Created 05-10-2021 00:00:00">05-10-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/05/2021/SQLSER%20III:%20Select,%20Join,%20Subquery,Aggregate,%20Delete/" title="SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops">SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops</a><time datetime="2021-05-05T05:00:00.000Z" title="Created 05-05-2021 00:00:00">05-05-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/05/2021/SQLSER%20IV:%20SP,%20UDF,%20View,%20CTE,%20Temp%20Table,%20Table%20Variable/" title="SQL Server IV SP, UDF, View, CTE, Temp Table, Table Variable">SQL Server IV SP, UDF, View, CTE, Temp Table, Table Variable</a><time datetime="2021-05-05T05:00:00.000Z" title="Created 05-05-2021 00:00:00">05-05-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/04/2021/SQLSER%20II:%20T-SQL,%20Query,%20Database/" title="SEP II Transact-SQL, Querying Tools, Retrieving Data">SEP II Transact-SQL, Querying Tools, Retrieving Data</a><time datetime="2021-05-04T05:00:00.000Z" title="Created 05-04-2021 00:00:00">05-04-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
