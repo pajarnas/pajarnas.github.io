@@ -1,6 +1,6 @@
 ---
 
-title: SQL Server I: MS SQL Server Installation and Basic Knowledge
+title: SQL Server I MS SQL Server Installation and Basic Knowledge
 date: 05/03/2021
 updated: 
 tags: 

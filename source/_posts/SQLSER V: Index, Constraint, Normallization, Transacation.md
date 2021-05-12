@@ -1,5 +1,5 @@
 ---
-title: SQL Server V: Index, Constraint, Normallization
+title: SQL Server V Index, Constraint, Normallization
 date: 05/10/2021
 updated: 05/11/2021
 tags: 

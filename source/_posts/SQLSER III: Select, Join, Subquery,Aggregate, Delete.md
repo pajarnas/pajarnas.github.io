@@ -1,5 +1,5 @@
 ---
-title: SQL Server III: Select, Join, Subquery, Delete, Aggregate Functions, Set Ops 
+title: SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops 
 date: 05/05/2021
 updated: 05/10/2021
 tags: 

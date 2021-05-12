@@ -1,6 +1,6 @@
 ---
 
-title: Front-End I: Introduction, Http, Elements
+title: Front-End I Introduction, Http, Elements
 date: 05/11/2021
 updated: 
 tags: 

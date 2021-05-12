@@ -1,6 +1,6 @@
 ---
 
-title: SEP II: Transact-SQL, Querying Tools, Retrieving Data
+title: SEP II Transact-SQL, Querying Tools, Retrieving Data
 date: 05/04/2021
 updated: 
 tags: 

@@ -1,5 +1,5 @@
 ---
-title: SQL Server IV: SP, UDF, View, CTE, Temp Table, Table Variable
+title: SQL Server IV SP, UDF, View, CTE, Temp Table, Table Variable
 date: 05/05/2021
 updated: 05/11/2021
 tags: 
@@ -9,7 +9,6 @@ tags:
   - CTE
   - Temporary Table
   - Table Variable
-
 categories: SQL Server
 keywords: 
 description: 
@@ -284,7 +283,7 @@ AS
 SELECT * FROM Sales_CTE 
 ```
 
-Example 2 (Recusi):
+Example 2 (Recusive):
 
 ```sql
 -- There is a table with employee details. It stores the employee name with corresponding employee ID, manager ID and salary. 
@@ -297,13 +296,13 @@ Example 2 (Recusi):
 WITH Emp_CTE(EmployeeID, ManagerID, Salary)
 AS
 (
-		SELECT EmployeeID, ManagerID, Salary FROM Employee WHERE EmployeeID = 3  
+		SELECT EmployeeID, ManagerID, Salary FROM Employee WHERE EmployeeID = 3
   	
   	UNION ALL
   
   	SELECT e.EmployeeID, e.ManagerID, e.Salary FROM Employee AS e 
-      JOINEmp_CTE AS cte
-  	ON e.ManagerID = cte.EmployeeID    CT    
+    JOIN  Emp_CTE AS cte
+  	ON e.ManagerID = cte.EmployeeID
 )
 SELECT * FROM Emp_CTE
 -- https://youtu.be/N3ChrpDRcXY?t=369
@@ -335,7 +334,7 @@ Microsoft recommends table variables as a replacement of temporary tables when t
 - A table variable is a **data type** that can be used **within a Transact-SQL batch, stored procedure, or function**—and is created and defined **similarly to a table**, only with a **strictly defined lifetime scope**. 
 - The lifetime of the table variable only lasts for the duration of the batch, function, or stored procedure.
 - Table variables will be created in temp db.
-- ILike regular variables, table variables are visible only within the batch where they were created. Table variables can be used for working with small temporary data, for passing a list of values to stored procedures or functions, for auditing, etc.
+- Like regular variables, table variables are visible only within the batch where they were created. Table variables can be used for working with small temporary data, for passing a list of values to stored procedures or functions, for auditing, etc.
 
 # Difference Table Variable, Temporary Table
 
