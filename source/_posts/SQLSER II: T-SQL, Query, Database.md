@@ -8,7 +8,7 @@ tags:
   - SEP
   - Full-Stack
   - Transact-SQL
-categories: SEP
+categories: SQL Server
 keywords: 
   - java
   - oop
