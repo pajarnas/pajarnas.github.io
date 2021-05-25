@@ -1,5 +1,5 @@
 ---
-title: SEP III: Joining Multiple Tables and Grouping and Summarizing Data
+title: SEP III Joining Multiple Tables and Grouping and Summarizing Data
 date: 05/05/2021
 updated: 
 tags: 
