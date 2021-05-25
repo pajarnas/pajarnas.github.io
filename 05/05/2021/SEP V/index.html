@@ -1,0 +1,384 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEP III Joining Multiple Tables and Grouping and Summarizing Data | Saige Blog</title><meta name="keywords" content="notes,SEP,Full-StackI,Transact-SQL"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="PreviewSubqueries● Introduction to Subqueries● Using a Subquery as a Derived Table● Using a Subquery as an Expression● Using a Subquery to Correlate Data● Using EXISTS and NOT EXISTS Working with Obje">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SEP III Joining Multiple Tables and Grouping and Summarizing Data">
+<meta property="og:url" content="http://pajarnas.github.io/05/05/2021/SEP%20V/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="PreviewSubqueries● Introduction to Subqueries● Using a Subquery as a Derived Table● Using a Subquery as an Expression● Using a Subquery to Correlate Data● Using EXISTS and NOT EXISTS Working with Obje">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-05-05T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-25T07:39:05.186Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="SEP">
+<meta property="article:tag" content="Full-StackI">
+<meta property="article:tag" content="Transact-SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/05/05/2021/SEP%20V/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '05-25-2021 02:39:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">36</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SEP III Joining Multiple Tables and Grouping and Summarizing Data</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-05-05T05:00:00.000Z" title="Created 05-05-2021 00:00:00">05-05-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-25T07:39:05.186Z" title="Updated 05-25-2021 02:39:05">05-25-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SEP/">SEP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><h1 id="Subqueries"><a href="#Subqueries" class="headerlink" title="Subqueries"></a>Subqueries</h1><p>● Introduction to Subqueries<br>● Using a Subquery as a Derived Table<br>● Using a Subquery as an Expression<br>● Using a Subquery to Correlate Data<br>● Using EXISTS and NOT EXISTS</p>
+<h1 id="Working-with-Objects-●-Creating-Objects"><a href="#Working-with-Objects-●-Creating-Objects" class="headerlink" title="Working with Objects ● Creating Objects"></a>Working with Objects ● Creating Objects</h1><p>● Altering Objects<br>● Renaming Objects<br>● Dropping Objects</p>
+<h1 id="Data-Integrity"><a href="#Data-Integrity" class="headerlink" title="Data Integrity"></a>Data Integrity</h1><p>● Entity Integrity<br>● Referential integrity<br>● Different Constraints<br>● SQL Server Day 3 Assignment</p>
+<h1 id="Assignment"><a href="#Assignment" class="headerlink" title="Assignment"></a>Assignment</h1><p>Joins</p>
+<p>inner join, </p>
+<p>outer,</p>
+<p>cross</p>
+<h2 id="What-is-View-What-are-the-benefits-of-using-views"><a href="#What-is-View-What-are-the-benefits-of-using-views" class="headerlink" title="What is View? What are the benefits of using views?"></a>What is View? What are the benefits of using views?</h2><p>View is a virtual table whose contents (columns and rows) are defined by a query.</p>
+<p>In a database, a <strong>view</strong> is the <strong>result set</strong> of a <em>stored</em> query on the data, which the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Database">database</a> users can query just as they would in a persistent database collection object. This pre-established query command is kept in the database dictionary. Unlike ordinary <em>base tables</em> in a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Relational_database">relational database</a>, a view does not form part of the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Database_design">physical schema</a>: as a result set, it is a virtual table computed or collated dynamically from data in the database when access to that view is requested. Changes applied to the data in a relevant <em>underlying table</em> are reflected in the data shown in subsequent invocations of the view. In some <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NoSQL">NoSQL</a> databases, views are the only way to query data[<em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wikipedia:Please_clarify">how?</a></em>].</p>
+<h3 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages:"></a>Advantages:</h3><ul>
+<li>Views can <strong>represent a subset of the data</strong> contained in a table. Consequently, <strong>a view can limit the degree of exposure of the underlying tables to the outer world:</strong> a given user may have permission to query the view, while denied access to the rest of the base table.</li>
+<li>Views can <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Join_(SQL)">join</a> and simplify multiple tables into a single virtual table.</li>
+<li>Views can act as aggregated tables, where the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Database_engine">database engine</a> aggregates data (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Summation">sum</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Average">average</a>, etc.) and presents the calculated results as part of the data.</li>
+<li>Views can <strong>hide the complexity of data</strong>. For example, a view could appear as Sales2000 or Sales2001, transparently <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Partition_(database)">partitioning</a> the actual underlying table.</li>
+<li>Views <strong>take very little space to store</strong>; the database contains <strong>only the definition of a view</strong>, not a copy of all the data that it presents.</li>
+<li>Depending on the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SQL">SQL</a> engine used, views can provide extra security.</li>
+</ul>
+<h3 id="Disadvantage"><a href="#Disadvantage" class="headerlink" title="Disadvantage:"></a>Disadvantage:</h3><ul>
+<li>it can not accept the parameters (which can cause SQL injection)</li>
+<li>It can not be recursive</li>
+<li>modifing data using view not gives the desired reuslt always if there are mulitiple base tables</li>
+</ul>
+<h2 id="Can-data-be-modified-through-views"><a href="#Can-data-be-modified-through-views" class="headerlink" title="Can data be modified through views?"></a>Can data be modified through views?</h2><p>You can modify the data of an underlying base table through a view, as long as the following conditions are true:</p>
+<ul>
+<li>Any modifications, including UPDATE, INSERT, and DELETE statements, must reference columns from only one base table.</li>
+<li>The columns being modified in the view must directly reference the underlying data in the table columns. The columns cannot be derived in any other way, such as through the following:<ul>
+<li>An aggregate function: AVG, COUNT, SUM, MIN, MAX, GROUPING, STDEV, STDEVP, VAR, and VARP.</li>
+<li>A computation. The column cannot be computed from an expression that uses other columns. Columns that are formed by using the set operators UNION, UNION ALL, CROSSJOIN, EXCEPT, and INTERSECT amount to a computation and are also not updatable.</li>
+</ul>
+</li>
+<li>The columns being modified are not affected by GROUP BY, HAVING, or DISTINCT clauses.</li>
+<li>TOP is not used anywhere in the <em>select_statement</em> of the view together with the WITH CHECK OPTION clause.</li>
+</ul>
+<h2 id="What-is-stored-procedure-and-what-are-the-benefits-of-using-it"><a href="#What-is-stored-procedure-and-what-are-the-benefits-of-using-it" class="headerlink" title="What is stored procedure and what are the benefits of using it?"></a>What is stored procedure and what are the benefits of using it?</h2><p>Definition：</p>
+<p>A stored procedure is a set of precompiled SQL statements that are used to perform a special task. </p>
+<p>A stored procedure (also termed proc, storp, sproc, StoPro, StoredProc, StoreProc, sp, or SP) is a subroutine available to applications that access a relational database management system (RDBMS).</p>
+<p>A stored procedure in SQL Server is a group of one or more Transact-SQL statements or a reference to a Microsoft .NET Framework common runtime language (CLR) method. Procedures resemble constructs in other programming languages because they can:</p>
+<ul>
+<li>Accept input parameters and return multiple values in the form of output parameters to the calling program.</li>
+<li>Contain programming statements that perform operations in the database. These include calling other procedures.</li>
+<li>Return a status value to a calling program to indicate success or failure (and the reason for failure).</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>Types of Stored Procedures:</p>
+<p><strong>User-defined</strong><br>A user-defined procedure can be created in a user-defined database or in all system databases except the <strong>Resource</strong> database. The procedure can be developed in either Transact-SQL or as a reference to a Microsoft .NET Framework common runtime language (CLR) method.</p>
+<p><strong>Temporary</strong><br>Temporary procedures are a form of user-defined procedures. The temporary procedures are like a permanent procedure, except temporary procedures are stored in <strong>tempdb</strong>. There are two types of temporary procedures: local and global. They differ from each other in their names, their visibility, and their availability. Local temporary procedures have a single number sign (#) as the first character of their names; they are visible only to the current user connection, and they are deleted when the connection is closed. Global temporary procedures have two number signs (##) as the first two characters of their names; they are visible to any user after they are created, and they are deleted at the end of the last session using the procedure.</p>
+<p><strong>System</strong><br>System procedures are included with SQL Server. They are physically stored in the internal, hidden <strong>Resource</strong> database and logically appear in the <strong>sys</strong> schema of every system- and user-defined database. In addition, the <strong>msdb</strong> database also contains system stored procedures in the <strong>dbo</strong> schema that are used for scheduling alerts and jobs. Because system procedures start with the prefix <strong>sp_</strong>, we recommend that you do not use this prefix when naming user-defined procedures. </p>
+<p><strong>Extended User-Defined</strong><br>Extended procedures enable creating external routines in a programming language such as C. These procedures are DLLs that an instance of SQL Server can dynamically load and run.</p>
+<p>Benefits:</p>
+<ol>
+<li><p>Reduced server/client network traffic. </p>
+<p>The commands in a procedure are executed as a single batch of code. This can significantly reduce network traffic between the server and client because <strong>only the call to execute the procedure is sent across the network</strong>. Without the code encapsulation provided by a procedure, every individual line of code would have to cross the network.</p>
+</li>
+<li><p>Stronger security<br>Multiple users and client programs can perform operations on underlying database objects through a procedure, even if the users and programs do not have direct permissions on those underlying objects. The procedure controls what processes and activities are performed and protects the underlying database objects. This eliminates the requirement to grant permissions at the individual object level and simplifies the security layers.</p>
+</li>
+<li><p>Reuse of code<br>The code for any repetitious database operation is the perfect candidate for encapsulation in procedures. This eliminates needless rewrites of the same code, decreases code inconsistency, and allows the code to be accessed and executed by any user or application possessing the necessary permissions.</p>
+</li>
+<li><p>Easier maintenance<br>When client applications call procedures and keep database operations in the data tier, only the procedures must be updated for any changes in the underlying database. The application tier remains separate and does not have to know how about any changes to database layouts, relationships, or processes.</p>
+</li>
+<li><p>Improved performance<br>By default, a procedure compiles the first time it is executed and creates an execution plan that is reused for subsequent executions. Since the query processor does not have to create a new plan, it typically takes less time to process the procedure.</p>
+</li>
+</ol>
+<h2 id="What-is-the-difference-between-view-and-stored-procedure"><a href="#What-is-the-difference-between-view-and-stored-procedure" class="headerlink" title="What is the difference between view and stored procedure?"></a>What is the difference between view and stored procedure?</h2><p>A view represents a <strong>virtual</strong> table. You can join multiple tables in a view and use the view to present the data as if the data were coming from a single table. </p>
+<p>A stored procedure uses parameters to do a function… whether it is updating and inserting data, or returning single values or data sets.</p>
+<p>A view is a shortcut to an sql statement. I can create view x which might represent</p>
+<p>select * from table a join table b where a.key = b.key join table c on a.key = c.key</p>
+<p>Now to call that much more complex query all I have to do is say select * from x. Because x is an alias or a view on the query underneath.</p>
+<p>A procedure is something completely different. A procedure is a piece of PLSQL that performs some action. You can view a procedure as a piece of code that you can call from within your sql, or database to do some action.</p>
+<p>In a practical sense a view is an alias to an sql statement where as a procedure is a set of code that can perform more actions than any single piece of SQL. You create procedures to do programmatic actions within your database. You create views to alias more complex pieces of sql to simplify your sql.</p>
+<table>
+<thead>
+<tr>
+<th><strong>S.No.</strong></th>
+<th><strong>View</strong></th>
+<th><strong>Stored Procedure</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Does not accepts <strong>parameters</strong></td>
+<td>Accept <strong>parameters</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Can be used as a building block in large query.</td>
+<td>Can not be used as a building block in large query.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Can contain only <strong>one single Select query</strong>.</td>
+<td>Can contain <strong>several statement</strong> like if, else, loop etc.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Can not perform modification to any table.</td>
+<td>Can perform modification to one or several tables.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Can be used (sometimes) as the target for Insert, update, delete queries.</td>
+<td>Can not be used as the target for Insert, update, delete queries.</td>
+</tr>
+</tbody></table>
+<h2 id="What-is-the-difference-between-stored-procedure-and-functions"><a href="#What-is-the-difference-between-stored-procedure-and-functions" class="headerlink" title="What is the difference between stored procedure and functions?"></a>What is the difference between stored procedure and functions?</h2><p>Stored Procedures are pre-compiled objects which are compiled for the first time and its compiled format is saved, which executes (compiled code) whenever it is called. </p>
+<p>A function is compiled and executed every time whenever it is called. A function must return a value and cannot modify the data received as parameters. </p>
+<p>A user-defined function is a Transact-SQL or common language runtime (CLR) routine that <strong>accepts parameters</strong>, <strong>performs an action</strong>, such as a complex calculation, <strong>and returns the result of that action as a value</strong>. The return value can either be <strong>a scalar (single) value or a table</strong>. Use this statement to create a reusable routine that can be used in these ways:</p>
+<ul>
+<li>In Transact-SQL statements such as SELECT</li>
+<li>In applications calling the function</li>
+<li>In the definition of another user-defined function</li>
+<li>To parameterize a view or improve the functionality of an indexed view</li>
+<li>To define a column in a table</li>
+<li>To define a CHECK constraint on a column</li>
+<li>To replace a stored procedure</li>
+<li>Use an inline function as a filter predicate for a security policy</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Functions (user defined)</th>
+<th align="center">Stored Procedures</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A function has a <strong>return type</strong> and  <strong>must return a single value</strong> (which may be a scalar or a table).</td>
+<td align="center">A procedure has only integer return data type as indicate success or failure, it can return. But it returns any data type <strong>using the OUT parameters</strong>.</td>
+</tr>
+<tr>
+<td align="center">You cannot use a function <strong>with</strong> <strong>Data Manipulation queries</strong>. Only Select queries are allowed in functions.</td>
+<td align="center">allows <strong>SELECT</strong> as well as DML(I<strong>NSERT/UPDATE/DELETE</strong>) statement in it</td>
+</tr>
+<tr>
+<td align="center">Only input parameter.</td>
+<td align="center">input/output parameter.</td>
+</tr>
+<tr>
+<td align="center">We <strong>can’t</strong> use <strong>transaction</strong> in UDF.</td>
+<td align="center">We can use transaction in SP.</td>
+</tr>
+<tr>
+<td align="center"><strong>can’t call SP</strong> from function.</td>
+<td align="center">We <strong>can call function</strong> from SP.</td>
+</tr>
+<tr>
+<td align="center">We can use UDF in SELECT/ WHERE/ HAVING statement.</td>
+<td align="center">We can’t use SP in SELECT/ WHERE/ HAVING statement.</td>
+</tr>
+<tr>
+<td align="center">We can’t use Try-Catch block in UDF.</td>
+<td align="center">We can use exception handling using Try-Catch block in SP.</td>
+</tr>
+</tbody></table>
+<h2 id="Can-stored-procedure-return-multiple-result-sets"><a href="#Can-stored-procedure-return-multiple-result-sets" class="headerlink" title="Can stored procedure return multiple result sets?"></a>Can stored procedure return multiple result sets?</h2><p>Yes. For example,</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> PROC Production.ProductList <span class="variable">@ProdName</span> NVARCHAR(<span class="number">50</span>),</span><br><span class="line"></span><br><span class="line"><span class="comment">-- in this case we return two results, but there is no limit</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- but each result needs to be saved in an output parameter</span></span><br><span class="line"></span><br><span class="line"><span class="variable">@FirstResult</span> NVARCHAR(MAX) <span class="keyword">OUT</span>, <span class="variable">@SecondResult</span> NVARCHAR(MAX) <span class="keyword">OUT</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">-- First result set saved as JSON in an output variable </span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">SELECT</span> <span class="variable">@FirstResult</span> <span class="operator">=</span></span><br><span class="line"></span><br><span class="line">   (</span><br><span class="line"></span><br><span class="line">   <span class="keyword">SELECT</span> Product.ProductID, Product.Name, Product.ListPrice</span><br><span class="line"></span><br><span class="line">    <span class="keyword">FROM</span> Production.Product</span><br><span class="line"></span><br><span class="line">    <span class="keyword">WHERE</span> Product.Name <span class="keyword">LIKE</span> <span class="variable">@ProdName</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">FOR</span> JSON AUTO</span><br><span class="line"></span><br><span class="line">   );</span><br><span class="line"></span><br><span class="line">  <span class="comment">-- Second result set saved as JSON in an output variable  </span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">SELECT</span> <span class="variable">@SecondResult</span> <span class="operator">=</span></span><br><span class="line"></span><br><span class="line">   (</span><br><span class="line"></span><br><span class="line">   <span class="keyword">SELECT</span> P.Name, <span class="built_in">Count</span>(S.ProductID) <span class="keyword">AS</span> NumberOfOrders</span><br><span class="line"></span><br><span class="line">    <span class="keyword">FROM</span> Production.Product <span class="keyword">AS</span> P</span><br><span class="line"></span><br><span class="line">     <span class="keyword">JOIN</span> Sales.SalesOrderDetail <span class="keyword">AS</span> S</span><br><span class="line"></span><br><span class="line">      <span class="keyword">ON</span> P.ProductID <span class="operator">=</span> S.ProductID</span><br><span class="line"></span><br><span class="line">    <span class="keyword">WHERE</span> P.Name <span class="keyword">LIKE</span> <span class="variable">@ProdName</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> P.Name</span><br><span class="line"></span><br><span class="line">   <span class="keyword">FOR</span> JSON AUTO</span><br><span class="line"></span><br><span class="line">   );</span><br><span class="line"></span><br><span class="line"> <span class="keyword">END</span>;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Can-stored-procedure-be-executed-as-part-of-SELECT-Statement-Why"><a href="#Can-stored-procedure-be-executed-as-part-of-SELECT-Statement-Why" class="headerlink" title="Can stored procedure be executed as part of SELECT Statement? Why?"></a>Can stored procedure be executed as part of SELECT Statement? Why?</h2><p>No. A stored procedure is a module of code. It does ‘something’ and may or may not return anything. It may also return multiple data sets. So really you can’t select from it, because it isn’t an object that you can select from. You can return the results of a stored procedure into a table, and then select from th</p>
+<h2 id="What-is-Trigger-What-types-of-Triggers-are-there"><a href="#What-is-Trigger-What-types-of-Triggers-are-there" class="headerlink" title="What is Trigger? What types of Triggers are there?"></a>What is Trigger? What types of Triggers are there?</h2><p>A trigger is a special type of stored procedure that automatically runs when an event occurs in the database server. </p>
+<p>Two main types of triggers based on DDL or DML events: </p>
+<p>The <strong>DML</strong> Triggers and the <strong>DDL</strong> triggers. The DDL triggers will be fired in response to different Data Definition Language (DDL) events, such as executing CREATE, ALTER, DROP, GRANT, DENY, and REVOKE T-SQL statements. </p>
+<p>The <strong>DDL</strong> trigger can respond to the DDL actions by preventing these changes from affecting the database, perform another action in response to these DDL actions or recording these changes that are executed against the database.</p>
+<p>Two main types of triggers based on timing of events: After or For trigger and Instead of trigger</p>
+<p>If the trigger is fired, a special type of virtual tables called <strong>Inserted</strong> and <strong>Deleted</strong> tables will be used to keep the data values before and after the modification. The trigger statement will work under the scope of the same transaction that fires that trigger. This means that the transaction will not be committed completely until the trigger statement is completed successfully. On the other hand, the transaction will be rolled back if the trigger statement fails.</p>
+<h2 id="What-are-the-scenarios-to-use-Triggers"><a href="#What-are-the-scenarios-to-use-Triggers" class="headerlink" title="What are the scenarios to use Triggers?"></a>What are the scenarios to use Triggers?</h2><ol>
+<li>When you need to build a decent audit solution.</li>
+<li>When you need to validate inserted or updated data in batches instead of row by row.</li>
+<li>When you need to  use triggers to implement referential integrity across databases. </li>
+<li>When you need to be sure that certain events always happen when data is inserted, updated or deleted. </li>
+<li>When you need recursion.</li>
+</ol>
+<h2 id="What-is-the-difference-between-Trigger-and-Stored-Procedure"><a href="#What-is-the-difference-between-Trigger-and-Stored-Procedure" class="headerlink" title="What is the difference between Trigger and Stored Procedure?"></a>What is the difference between Trigger and Stored Procedure?</h2><p><strong>TRIGGER:-</strong></p>
+<ul>
+<li>Trigger executes <strong>implicitly</strong>. Whenever an event INSERT, UPDATE, and DELETE occurs it executed automatically.</li>
+<li>We <strong>cannot define a trigger inside another trigger</strong>.</li>
+<li><strong>Transaction statements</strong> are not allowed in the trigger.</li>
+<li>We <strong>cannot return value</strong> in a trigger.</li>
+</ul>
+<p><strong>STORED PROCEDURE:-</strong></p>
+<ul>
+<li>A Procedure executed explicitly when the user using statements such as exec, EXECUTE, etc.</li>
+<li>We can define procedures inside another procedure. Also, we can use functions inside the stored procedure.</li>
+<li>Transaction statements such as COMMIT, ROLLBACK, and SAVEPOINT are allowed in the procedure.</li>
+<li>Stored procedures return a zero or N value. However, we can pass values as parameters.</li>
+<li>Return keyword used to exit the procedure.</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Shiqi Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/05/05/2021/SEP%20V/">http://pajarnas.github.io/05/05/2021/SEP%20V/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/SEP/">SEP</a><a class="post-meta__tags" href="/tags/Full-StackI/">Full-StackI</a><a class="post-meta__tags" href="/tags/Transact-SQL/">Transact-SQL</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/05/10/2021/SQLSER%20V:%20Index,%20Constraint,%20Normallization,%20Transacation/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">SQL Server V Index, Constraint, Normallization</div></div></a></div><div class="next-post pull-right"><a href="/05/05/2021/SEP%20VI%20Transaction/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">SEP III Joining Multiple Tables and Grouping and Summarizing Data</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/05/05/2021/SEP VI Transaction/" title="SEP III Joining Multiple Tables and Grouping and Summarizing Data"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-05-2021</div><div class="title">SEP III Joining Multiple Tables and Grouping and Summarizing Data</div></div></a></div><div><a href="/05/04/2021/SQLSER II: T-SQL, Query, Database/" title="SEP II Transact-SQL, Querying Tools, Retrieving Data"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-04-2021</div><div class="title">SEP II Transact-SQL, Querying Tools, Retrieving Data</div></div></a></div><div><a href="/03/19/2021/Beaconfire/" title="Beaconfire Interview Experience"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 03-19-2021</div><div class="title">Beaconfire Interview Experience</div></div></a></div><div><a href="/05/13/2021/Front-End I: Introduction,Http,Elements/" title="Front-End II CSS"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-13-2021</div><div class="title">Front-End II CSS</div></div></a></div><div><a href="/05/11/2021/Front-End II: CSS, Bootstrap/" title="Front-End I CSS, Bootstrap"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">Front-End I CSS, Bootstrap</div></div></a></div><div><a href="/05/11/2021/Front-End III: JS/" title="Front-End III Introduction, Http, Elements"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">Front-End III Introduction, Http, Elements</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">36</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Preview"><span class="toc-text">Preview</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Subqueries"><span class="toc-text">Subqueries</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Working-with-Objects-%E2%97%8F-Creating-Objects"><span class="toc-text">Working with Objects ● Creating Objects</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Data-Integrity"><span class="toc-text">Data Integrity</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Assignment"><span class="toc-text">Assignment</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-View-What-are-the-benefits-of-using-views"><span class="toc-text">What is View? What are the benefits of using views?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Advantages"><span class="toc-text">Advantages:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disadvantage"><span class="toc-text">Disadvantage:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Can-data-be-modified-through-views"><span class="toc-text">Can data be modified through views?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-stored-procedure-and-what-are-the-benefits-of-using-it"><span class="toc-text">What is stored procedure and what are the benefits of using it?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-the-difference-between-view-and-stored-procedure"><span class="toc-text">What is the difference between view and stored procedure?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-the-difference-between-stored-procedure-and-functions"><span class="toc-text">What is the difference between stored procedure and functions?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Can-stored-procedure-return-multiple-result-sets"><span class="toc-text">Can stored procedure return multiple result sets?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Can-stored-procedure-be-executed-as-part-of-SELECT-Statement-Why"><span class="toc-text">Can stored procedure be executed as part of SELECT Statement? Why?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Trigger-What-types-of-Triggers-are-there"><span class="toc-text">What is Trigger? What types of Triggers are there?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-are-the-scenarios-to-use-Triggers"><span class="toc-text">What are the scenarios to use Triggers?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-the-difference-between-Trigger-and-Stored-Procedure"><span class="toc-text">What is the difference between Trigger and Stored Procedure?</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/19/2021/Net%20Framework%20II:%20C#%20Basic%20(copy)/" title=".Net Framework II C# Ba">.Net Framework II C# Ba</a><time datetime="2021-05-19T05:00:00.000Z" title="Created 05-19-2021 00:00:00">05-19-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/19/2021/Net%20Framework%20III:%20OOP/" title=".Net Framework II C# Ba">.Net Framework II C# Ba</a><time datetime="2021-05-19T05:00:00.000Z" title="Created 05-19-2021 00:00:00">05-19-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/19/2021/Net%20Framework%20IV:%20New%20Features/" title=".Net Framework II C# OOP">.Net Framework II C# OOP</a><time datetime="2021-05-19T05:00:00.000Z" title="Created 05-19-2021 00:00:00">05-19-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/18/2021/Net%20Framework%20I:%20Basic/" title=".Net Framework I Basic">.Net Framework I Basic</a><time datetime="2021-05-18T05:00:00.000Z" title="Created 05-18-2021 00:00:00">05-18-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/13/2021/Front-End%20I:%20Introduction,Http,Elements/" title="Front-End II CSS">Front-End II CSS</a><time datetime="2021-05-13T05:00:00.000Z" title="Created 05-13-2021 00:00:00">05-13-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
