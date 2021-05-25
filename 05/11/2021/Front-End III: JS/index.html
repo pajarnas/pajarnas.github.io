@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Front-End III Introduction, Http, Elements | Saige Blog</title><meta name="keywords" content="notes,front-End,HTML"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="What is JavascriptJavaScript is a dynamic computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact wit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Front-End III Introduction, Http, Elements">
+<meta property="og:url" content="http://pajarnas.github.io/05/11/2021/Front-End%20III:%20JS/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="What is JavascriptJavaScript is a dynamic computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact wit">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-05-11T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-12T05:00:00.000Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="front-End">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/05/11/2021/Front-End%20III:%20JS/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '05-12-2021 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Front-End III Introduction, Http, Elements</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-05-11T05:00:00.000Z" title="Created 05-11-2021 00:00:00">05-11-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-12T05:00:00.000Z" title="Updated 05-12-2021 00:00:00">05-12-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Front-End/">Front-End</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="What-is-Javascript"><a href="#What-is-Javascript" class="headerlink" title="What is Javascript"></a>What is Javascript</h1><p>JavaScript is a <strong>dynamic</strong> computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.</p>
+<p>console.log(document.querySelector(“#username”).value)</p>
+<h1 id="Client-side-Javascript"><a href="#Client-side-Javascript" class="headerlink" title="Client-side Javascript"></a>Client-side Javascript</h1><p>Client-side JavaScript is the most common form of the language. The script should be included in or referenced by an HTML document for the code to be interpreted by the browser.</p>
+<p>It means that a web page need <strong>not be a static HTML</strong>, but can include programs that <strong>interact with the user,</strong> <strong>control the browser,</strong> and <strong>dynamically create HTML content</strong>.</p>
+<p>The JavaScript client-side mechanism provides <strong>many advantages over traditional CGI server-side scripts</strong>. For example, you might use JavaScript to check if the user has entered a valid e-mail address in a form field.</p>
+<p>The JavaScript code is executed when the user submits the form, and only if all the entries are valid, they would be submitted to the Web Server.</p>
+<p>JavaScript can be used to <strong>trap user-initiated events</strong> such as button clicks, link navigation, and other actions that the user initiates explicitly or implicitly.</p>
+<h1 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits"></a>Benefits</h1><p>The merits of using JavaScript are −</p>
+<p><strong>Less server interaction</strong> − We can validate user input before sending the page off to the server. This saves server traffic, which means less load on your server.</p>
+<p><strong>Immediate feedback to the visitors</strong> − They don’t have to wait for a page reload to see if they have forgotten to enter something.</p>
+<p><strong>Increased interactivity</strong> − We can create interfaces that react when the user hovers over them with a mouse or activates them via the keyboard.</p>
+<p><strong>Richer interfaces</strong> − We can use JavaScript to include such items as drag-and-drop components and sliders to give a Rich Interface to your site visitors.</p>
+<h1 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h1><p>We cannot treat JavaScript as a full-fledged programming language. It lacks the following important features −</p>
+<ul>
+<li><p>Client-side JavaScript does not allow the reading or writing of files. This has been kept for security reason.</p>
+</li>
+<li><p>JavaScript cannot be used for networking applications because there is no such support available.</p>
+</li>
+<li><p>JavaScript doesn’t have any multithreading or multiprocessor capabilities.</p>
+</li>
+</ul>
+<h1 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h1><p>JavaScript can be implemented using JavaScript statements that are placed within the <strong><script>... </script></strong> HTML tags in a web page.</p>
+<p>You can place the <strong><script></strong> tags, containing your JavaScript, anywhere within your web page, but it is normally recommended that you should keep it within the <strong><head></strong> tags.</p>
+<p>The <script> tag alerts the browser program to start interpreting all the text between these tags as a script. A simple syntax of your JavaScript will appear as follows.</p>
+<h1 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h1><h1 id="Javascript-Standard-built-in-objects"><a href="#Javascript-Standard-built-in-objects" class="headerlink" title="Javascript Standard built-in objects"></a>Javascript Standard built-in objects</h1><h2 id="Global-Objects"><a href="#Global-Objects" class="headerlink" title="Global Objects"></a>Global Objects</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat">parseFloat()</a></li>
+</ol>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice">String.prototype.slice()</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">String.prototype.split()</a></li>
+</ol>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON objects are surrounded by curly braces {}.</p>
+<p>JSON objects are written in key/value pairs.</p>
+<p>Keys must be strings, and values must be a valid JSON data type (string, number, object, array, boolean or null).</p>
+<p>Keys and values are separated by a colon.</p>
+<p>Each key/value pair is separated by a comma.</p>
+<h2 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const re &#x3D; &#x2F;[a-zA-Z0-9.]*@[a-zA-Z0-9]*\.[a-zA-Z0-9]*&#x2F;is</span><br><span class="line"></span><br><span class="line">console.log(re.test(&quot;adad2123.213.132ads@gmailco.m&quot;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Expressions-and-operators"><a href="#Expressions-and-operators" class="headerlink" title="Expressions and operators"></a>Expressions and operators</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder">Remainder (%)</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">12</span> % <span class="number">5</span>);</span><br><span class="line"><span class="comment">// expected output: 2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(-<span class="number">12</span> % <span class="number">5</span>);</span><br><span class="line"><span class="comment">// expected output: -2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span> % <span class="number">2</span>);</span><br><span class="line"><span class="comment">// expected output: 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(-<span class="number">4</span> % <span class="number">2</span>);</span><br><span class="line"><span class="comment">// expected output: -0</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ol>
+<li><p>Object to an array</p>
+<ol>
+<li>Object.entries()</li>
+<li>Object.keys()</li>
+<li>Object.values()</li>
+</ol>
+</li>
+<li><p>Objecy copy</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    firstName: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">    lastName: <span class="string">&#x27;Doe&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// using spread ...</span></span><br><span class="line"><span class="keyword">let</span> p1 = &#123;</span><br><span class="line">    ...person</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// using  Object.assign() method</span></span><br><span class="line"><span class="keyword">let</span> p2 = <span class="built_in">Object</span>.assign(&#123;&#125;, person);</span><br><span class="line"></span><br><span class="line"><span class="comment">// using JSON</span></span><br><span class="line"><span class="keyword">let</span> p3 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(person));</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="Javascript-Statements-and-Declaration"><a href="#Javascript-Statements-and-Declaration" class="headerlink" title="Javascript Statements and Declaration"></a>Javascript Statements and Declaration</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">for…in</a></li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const object &#x3D; &#123; 2: &#39;wa&#39;, b: 2, c: 3 &#125;;</span><br><span class="line"></span><br><span class="line">for (const property in object) &#123;</span><br><span class="line">  console.log(&#96;$&#123;property&#125;: $&#123;object[property]&#125;&#96;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; &quot;2: wa&quot;</span><br><span class="line">&#x2F;&#x2F; &quot;b: 2&quot;</span><br><span class="line">&#x2F;&#x2F; &quot;c: 3&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>let vs <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a> vs var</li>
+</ol>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/* Constants are block-scoped, much like variables declared using the let keyword. The value of a constant can&#x27;t be changed through reassignment, and it can&#x27;t be redeclared.*/</span></span><br><span class="line">   <span class="keyword">const</span> number = <span class="number">42</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  number = <span class="number">99</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err);</span><br><span class="line">  <span class="comment">// expected output: TypeError: invalid assignment to const `number&#x27;</span></span><br><span class="line">  <span class="comment">// Note - error messages will vary depending on browser</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(number);</span><br><span class="line"><span class="comment">// expected output: 42</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//The var statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (x === <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">  <span class="comment">// expected output: 2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// expected output: 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//The let statement declares a block-scoped local variable, optionally initializing it to a value.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (x === <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">  <span class="comment">// expected output: 2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(x);</span><br><span class="line"><span class="comment">// expected output: 1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async function</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">export</a></li>
+</ol>
+<p><strong>JS is not strong type</strong></p>
+<p>Local scope : use let keyword to create a variable(ES 6), a local scope variable can be accessed online inside its scope. it means only inside the {} brackets where the variable is created</p>
+<p>Functional scope: use var keyword to create a variable. it can be created and accessed anywhere inside a function </p>
+<p>press table twice auto generate for loop </p>
+<p>Global scope</p>
+<p>Js </p>
+<p>a=10</p>
+<p>b=”10”</p>
+<p>a == b True</p>
+<p>a === b False</p>
+<p>1==true true</p>
+<p>‘’ == null false</p>
+<p>On the console</p>
+<p>&gt; 10 + 20 </p>
+<p>&lt; 30</p>
+<p>DOM </p>
+<p>Document Object Model</p>
+<h1 id="diff-“"><a href="#diff-“" class="headerlink" title="`  diff  “"></a>`  diff  “</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`The students is <span class="subst">$&#123;students&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span> Three <span class="title">constructor</span></span><br><span class="line"></span><br><span class="line"><span class="title">array</span></span><br><span class="line"></span><br><span class="line"><span class="title">let</span> <span class="title">a</span>=<span class="title">new</span> <span class="title">Array</span>(<span class="params"><span class="number">5</span></span>) // <span class="title">the</span> <span class="title">size</span> <span class="title">will</span> <span class="title">be</span> <span class="title">adjusted</span> <span class="title">if</span> <span class="title">you</span> <span class="title">push</span> <span class="title">one</span> <span class="title">more</span> <span class="title">element</span> <span class="title">to</span> <span class="title">the</span> <span class="title">array</span></span><br><span class="line"></span><br><span class="line"><span class="title">let</span> <span class="title">b</span> = <span class="title">new</span> <span class="title">Array</span>(<span class="params"><span class="string">&quot;IT&quot;</span>,<span class="string">&quot;HR&quot;</span></span>)</span><br><span class="line"></span><br><span class="line"><span class="title">let</span> <span class="title">c</span> = [&quot;<span class="title">MS</span>&quot;,&quot;<span class="title">FB</span>&quot;,&quot;<span class="title">TW</span>&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line"><span class="title">let</span> <span class="title">d</span> = [];</span><br><span class="line"></span><br><span class="line">d.push(<span class="string">&quot;China&quot;</span>); <span class="comment">//add an element at the end of an array</span></span><br><span class="line">d.unshift(<span class="string">&quot;Antra&quot;</span>)<span class="comment">// add an element at the start of an array</span></span><br><span class="line"><span class="comment">// pop remove the element at the end</span></span><br><span class="line"><span class="comment">// shift remove the element at the front</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="callback"><a href="#callback" class="headerlink" title="callback"></a>callback</h1><p>pass a function to another function as a parameter</p>
+<p>=&gt; arrow operator </p>
+<p>// callback hell</p>
+<p>//promises</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    resolve(<span class="string">&quot;This promise is resolved&quot;</span>);</span><br><span class="line">    <span class="comment">//reject(&quot;Some error has occured&quot;);</span></span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line">p.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Javascript.info for javascript learning</p>
+<p><a target="_blank" rel="noopener" href="https://javascript.info/async">https://javascript.info/async</a><br>promise vs Observable</p>
+<p>Modules</p>
+<p>Export/Import</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Shiqi Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/05/11/2021/Front-End%20III:%20JS/">http://pajarnas.github.io/05/11/2021/Front-End%20III:%20JS/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/front-End/">front-End</a><a class="post-meta__tags" href="/tags/HTML/">HTML</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/05/11/2021/Front-End%20II:%20CSS,%20Bootstrap/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Front-End I CSS, Bootstrap</div></div></a></div><div class="next-post pull-right"><a href="/05/10/2021/SQLSER%20V:%20Index,%20Constraint,%20Normallization,%20Transacation/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">SQL Server V Index, Constraint, Normallization</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/05/11/2021/Front-End II: CSS, Bootstrap/" title="Front-End I CSS, Bootstrap"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">Front-End I CSS, Bootstrap</div></div></a></div><div><a href="/05/13/2021/Front-End I: Introduction,Http,Elements/" title="Front-End II CSS"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-13-2021</div><div class="title">Front-End II CSS</div></div></a></div><div><a href="/03/19/2021/Beaconfire/" title="Beaconfire Interview Experience"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 03-19-2021</div><div class="title">Beaconfire Interview Experience</div></div></a></div><div><a href="/05/03/2021/SQLSER I: Installation, Basic Concept/" title="SQL Server I MS SQL Server Installation and Basic Knowledge"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-03-2021</div><div class="title">SQL Server I MS SQL Server Installation and Basic Knowledge</div></div></a></div><div><a href="/03/14/2021/Socilogy/" title="Sociology Notes (I) Globalization of Social Change and Continuity"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 03-14-2021</div><div class="title">Sociology Notes (I) Globalization of Social Change and Continuity</div></div></a></div><div><a href="/03/19/2021/coa/" title="IEEE Standard 754 Floating Point Numbers"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 03-19-2021</div><div class="title">IEEE Standard 754 Floating Point Numbers</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#What-is-Javascript"><span class="toc-text">What is Javascript</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client-side-Javascript"><span class="toc-text">Client-side Javascript</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Benefits"><span class="toc-text">Benefits</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Limitation"><span class="toc-text">Limitation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Syntax"><span class="toc-text">Syntax</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/13/2021/Front-End%20I:%20Introduction,Http,Elements/" title="Front-End II CSS">Front-End II CSS</a><time datetime="2021-05-13T05:00:00.000Z" title="Created 05-13-2021 00:00:00">05-13-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/11/2021/Front-End%20II:%20CSS,%20Bootstrap/" title="Front-End I CSS, Bootstrap">Front-End I CSS, Bootstrap</a><time datetime="2021-05-11T05:00:00.000Z" title="Created 05-11-2021 00:00:00">05-11-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/11/2021/Front-End%20III:%20JS/" title="Front-End III Introduction, Http, Elements">Front-End III Introduction, Http, Elements</a><time datetime="2021-05-11T05:00:00.000Z" title="Created 05-11-2021 00:00:00">05-11-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/10/2021/SQLSER%20V:%20Index,%20Constraint,%20Normallization,%20Transacation/" title="SQL Server V Index, Constraint, Normallization">SQL Server V Index, Constraint, Normallization</a><time datetime="2021-05-10T05:00:00.000Z" title="Created 05-10-2021 00:00:00">05-10-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/05/2021/SQLSER%20III:%20Select,%20Join,%20Subquery,Aggregate,%20Delete/" title="SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops">SQL Server III Select, Join, Subquery, Delete, Aggregate Functions, Set Ops</a><time datetime="2021-05-05T05:00:00.000Z" title="Created 05-05-2021 00:00:00">05-05-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
