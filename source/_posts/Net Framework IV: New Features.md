@@ -1,6 +1,6 @@
 ---
 
-title: .Net Framework II: C# OOP
+title: .Net Framework II C# OOP
 date: 05/19/2021
 updated: 
 tags: 

@@ -1,6 +1,6 @@
 ---
 
-title: .Net Framework II: C# Ba
+title: .Net Framework II C# Ba
 date: 05/19/2021
 updated: 
 tags: 

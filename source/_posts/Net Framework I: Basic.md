@@ -1,6 +1,6 @@
 ---
 
-title: .Net Framework I: Basic
+title: .Net Framework I Basic
 date: 05/18/2021
 updated: 
 tags: 
