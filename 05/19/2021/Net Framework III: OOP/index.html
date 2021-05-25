@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>.Net Framework II C# Ba | Saige Blog</title><meta name="keywords" content="notes,front-End,HTML"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C# 2.0 introduced Anonymous methods, which allow code blocks to be written “inline” where delegate values are expected. For example, in the following statement, the FindAll method requires a delegate">
+<meta property="og:type" content="article">
+<meta property="og:title" content=".Net Framework II C# Ba">
+<meta property="og:url" content="http://pajarnas.github.io/05/19/2021/Net%20Framework%20III:%20OOP/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="C# 2.0 introduced Anonymous methods, which allow code blocks to be written “inline” where delegate values are expected. For example, in the following statement, the FindAll method requires a delegate">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-05-19T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-25T07:37:20.797Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="front-End">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/05/19/2021/Net%20Framework%20III:%20OOP/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '05-25-2021 02:37:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">.Net Framework II C# Ba</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-05-19T05:00:00.000Z" title="Created 05-19-2021 00:00:00">05-19-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-25T07:37:20.797Z" title="Updated 05-25-2021 02:37:20">05-25-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Front-End/">Front-End</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>C# 2.0 introduced <strong>Anonymous</strong> methods, which allow code blocks to be written “inline” where <strong>delegate</strong> values are expected. For example, in the following statement, the <strong>FindAll</strong> method requires a delegate parameter:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> innerPoints = points.FindAll(<span class="built_in">delegate</span>(Point p) &#123; <span class="keyword">return</span> (p.X &gt; <span class="number">0</span> &amp;&amp; p.Y &gt; <span class="number">0</span>); &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>In this case, the delegate determines if both the x and y coordinates are positive</p>
+<p>C# 3.0 introduces <em><strong>lambda expressions</strong></em>, which provide a <strong>more concise</strong>, functional programming syntax for writing <strong>anonymous methods</strong>. In this case, you replace a method invocation which currently takes an anonymous method with a lambda expression. </p>
+<p>To show this, the example above can be written as:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> innerPoints = points.FindAll(p =&gt; p.X &gt; <span class="number">0</span> &amp;&amp; p.Y &gt; <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>A lambda expression is written as a parameter list, followed by the =&gt; token, and then an expression or statement. For example: </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">int</span> x) =&gt; &#123; <span class="keyword">return</span> x + <span class="number">1</span>; &#125;  <span class="comment">// parameter list, statement</span></span><br></pre></td></tr></table></figure>
+
+<p>The parameters of a lambda expression can be explicitly or implicitly typed. </p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">int</span> x) =&gt; x + <span class="number">1</span>;        <span class="comment">// explicit parameter list, expression</span></span><br></pre></td></tr></table></figure>
+
+<p>In an implicitly typed parameter list, the types of the parameters are inferred from the context in which the lambda expression is used. In addition, if a lambda expression has a single, implicitly typed parameter, the parentheses may be omitted from the parameter list:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x =&gt; x + <span class="number">1</span>;           <span class="comment">// implicit parameter list, expression</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x,y) =&gt; x * y;         <span class="comment">// implicit parameter list, expression</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Delegate"><a href="#Delegate" class="headerlink" title="Delegate"></a>Delegate</h1><p>首先，写一行int a；我们能知道什么？我们能知道int是个数据类型，a是变量，a能存放int类型的数据，其它的我们这里不用关注，非常的直截了当，那这跟委托有什么关系么？其实没有关系，我只是类比，实际上委托就是一种数据类型，跟int是一样的，只不过这种数据类型指向的是一个函数的入口，它存放的是一个函数入口地址，通俗点讲就是委托类型的变量只能接受函数的赋值，比如xxx d；此时你只能将一个函数赋值给d，函数类型是什么样的呢？（形参个数及形参类型，有无返回值等）这个就得看委托是如何声明的，所以，站在如何使用委托的角度上看，委托就是种数据类型，可以用委托来定义变量，然后使用该变量。这是站在如何使用委托的角度上而言；</p>
+<p>​          其次，在代码结构的设计上使用委托可以降低类与类之间的耦合性。我直接用代码举个例子</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AClass</span></span><br><span class="line">&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AFunc</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>     &#123;</span><br><span class="line"><span class="comment">//当某个条件满足时</span></span><br><span class="line">         <span class="keyword">if</span>(xxxxx)</span><br><span class="line">         &#123;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BClass</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BFunc</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>     &#123;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Client</span></span><br><span class="line">&#123;</span><br><span class="line">AClass aobj = <span class="keyword">new</span> AClass();</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">aobj.AFunc();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到上边代码中有三个类，AClass、BClas和Client类，Client类时驱动执行的类，我们不用管它，在这里，当A类中的某个条件满足时要需要执行到B类中的方法，最最最最简单的做法就是在A类中去引用B类，类似下边的代码。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class AClass</span><br><span class="line">&#123;</span><br><span class="line">      BClass bobj = new BClass();</span><br><span class="line">      public void AFunc()</span><br><span class="line">     &#123;</span><br><span class="line">//当某个条件满足时</span><br><span class="line">         if(xxxxx)</span><br><span class="line">         &#123;</span><br><span class="line">            bobj.BFunc();</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class BClass</span><br><span class="line">&#123;</span><br><span class="line"> public void BFunc()</span><br><span class="line">     &#123;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Client</span><br><span class="line">&#123;</span><br><span class="line">AClass aobj = new AClass();</span><br><span class="line">void Main()</span><br><span class="line">&#123;</span><br><span class="line">aobj.AFunc();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的写法使得A类和B类之间的关系为强耦合的关系，B的变化会在很大的几率上影响到A，我们将这样的关系称之为不稳定的关系，这是面向对象编程设计所不提倡的，那么如何将不稳定的关系变为稳定的关系呢？方法有多种，委托的应用就是其中一种。同还用代码举例，如下</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">//声明一个委托类型、</span><br><span class="line">//它能接受的函数类型是没有返回也没有参数</span><br><span class="line">public delegate void MyDelegate();</span><br><span class="line">public class AClass</span><br><span class="line">&#123;</span><br><span class="line">      //定义一个委托类型的变量 </span><br><span class="line">//变量名字为 mydelagate</span><br><span class="line">      public MyDelegate mydelagate = null;</span><br><span class="line">      public void AFunc()</span><br><span class="line">     &#123;</span><br><span class="line">//当某个条件满足时</span><br><span class="line">         if(xxxxx)</span><br><span class="line">         &#123;</span><br><span class="line">             if(mydelagate != null)</span><br><span class="line">             &#123;</span><br><span class="line">               mydelagate();</span><br><span class="line">               &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class BClass</span><br><span class="line">&#123;</span><br><span class="line"> public void BFunc()</span><br><span class="line">     &#123;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Client</span><br><span class="line">&#123;</span><br><span class="line">AClass aobj = new AClass();</span><br><span class="line">BClass bobj = new BClass();</span><br><span class="line">void Main()</span><br><span class="line">&#123;</span><br><span class="line">a.mydelagate = bobj.BFunc();</span><br><span class="line">aobj.AFunc();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，客户端只需要将B类中的方法通过公开的委托注册到A对象内部去执行，这样就避免了A类和B类之间的相互引用，提高了A、B关系之间的稳定性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Shiqi Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/05/19/2021/Net%20Framework%20III:%20OOP/">http://pajarnas.github.io/05/19/2021/Net%20Framework%20III:%20OOP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/front-End/">front-End</a><a class="post-meta__tags" href="/tags/HTML/">HTML</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/05/19/2021/Net%20Framework%20II:%20C#%20Basic%20(copy)/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">.Net Framework II C# Ba</div></div></a></div><div class="next-post pull-right"><a href="/05/19/2021/Net%20Framework%20IV:%20New%20Features/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">.Net Framework II C# OOP</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/05/11/2021/Front-End II: CSS, Bootstrap/" title="Front-End I CSS, Bootstrap"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">Front-End I CSS, Bootstrap</div></div></a></div><div><a href="/05/11/2021/Front-End III: JS/" title="Front-End III Introduction, Http, Elements"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">Front-End III Introduction, Http, Elements</div></div></a></div><div><a href="/05/18/2021/Net Framework I: Basic/" title=".Net Framework I Basic"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-18-2021</div><div class="title">.Net Framework I Basic</div></div></a></div><div><a href="/05/19/2021/Net Framework II: C# Basic (copy)/" title=".Net Framework II C# Ba"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-19-2021</div><div class="title">.Net Framework II C# Ba</div></div></a></div><div><a href="/05/13/2021/Front-End I: Introduction,Http,Elements/" title="Front-End II CSS"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-13-2021</div><div class="title">Front-End II CSS</div></div></a></div><div><a href="/03/19/2021/Beaconfire/" title="Beaconfire Interview Experience"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 03-19-2021</div><div class="title">Beaconfire Interview Experience</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Delegate"><span class="toc-text">Delegate</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/19/2021/Net%20Framework%20II:%20C#%20Basic%20(copy)/" title=".Net Framework II C# Ba">.Net Framework II C# Ba</a><time datetime="2021-05-19T05:00:00.000Z" title="Created 05-19-2021 00:00:00">05-19-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/19/2021/Net%20Framework%20III:%20OOP/" title=".Net Framework II C# Ba">.Net Framework II C# Ba</a><time datetime="2021-05-19T05:00:00.000Z" title="Created 05-19-2021 00:00:00">05-19-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/19/2021/Net%20Framework%20IV:%20New%20Features/" title=".Net Framework II C# OOP">.Net Framework II C# OOP</a><time datetime="2021-05-19T05:00:00.000Z" title="Created 05-19-2021 00:00:00">05-19-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/18/2021/Net%20Framework%20I:%20Basic/" title=".Net Framework I Basic">.Net Framework I Basic</a><time datetime="2021-05-18T05:00:00.000Z" title="Created 05-18-2021 00:00:00">05-18-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/05/13/2021/Front-End%20I:%20Introduction,Http,Elements/" title="Front-End II CSS">Front-End II CSS</a><time datetime="2021-05-13T05:00:00.000Z" title="Created 05-13-2021 00:00:00">05-13-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
