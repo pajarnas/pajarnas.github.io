@@ -59,3 +59,14 @@ float y = 12.13f;
 # Factory Design pattern
 
 A factory is used to implement factory design pattern which means it is responsible to return the object of the base type using derived type constructor or concreate derived object. 
+
+# Static
+
+static constructor cannot be modified by public.
+
+static constructor cannot be explicty called by user, so static constructor doesnot have parameters and can obly be one.
+
+staic class or sealed class cannot be inherted 
+
+static variable cannot be in method body but can be in the class body
+
