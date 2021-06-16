@@ -1,6 +1,6 @@
 ---
 
-title: C# Core: LINQ
+title: C# Core LINQ
 date: 06/15/2021
 updated: 
 tags: 
