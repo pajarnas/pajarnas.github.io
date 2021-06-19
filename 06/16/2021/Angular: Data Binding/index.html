@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Angular Routing | Saige Blog</title><meta name="keywords" content="Angular-Property-Binding,Angular-Event-Binding,Angular-Two-Way-Binding"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Property BindingProperty binding moves a value in one direction, from a component’s property into a target element property. Binding to a propertyTo bind to an element’s property, enclose it in square">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Routing">
+<meta property="og:url" content="http://pajarnas.github.io/06/16/2021/Angular:%20Data%20Binding/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="Property BindingProperty binding moves a value in one direction, from a component’s property into a target element property. Binding to a propertyTo bind to an element’s property, enclose it in square">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-06-16T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-19T17:25:41.254Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="Angular">
+<meta property="article:tag" content="Angular-Property-Binding">
+<meta property="article:tag" content="Angular-Event-Binding">
+<meta property="article:tag" content="Angular-Two-Way-Binding">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/06/16/2021/Angular:%20Data%20Binding/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '06-19-2021 12:25:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">48</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Angular Routing</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-06-19T17:25:41.254Z" title="Updated 06-19-2021 12:25:41">06-19-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Angular/">Angular</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Property-Binding"><a href="#Property-Binding" class="headerlink" title="Property Binding"></a>Property Binding</h1><p>Property binding moves a value in one direction, from a component’s property into a target element property.</p>
+<h2 id="Binding-to-a-property"><a href="#Binding-to-a-property" class="headerlink" title="Binding to a property"></a>Binding to a property</h2><p>To bind to an element’s property, enclose it in square brackets, <code>[]</code>, which identifies the property as a target property. A target property is the DOM property to which you want to assign a value. For example, the target property in the following code is the image element’s <code>src</code> property.</p>
+<h2 id="Setting-an-element-property-to-a-component-property-value"><a href="#Setting-an-element-property-to-a-component-property-value" class="headerlink" title="Setting an element property to a component property value"></a>Setting an element property to a component property value</h2><p>To bind the <code>src</code> property of an <code>&lt;img&gt;</code> element to a component’s property, place the target, <code>src</code>, in square brackets followed by an equal sign and then the property. The property here is <code>itemImageUrl</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img [src]&#x3D;&quot;itemImageUrl&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Declare the <code>itemImageUrl</code> property in the class, in this case <code>AppComponent</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">itemImageUrl &#x3D; &#39;..&#x2F;assets&#x2F;phone.png&#39;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Setting-a-directive-property"><a href="#Setting-a-directive-property" class="headerlink" title="Setting a directive property"></a>Setting a directive property</h2><p>To set a property of a directive, <strong>place the directive within square brackets , such as <code>[ngClass]</code>, followed by an equal sign and the property.</strong> Here, the property is <code>classes</code>.</p>
+<h2 id="Bind-values-between-components"><a href="#Bind-values-between-components" class="headerlink" title="Bind values between components"></a>Bind values between components</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;img src&#x3D;&quot;&#123;&#123;itemImageUrl&#125;&#125;&quot;&gt; is the &lt;i&gt;interpolated&lt;&#x2F;i&gt; image.&lt;&#x2F;p&gt; &lt;p&gt;&lt;img [src]&#x3D;&quot;itemImageUrl&quot;&gt; is the &lt;i&gt;property bound&lt;&#x2F;i&gt; image.&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="interpolated"><a href="#interpolated" class="headerlink" title="interpolated"></a>interpolated</h2><h2 id="Displaying-values-with-interpolation"><a href="#Displaying-values-with-interpolation" class="headerlink" title="Displaying values with interpolation"></a>Displaying values with interpolation</h2><p>Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces <code>&#123;&#123;` and `&#125;&#125;</code> as delimiters.</p>
+<p>To illustrate how interpolation works, consider an Angular component that contains a <code>currentCustomer</code>variable:</p>
+<h2 id="Template-expressions"><a href="#Template-expressions" class="headerlink" title="Template expressions"></a>Template expressions</h2><p>A template <strong>expression</strong> produces a value and appears within double curly braces, <code>&#123;&#123; &#125;&#125;</code>. Angular resolves the expression and assigns it to a property of a binding target. The target could be an HTML element, a component, or a directive.</p>
+<h3 id="Resolving-expressions-with-interpolation"><a href="#Resolving-expressions-with-interpolation" class="headerlink" title="Resolving expressions with interpolation"></a>Resolving expressions with interpolation</h3><p>More generally, the text between the braces is a template expression that Angular first evaluates and then converts to a string. The following interpolation illustrates the point by adding two numbers:</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">content_copy<span class="comment">&lt;!-- &quot;The sum of 1 + 1 is 2&quot; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>The sum of 1 + 1 is &#123;&#123;1 + 1&#125;&#125;.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h3><p>Template expressions are similar to JavaScript. Many JavaScript expressions are legal template expressions, with the following exceptions.</p>
+<p>You can’t use JavaScript expressions that have or promote side effects, including:</p>
+<ul>
+<li>Assignments (<code>=</code>, <code>+=</code>, <code>-=</code>, <code>...</code>)</li>
+<li>Operators such as <code>new</code>, <code>typeof</code>, or <code>instanceof</code></li>
+<li>Chaining expressions with <code>;</code> or <code>,</code></li>
+<li>The increment and decrement operators <code>++</code> and <code>--</code></li>
+<li>Some of the ES2015+ operators</li>
+</ul>
+<p>Other notable differences from JavaScript syntax include:</p>
+<ul>
+<li>No support for the bitwise operators such as <code>|</code> and <code>&amp;</code></li>
+<li>New <a target="_blank" rel="noopener" href="https://angular.io/guide/template-expression-operators">template expression operators</a>, such as <code>|</code>, <code>?.</code> and </li>
+</ul>
+<h2 id="Expression-context"><a href="#Expression-context" class="headerlink" title="Expression context"></a>Expression context</h2><p>Interpolated expressions have a context—a particular part of the application to which the expression belongs. Typically, this context is the component instance.</p>
+<h1 id="Event-binding"><a href="#Event-binding" class="headerlink" title="Event binding"></a>Event binding</h1><p>Event binding allows you to listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.</p>
+<h2 id="Binding-to-events"><a href="#Binding-to-events" class="headerlink" title="Binding to events"></a>Binding to events</h2><p>To bind to an event you use the Angular event binding syntax. This syntax consists of a target event name within parentheses to the left of an equal sign, and a quoted template statement to the right. In the following example, the target event name is <code>click</code> and the template statement is <code>onSave()</code>.</p>
+<p>Event binding syntax</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;group&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Target event<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">&quot;onSave($event)&quot;</span>&gt;</span>Save<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">on-click</span>=<span class="string">&quot;onSave($event)&quot;</span>&gt;</span>on-click Save<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">h4</span>&gt;</span>myClick is an event on the custom ClickDirective:<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> (<span class="attr">myClick</span>)=<span class="string">&quot;clickMessage=$event&quot;</span> <span class="attr">clickable</span>&gt;</span>click with myClick<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  &#123;&#123;clickMessage&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>The event binding listens for the button’s click events and calls the component’s <code>onSave()</code> method whenever a click occurs.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onSave(event?: MouseEvent) &#123;</span><br><span class="line">    const evtMsg &#x3D; event ? &#39; Event target is &#39; + (event.target as HTMLElement).textContent : &#39;&#39;;</span><br><span class="line">    alert(&#39;Saved.&#39; + evtMsg);</span><br><span class="line">    if (event) &#123; event.stopPropagation(); &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://angular.io/generated/images/guide/template-syntax/syntax-diagram.svg" alt="Syntax diagram"></p>
+<h2 id="Custom-events-with-EventEmitter"><a href="#Custom-events-with-EventEmitter" class="headerlink" title="Custom events with EventEmitter"></a>Custom events with <code>EventEmitter</code></h2><p><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives">Directives</a> typically raise custom events with an Angular <a target="_blank" rel="noopener" href="https://angular.io/api/core/EventEmitter">EventEmitter</a> as follows.</p>
+<ol>
+<li>The directive creates an <code>EventEmitter</code> and exposes it as a property.</li>
+<li>The directive then calls <code>EventEmitter.emit(data)</code> to emit an event, passing in message data, which can be anything.</li>
+<li>Parent directives listen for the event by binding to this property and accessing the data through the <code>$event</code>object.</li>
+</ol>
+<p>Consider an <code>ItemDetailComponent</code> that presents item information and responds to user actions. Although the <code>ItemDetailComponent</code> has a delete button, it doesn’t contain the functionality to delete the hero. It can only raise an event reporting the user’s delete request.</p>
+<p>src/app/item-detail/item-detail.component.html (template)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;img src&#x3D;&quot;&#123;&#123;itemImageUrl&#125;&#125;&quot; [style.display]&#x3D;&quot;displayNone&quot;&gt;</span><br><span class="line">&lt;span [style.text-decoration]&#x3D;&quot;lineThrough&quot;&gt;&#123;&#123; item.name &#125;&#125;</span><br><span class="line">&lt;&#x2F;span&gt;</span><br><span class="line">&lt;button (click)&#x3D;&quot;delete()&quot;&gt;Delete&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The component defines a <code>deleteRequest</code> property that returns an <code>EventEmitter</code>. When the user clicks <strong>Delete</strong>, the component invokes the <code>delete()</code> method, telling the <code>EventEmitter</code> to emit an <code>Item</code> object.</p>
+<p>src/app/item-detail/item-detail.component.ts (deleteRequest)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">content_copy&#x2F;&#x2F; This component makes a request but it can&#39;t actually delete a hero.</span><br><span class="line">@Output() deleteRequest &#x3D; new EventEmitter&lt;Item&gt;();</span><br><span class="line"></span><br><span class="line">delete() &#123;</span><br><span class="line">  this.deleteRequest.emit(this.item);</span><br><span class="line">  this.displayNone &#x3D; this.displayNone ? &#39;&#39; : &#39;none&#39;;</span><br><span class="line">  this.lineThrough &#x3D; this.lineThrough ? &#39;&#39; : &#39;line-through&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The hosting parent component binds to the <code>deleteRequest</code> event of the <code>ItemDetailComponent</code> as follows.</p>
+<p>src/app/app.component.html (event-binding-to-component)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-item-detail (deleteRequest)&#x3D;&quot;deleteItem($event)&quot; [item]&#x3D;&quot;currentItem&quot;&gt;&lt;&#x2F;app-item-detail&gt;</span><br></pre></td></tr></table></figure>
+
+<p>When the <code>deleteRequest</code> event fires, Angular calls the parent component’s <code>deleteItem()</code> method with the item.</p>
+<h3 id="Determining-an-event-target"><a href="#Determining-an-event-target" class="headerlink" title="Determining an event target"></a>Determining an event target</h3><p>To determine an event target, Angular checks if the name of the target event matches an event property of a known directive. In the following example, Angular checks to see if <code>myClick</code> is an event on the custom <code>ClickDirective</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;h4&gt;myClick is an event on the custom ClickDirective:&lt;&#x2F;h4&gt;</span><br><span class="line">&lt;button (myClick)&#x3D;&quot;clickMessage&#x3D;$event&quot; clickable&gt;click with myClick&lt;&#x2F;button&gt;</span><br><span class="line">&#123;&#123;clickMessage&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If the target event name, <code>myClick</code> fails to match an element event or an output property of <code>ClickDirective</code>, Angular reports an “unknown directive” error.</p>
+<h2 id="Sharing-data-between-child-and-parent-directives-and-components"><a href="#Sharing-data-between-child-and-parent-directives-and-components" class="headerlink" title="Sharing data between child and parent directives and components"></a>Sharing data between child and parent directives and components</h2><h2 id="Sending-data-to-a-child-componentlink"><a href="#Sending-data-to-a-child-componentlink" class="headerlink" title="Sending data to a child componentlink"></a>Sending data to a child component<a target="_blank" rel="noopener" href="https://angular.io/guide/inputs-outputs#sending-data-to-a-child-component"><em>link</em></a></h2><p>The <code>@Input()</code> decorator in a child component or directive <strong>signifies that the property can receive its value from its parent component</strong></p>
+<p><img src="https://angular.io/generated/images/guide/inputs-outputs/input.svg" alt="Input data flow diagram of data flowing from parent to child"></p>
+<p>To use <code>@Input()</code>, <strong>you must configure the parent and child.</strong></p>
+<h3 id="Configuring-the-child-component"><a href="#Configuring-the-child-component" class="headerlink" title="Configuring the child component"></a>Configuring the child component</h3><p>To use the <strong><code>@Input()</code> decorator</strong> in a child component class, <strong>first import <code>Input</code> and then decorate the property with <code>@Input()</code></strong>, as in the following example.</p>
+<p>src/app/item-detail/item-detail.component.ts</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content_copyimport &#123; Component, Input &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>; <span class="comment">// First, import Input</span></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">ItemDetailComponent</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Input</span>() item = <span class="string">&#x27;&#x27;</span>; <span class="comment">// decorate the property with @Input()</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this case, <code>@Input()</code> decorates the property <code>item</code>, which has a type of <code>string</code>, however, <code>@Input()</code>properties can have any type, such as <code>number</code>, <code>string</code>, <code>boolean</code>, or <code>object</code>. The value for <code>item</code> comes from the parent component.</p>
+<p><strong>Next, in the child component template, add the following:</strong></p>
+<p>src/app/item-detail/item-detail.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;p&gt;</span><br><span class="line">  Today&#39;s item: &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuring-the-parent-component"><a href="#Configuring-the-parent-component" class="headerlink" title="Configuring the parent component"></a>Configuring the parent component</h3><p><strong>The next step is to bind the property in the parent component’s template.</strong> In this example, the parent component template is <code>app.component.html</code>.</p>
+<ol>
+<li>Use the child’s selector, here <code>&lt;app-item-detail&gt;</code>, as a directive within the parent component template.</li>
+<li>Use <a target="_blank" rel="noopener" href="https://angular.io/guide/property-binding">property binding</a> <strong>to bind the <code>item</code> property in the child to the <code>currentItem</code> property of the parent.</strong></li>
+</ol>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-item-detail [item]&#x3D;&quot;currentItem&quot;&gt;&lt;&#x2F;app-item-detail&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>In the parent component class, designate a value for <code>currentItem</code>:</li>
+</ol>
+<p>src/app/app.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> export class AppComponent &#123;</span><br><span class="line">  currentItem &#x3D; &#39;Television&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>With <code>@Input()</code>, Angular passes the value for <code>currentItem</code> to the child so that <code>item</code> renders as <code>Television</code>.</p>
+<p>The following diagram shows this structure:</p>
+<p><img src="https://angular.io/generated/images/guide/inputs-outputs/input-diagram-target-source.svg" alt="Property binding diagram of the target, item, in square brackets set to the source, currentItem, on the right of an equal sign"></p>
+<p>The target in the square brackets, <code>[]</code>, is the property you decorate with <code>@Input()</code> in the child component. The binding source, the part to the right of the equal sign, is the data that the parent component passes to the nested component.</p>
+<h3 id="Watching-for-Input-changes"><a href="#Watching-for-Input-changes" class="headerlink" title="Watching for @Input() changes"></a>Watching for <code>@Input()</code> changes</h3><p>To watch for changes on an <code>@Input()</code> property, you can use <code>OnChanges</code>, one of Angular’s <a target="_blank" rel="noopener" href="https://angular.io/guide/lifecycle-hooks">lifecycle hooks</a>. See the <a target="_blank" rel="noopener" href="https://angular.io/guide/lifecycle-hooks#onchanges"><code>OnChanges</code></a> section of the <a target="_blank" rel="noopener" href="https://angular.io/guide/lifecycle-hooks">Lifecycle Hooks</a> guide for more details and examples.</p>
+<h2 id="Sending-data-to-a-parent-component"><a href="#Sending-data-to-a-parent-component" class="headerlink" title="Sending data to a parent component"></a>Sending data to a parent component</h2><p>The <code>@Output()</code> decorator in a child component or directive allows data to flow from the child to the parent.</p>
+<p><img src="https://angular.io/generated/images/guide/inputs-outputs/output.svg" alt="Output diagram of the data flow going from child to parent"></p>
+<p><code>@Output()</code> marks a property in a child component as a doorway through which data can travel from the child to the parent.</p>
+<p><strong>The child component uses the <code>@Output()</code> property to raise an event to notify the parent of the change. To raise an event, an <code>@Output()</code> must have the type of <code>EventEmitter</code>, which is a class in <code>@angular/core</code> that you use to emit custom events.</strong></p>
+<p>The following example shows how to set up an <code>@Output()</code> in a child component that pushes data from an HTML <code>&lt;input&gt;</code> to an array in the parent component.</p>
+<p>To use <code>@Output()</code>, you must configure the parent and child.</p>
+<h3 id="Configuring-the-child-component-1"><a href="#Configuring-the-child-component-1" class="headerlink" title="Configuring the child component"></a>Configuring the child component</h3><p>The following example features an <code>&lt;input&gt;</code> where a user can enter a value and click a <code>&lt;button&gt;</code> that raises an event. The <code>EventEmitter</code> then relays the data to the parent component.</p>
+<ol>
+<li><p>Import <code>Output</code> and <code>EventEmitter</code> in the child component class:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Output, EventEmitter &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>In the component class, decorate a property with <code>@Output()</code>. The following example <code>newItemEvent``@Output()</code> has a type of <code>EventEmitter</code>, which means it’s an event.</p>
+<p>src/app/item-output/item-output.component.ts</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Output</span>() newItemEvent = <span class="keyword">new</span> EventEmitter&lt;<span class="built_in">string</span>&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>The different parts of the above declaration are as follows:</p>
+<ul>
+<li><code>@Output()</code>—a decorator function marking the property as a way for data to go from the child to the parent</li>
+<li><code>newItemEvent</code>—the name of the <code>@Output()</code></li>
+<li><code>EventEmitter&lt;string&gt;</code>—the <code>@Output()</code>‘s type</li>
+<li><code>new EventEmitter&lt;string&gt;()</code>—tells Angular to create a new event emitter and that the data it emits is of type string.</li>
+</ul>
+<p>For more information on <code>EventEmitter</code>, see the <a target="_blank" rel="noopener" href="https://angular.io/api/core/EventEmitter">EventEmitter API documentation</a>.</p>
+</li>
+<li><p>Create an <code>addNewItem()</code> method in the same component class:</p>
+<p>src/app/item-output/item-output.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">content_copyexport class ItemOutputComponent &#123;</span><br><span class="line"></span><br><span class="line">  @Output() newItemEvent &#x3D; new EventEmitter&lt;string&gt;();</span><br><span class="line"></span><br><span class="line">  addNewItem(value: string) &#123;</span><br><span class="line">    this.newItemEvent.emit(value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>The <code>addNewItem()</code> function uses the <code>@Output()</code>, <code>newItemEvent</code>, to raise an event with the value the user types into the <code>&lt;input&gt;</code>.</strong></p>
+</li>
+</ol>
+<h3 id="Configuring-the-child’s-template"><a href="#Configuring-the-child’s-template" class="headerlink" title="Configuring the child’s template"></a>Configuring the child’s template</h3><p>The child’s template has two controls. The first is an HTML <code>&lt;input&gt;</code> with a <a target="_blank" rel="noopener" href="https://angular.io/guide/template-reference-variables">template reference variable</a> , <code>#newItem</code>, where the user types in an item name. The <code>value</code> property of the <code>#newItem</code> variable stores what the user types into the <code>&lt;input&gt;</code>.</p>
+<p>src/app/item-output/item-output.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;label for&#x3D;&quot;item-input&quot;&gt;Add an item:&lt;&#x2F;label&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;item-input&quot; #newItem&gt;</span><br><span class="line">&lt;button (click)&#x3D;&quot;addNewItem(newItem.value)&quot;&gt;Add to parent&#39;s list&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The second element is a <code>&lt;button&gt;</code> with a <code>click</code> <a target="_blank" rel="noopener" href="https://angular.io/guide/event-binding">event binding</a>.</p>
+<p>The <code>(click)</code> event is bound to the <code>addNewItem()</code> method in the child component class. The <code>addNewItem()</code>method takes as its argument the value of the <code>#newItem.value</code> property.</p>
+<h3 id="Configuring-the-parent-component-1"><a href="#Configuring-the-parent-component-1" class="headerlink" title="Configuring the parent component"></a>Configuring the parent component</h3><p>The <code>AppComponent</code> in this example features a list of <code>items</code> in an array and a method for adding more items to the array.</p>
+<p>src/app/app.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">content_copyexport class AppComponent &#123;</span><br><span class="line">  items &#x3D; [&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;];</span><br><span class="line"></span><br><span class="line">  addItem(newItem: string) &#123;</span><br><span class="line">    this.items.push(newItem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>addItem()</code> method takes an argument in the form of a string and then adds that string to the <code>items</code> array.</p>
+<h3 id="Configuring-the-parent’s-template"><a href="#Configuring-the-parent’s-template" class="headerlink" title="Configuring the parent’s template"></a>Configuring the parent’s template</h3><ol>
+<li><p>In the parent’s template, bind the parent’s method to the child’s event.</p>
+</li>
+<li><p>Put the child selector, here <code>&lt;app-item-output&gt;</code>, within the parent component’s template, <code>app.component.html</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-item-output (newItemEvent)&#x3D;&quot;addItem($event)&quot;&gt;&lt;&#x2F;app-item-output&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The event binding, <code>(newItemEvent)=&#39;addItem($event)&#39;</code>, connects the event in the child, <code>newItemEvent</code>, to the method in the parent, <code>addItem()</code>.</p>
+<p>The <code>$event</code> contains the data that the user types into the <code>&lt;input&gt;</code> in the child template UI.</p>
+<p>To see the <code>@Output()</code> working, you can add the following to the parent’s template:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copy<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> *<span class="attr">ngFor</span>=<span class="string">&quot;let item of items&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>The <code>*ngFor</code> iterates over the items in the <code>items</code> array. When you enter a value in the child’s <code>&lt;input&gt;</code> and click the button, the child emits the event and the parent’s <code>addItem()</code> method pushes the value to the <code>items</code> array and new item renders in the list.</p>
+</li>
+</ol>
+<h2 id="Using-Input-and-Output-together"><a href="#Using-Input-and-Output-together" class="headerlink" title="Using @Input() and @Output() together"></a>Using <code>@Input()</code> and <code>@Output()</code> together</h2><p>You can use <code>@Input()</code> and <code>@Output()</code> on the same child component as follows:</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-input-output [item]&#x3D;&quot;currentItem&quot; (deleteRequest)&#x3D;&quot;crossOffItem($event)&quot;&gt;&lt;&#x2F;app-input-output&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The target, <code>item</code>, which is an <code>@Input()</code> property in the child component class, receives its value from the parent’s property, <code>currentItem</code>. When you click delete, the child component raises an event, <code>deleteRequest</code>, which is the argument for the parent’s <code>crossOffItem()</code> method.</p>
+<p>The following diagram shows the different parts of the <code>@Input()</code> and <code>@Output()</code> on the <code>&lt;app-input-output&gt;</code>child component.</p>
+<p><img src="https://angular.io/generated/images/guide/inputs-outputs/input-output-diagram.svg" alt="Diagram of an input target and an output target each bound to a source."></p>
+<p>The child selector is <code>&lt;app-input-output&gt;</code> with <code>item</code> and <code>deleteRequest</code> being <code>@Input()</code> and <code>@Output()</code>properties in the child component class. The property <code>currentItem</code> and the method <code>crossOffItem()</code> are both in the parent component class.</p>
+<p>To combine property and event bindings using the banana-in-a-box syntax, <code>[()]</code>, see <a target="_blank" rel="noopener" href="https://angular.io/guide/two-way-binding">Two-way Binding</a>.</p>
+<h1 id="Two-way-data-binding"><a href="#Two-way-data-binding" class="headerlink" title="Two way data binding"></a>Two way data binding</h1><p>To get the most out of two-way binding, you should have a basic understanding of the following concepts:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/property-binding">Property binding</a> : Property binding in Angular helps you <strong>set</strong> <strong>values for properties of HTML elements or directives</strong>. With property binding, you can do things such as <strong>toggle button functionality</strong>, <strong>set paths programmatically</strong>, and <strong>share values between components</strong>.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/event-binding">Event binding</a> : Event binding allows you to <strong>listen for and respond to user actions</strong> such as keystrokes, <strong>mouse movements</strong>, <strong>clicks</strong>, and touches.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/inputs-outputs">Inputs and Outputs</a> : Sharing data between child and parent directives and components. A common pattern in Angular is sharing data between a parent component and one or more child components. You can implement this pattern by using the <code>@Input()</code> and <code>@Output()</code> directives.</li>
+</ul>
+<hr>
+<p>Two-way binding combines property binding with event binding:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/property-binding">Property binding</a> sets a specific element property.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/event-binding">Event binding</a> listens for an element change event.</li>
+</ul>
+<h2 id="Adding-two-way-data-binding"><a href="#Adding-two-way-data-binding" class="headerlink" title="Adding two-way data binding"></a>Adding two-way data binding</h2><p><strong>Angular’s two-way binding syntax is a combination of square brackets and parentheses, <code>[()]</code>. The <code>[()]</code> syntax combines the brackets of property binding, <code>[]</code>, with the parentheses of event binding, <code>()</code>, as follows.</strong></p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-sizer [(size)]&#x3D;&quot;fontSizePx&quot;&gt;&lt;&#x2F;app-sizer&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="How-two-way-binding-works"><a href="#How-two-way-binding-works" class="headerlink" title="How two-way binding works"></a>How two-way binding works</h2><p>For two-way data binding to work, the <strong><code>@Output()</code> property must use the pattern, <code>inputChange</code></strong>, where <code>input</code> is the name of the <code>@Input()</code> property. For example, if the <code>@Input()</code> property is <code>size</code>, the <code>@Output()</code> property must be <code>sizeChange</code>.</p>
+<p>The following <code>sizerComponent</code> has a <code>size</code> value property and a <code>sizeChange</code> event. The <code>size</code> property is an <code>@Input()</code>, so data can flow into the <code>sizerComponent</code>. The <code>sizeChange</code> event is an <code>@Output()</code>, which allows data to flow out of the <code>sizerComponent</code> to the parent component.</p>
+<p>Next, there are two methods, <code>dec()</code> to decrease the font size and <code>inc()</code> to increase the font size. These two methods use <code>resize()</code> to change the value of the <code>size</code> property within min/max value constraints, and to emit an event that conveys the new <code>size</code> value.</p>
+<p>src/app/sizer.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">content_copyexport class SizerComponent &#123;</span><br><span class="line"></span><br><span class="line">  @Input()  size!: number | string;</span><br><span class="line">  @Output() sizeChange &#x3D; new EventEmitter&lt;number&gt;();</span><br><span class="line"></span><br><span class="line">  dec() &#123; this.resize(-1); &#125;</span><br><span class="line">  inc() &#123; this.resize(+1); &#125;</span><br><span class="line"></span><br><span class="line">  resize(delta: number) &#123;</span><br><span class="line">    this.size &#x3D; Math.min(40, Math.max(8, +this.size + delta));</span><br><span class="line">    this.sizeChange.emit(this.size);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>sizerComponent</code> template has two buttons that each bind the click event to the <code>inc()</code> and <code>dec()</code>methods. When the user clicks one of the buttons, the <code>sizerComponent</code> calls the corresponding method. Both methods, <code>inc()</code> and <code>dec()</code>, call the <code>resize()</code> method with a <code>+1</code> or <code>-1</code>, which in turn raises the <code>sizeChange</code>event with the new size value.</p>
+<p>src/app/sizer.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;button (click)&#x3D;&quot;dec()&quot; title&#x3D;&quot;smaller&quot;&gt;-&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;button (click)&#x3D;&quot;inc()&quot; title&#x3D;&quot;bigger&quot;&gt;+&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;label [style.font-size.px]&#x3D;&quot;size&quot;&gt;FontSize: &#123;&#123;size&#125;&#125;px&lt;&#x2F;label&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>In the <code>AppComponent</code> template, <code>fontSizePx</code> is two-way bound to the <code>SizerComponent</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-sizer [(size)]&#x3D;&quot;fontSizePx&quot;&gt;&lt;&#x2F;app-sizer&gt;</span><br><span class="line">&lt;div [style.font-size.px]&#x3D;&quot;fontSizePx&quot;&gt;Resizable Text&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>In the <code>AppComponent</code>, <code>fontSizePx</code> establishes the initial <code>SizerComponent.size</code> value by setting the value to <code>16</code>.</p>
+<p>src/app/app.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copyfontSizePx &#x3D; 16;</span><br></pre></td></tr></table></figure>
+
+<p>Clicking the buttons updates the <code>AppComponent.fontSizePx</code>. The revised <code>AppComponent.fontSizePx</code> value updates the style binding, which makes the displayed text bigger or smaller.</p>
+<p>The two-way binding syntax is shorthand for a combination of property binding and event binding. The <code>SizerComponent</code> binding as separate property binding and event binding is as follows.</p>
+<p>src/app/app.component.html (expanded)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-sizer [size]&#x3D;&quot;fontSizePx&quot; (sizeChange)&#x3D;&quot;fontSizePx&#x3D;$event&quot;&gt;&lt;&#x2F;app-sizer&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>$event</code> variable contains the data of the <code>SizerComponent.sizeChange</code> event. Angular assigns the <code>$event</code>value to the <code>AppComponent.fontSizePx</code> when the user clicks the buttons.</p>
+<p>TWO-WAY BINDING IN FORMS</p>
+<p>Because no native HTML element follows the <code>x</code> value and <code>xChange</code> event pattern, two-way binding with form elements requires <code>NgModel</code>. For more information on how to use two-way binding in forms, see Angular <a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#ngModel">NgModel</a>.</p>
+<h2 id="A-Word-on-Data-Architecture"><a href="#A-Word-on-Data-Architecture" class="headerlink" title="A Word on Data Architecture"></a>A Word on Data Architecture</h2><p>You might be wondering at this point how we would manage the data flow if we started adding more functionality to this app.</p>
+<p>For instance, say we wanted to add a shopping cart view and then we would add items to our cart. How could we implement this?</p>
+<p>The only tools we’ve talked about are emitting output events. When we click add-to-cart do we simply bubble up an <code>addedToCart</code> event and handle at the root component? That feels a bit awkward.</p>
+<p>Data architecture is a large topic with many opinions. Thankfully, Angular is flexible enough to handle a wide variety of data architectures, but that means that you have to decide for yourself which to use.</p>
+<p>In Angular 1, the default option was two-way data binding. Two-way data binding is super easy to get started: your controllers have data, your forms manipulate that data directly, and your views show the data.</p>
+<p>The problem with two-way data binding is that it often causes cascading effects throughout your application and makes it really difficult to trace data flow as your project grows.</p>
+<p>Another problem with two-way data binding is that because you’re passing data down through components it often forces your “data layout tree” to match your “dom view tree”. In practice, these two things should really be separate.</p>
+<p>One way you might handle this scenario would be to create a <code>ShoppingCartService</code>, which would be a singleton that would hold the list of the current items in the cart. This service could notify any interested objects when an item in the cart changes.</p>
+<p>The idea is easy enough, but in practice there are a lot of details to be worked out.</p>
+<p>The recommended way in Angular, and in many modern web frameworks (such as React), is to adopt a pattern of <strong>one-way data binding</strong>. That is, your data flows only <strong>down</strong> through components. If you need to make changes, you emit events that cause changes to happen “at the top” which then trickle down.</p>
+<h1 id="Sharing-data-between-unrelated-components"><a href="#Sharing-data-between-unrelated-components" class="headerlink" title="Sharing data between unrelated components"></a>Sharing data between unrelated components</h1><p><strong>User Subjects, BehaviorSubject in Rxjs</strong></p>
+<p>Login Componet =&gt; data =&gt; AuthService =&gt; BehaviorSubject(observable)</p>
+<p>​                                                                        headerComponet</p>
+<p>​                                                                        Component 3</p>
+<p>​                                                                        Component 4    </p>
+<p>Component can push the data to the behaviorSubject, so if the unrelated component subscribed the Subject, it will receive the data. </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Angular</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/06/16/2021/Angular:%20Data%20Binding/">http://pajarnas.github.io/06/16/2021/Angular:%20Data%20Binding/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/Angular/">Angular</a><a class="post-meta__tags" href="/tags/Angular-Property-Binding/">Angular-Property-Binding</a><a class="post-meta__tags" href="/tags/Angular-Event-Binding/">Angular-Event-Binding</a><a class="post-meta__tags" href="/tags/Angular-Two-Way-Binding/">Angular-Two-Way-Binding</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/06/16/2021/ASP%20Pagination/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">ASP Automapper Usage For Entity Framework</div></div></a></div><div class="next-post pull-right"><a href="/06/15/2021/C#%20Core%20I:%20LINQ/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">C# Core LINQ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/06/16/2021/Angular: Sercuity/" title="Angular Routing"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular Routing</div></div></a></div><div><a href="/06/16/2021/Angular II: Services/" title="Angular II Services"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular II Services</div></div></a></div><div><a href="/06/16/2021/ASP Automapper/" title="ASP Pagination Implementation Based On Entity Framework"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">ASP Pagination Implementation Based On Entity Framework</div></div></a></div><div><a href="/05/11/2021/ASP I: Entity Framework/" title="ASP I Entity Framework"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">ASP I Entity Framework</div></div></a></div><div><a href="/03/19/2021/Beaconfire/" title="Beaconfire Interview Experience"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 03-19-2021</div><div class="title">Beaconfire Interview Experience</div></div></a></div><div><a href="/05/13/2021/Front-End I: Introduction,Http,Elements/" title="Front-End II CSS"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-13-2021</div><div class="title">Front-End II CSS</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">48</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Property-Binding"><span class="toc-text">Property Binding</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Binding-to-a-property"><span class="toc-text">Binding to a property</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setting-an-element-property-to-a-component-property-value"><span class="toc-text">Setting an element property to a component property value</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setting-a-directive-property"><span class="toc-text">Setting a directive property</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bind-values-between-components"><span class="toc-text">Bind values between components</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#interpolated"><span class="toc-text">interpolated</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Displaying-values-with-interpolation"><span class="toc-text">Displaying values with interpolation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Template-expressions"><span class="toc-text">Template expressions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Resolving-expressions-with-interpolation"><span class="toc-text">Resolving expressions with interpolation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Syntax"><span class="toc-text">Syntax</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Expression-context"><span class="toc-text">Expression context</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Event-binding"><span class="toc-text">Event binding</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Binding-to-events"><span class="toc-text">Binding to events</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-events-with-EventEmitter"><span class="toc-text">Custom events with EventEmitter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Determining-an-event-target"><span class="toc-text">Determining an event target</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sharing-data-between-child-and-parent-directives-and-components"><span class="toc-text">Sharing data between child and parent directives and components</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sending-data-to-a-child-componentlink"><span class="toc-text">Sending data to a child componentlink</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuring-the-child-component"><span class="toc-text">Configuring the child component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuring-the-parent-component"><span class="toc-text">Configuring the parent component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Watching-for-Input-changes"><span class="toc-text">Watching for @Input() changes</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sending-data-to-a-parent-component"><span class="toc-text">Sending data to a parent component</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuring-the-child-component-1"><span class="toc-text">Configuring the child component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuring-the-child%E2%80%99s-template"><span class="toc-text">Configuring the child’s template</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuring-the-parent-component-1"><span class="toc-text">Configuring the parent component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configuring-the-parent%E2%80%99s-template"><span class="toc-text">Configuring the parent’s template</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Input-and-Output-together"><span class="toc-text">Using @Input() and @Output() together</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Two-way-data-binding"><span class="toc-text">Two way data binding</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-two-way-data-binding"><span class="toc-text">Adding two-way data binding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-two-way-binding-works"><span class="toc-text">How two-way binding works</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Word-on-Data-Architecture"><span class="toc-text">A Word on Data Architecture</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sharing-data-between-unrelated-components"><span class="toc-text">Sharing data between unrelated components</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/ASP%20Automapper/" title="ASP Pagination Implementation Based On Entity Framework">ASP Pagination Implementation Based On Entity Framework</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20II:%20Services/" title="Angular II Services">Angular II Services</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular:%20Sercuity/" title="Angular Routing">Angular Routing</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/ASP%20Pagination/" title="ASP Automapper Usage For Entity Framework">ASP Automapper Usage For Entity Framework</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular:%20Data%20Binding/" title="Angular Routing">Angular Routing</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
