@@ -1,0 +1,389 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Angular Routing | Saige Blog</title><meta name="keywords" content="notes,Angular,Angular-Routing"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Built-in directivesDirectives are classes that add additional behavior to elements in your Angular applications. With Angular’s built-in directives, you can manage forms, lists, styles, and what users">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Routing">
+<meta property="og:url" content="http://pajarnas.github.io/06/16/2021/Angular:%20Directives/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="Built-in directivesDirectives are classes that add additional behavior to elements in your Angular applications. With Angular’s built-in directives, you can manage forms, lists, styles, and what users">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-06-16T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-19T17:28:37.740Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="Angular">
+<meta property="article:tag" content="Angular-Routing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/06/16/2021/Angular:%20Directives/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '06-19-2021 12:28:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Angular Routing</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-06-19T17:28:37.740Z" title="Updated 06-19-2021 12:28:37">06-19-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Angular/">Angular</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Built-in-directives"><a href="#Built-in-directives" class="headerlink" title="Built-in directives"></a>Built-in directives</h1><p><strong>Directives are classes that add additional behavior to elements in your Angular applications. With Angular’s built-in directives, you can manage forms, lists, styles, and what users see.</strong></p>
+<p>The different types of Angular directives are as follows:</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/component-overview">Components</a>—directives with a template. This type of directive is the most common directive type.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#built-in-attribute-directives">Attribute directives</a>—directives that change the appearance or behavior of an element, component, or another directive.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#built-in-structural-directives">Structural directives</a>—directives that change the DOM layout by adding and removing DOM elements.</li>
+</ol>
+<p>This guide covers built-in <a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#built-in-attribute-directives">attribute directives</a> and <a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#built-in-structural-directives">structural directives</a>.</p>
+<h2 id="Built-in-attribute-directives"><a href="#Built-in-attribute-directives" class="headerlink" title="Built-in attribute directives"></a>Built-in attribute directives</h2><p><strong>Attribute directives listen to and modify the behavior of other HTML elements, attributes, properties, and components.</strong></p>
+<p>Many NgModules such as the <a target="_blank" rel="noopener" href="https://angular.io/guide/router"><code>RouterModule</code></a> and the <a target="_blank" rel="noopener" href="https://angular.io/guide/forms"><code>FormsModule</code></a> define their own attribute directives. The most common attribute directives are as follows:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#ngClass"><code>NgClass</code></a>—adds and removes a set of CSS classes.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#ngstyle"><code>NgStyle</code></a>—adds and removes a set of HTML styles.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#ngModel"><code>NgModel</code></a>—adds two-way data binding to an HTML form element.</li>
+</ul>
+<p>Built-in directives use only public APIs. They do not have special access to any private APIs that other directives can’t access.</p>
+<h2 id="Adding-and-removing-classes-with-NgClass"><a href="#Adding-and-removing-classes-with-NgClass" class="headerlink" title="Adding and removing classes with NgClass"></a>Adding and removing classes with <code>NgClass</code></h2><p>You can add or remove multiple CSS classes simultaneously with <code>ngClass</code>.</p>
+<p>To add or remove a <em>single</em> class, use <a target="_blank" rel="noopener" href="https://angular.io/guide/attribute-binding#class-binding">class binding</a> rather than <code>NgClass</code>.</p>
+<h3 id="Using-NgClass-with-an-expression"><a href="#Using-NgClass-with-an-expression" class="headerlink" title="Using NgClass with an expression"></a>Using <code>NgClass</code> with an expression</h3><p>On the element you’d like to style, add <code>[ngClass]</code> and set it equal to an expression. In this case, <code>isSpecial</code> is a boolean set to <code>true</code> in <code>app.component.ts</code>. Because <code>isSpecial</code> is true, <code>ngClass</code> applies the class of <code>special</code> to the <code>&lt;div&gt;</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">content_copy<span class="comment">&lt;!-- toggle the &quot;special&quot; class on/off with a property --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngClass</span>]=<span class="string">&quot;isSpecial ? &#x27;special&#x27; : &#x27;&#x27;&quot;</span>&gt;</span>This div is special<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Using-NgClass-with-a-method"><a href="#Using-NgClass-with-a-method" class="headerlink" title="Using NgClass with a method"></a>Using <code>NgClass</code> with a method</h3><ol>
+<li><p>To use <code>NgClass</code> with a method, add the method to the component class. In the following example, <code>setCurrentClasses()</code> sets the property <code>currentClasses</code> with an object that adds or removes three classes based on the <code>true</code> or <code>false</code> state of three other component properties.</p>
+<p>Each key of the object is a CSS class name. If a key is <code>true</code>, <code>ngClass</code> adds the class. If a key is <code>false</code>, <code>ngClass</code> removes the class.</p>
+<p>src/app/app.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">content_copycurrentClasses: Record&lt;string, boolean&gt; &#x3D; &#123;&#125;;</span><br><span class="line">&#x2F;* . . . *&#x2F;</span><br><span class="line">  setCurrentClasses() &#123;</span><br><span class="line">    &#x2F;&#x2F; CSS classes: added&#x2F;removed per current state of component properties</span><br><span class="line">    this.currentClasses &#x3D;  &#123;</span><br><span class="line">      saveable: this.canSave,</span><br><span class="line">      modified: !this.isUnchanged,</span><br><span class="line">      special:  this.isSpecial</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>In the template, add the <code>ngClass</code> property binding to <code>currentClasses</code> to set the element’s classes:</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div [ngClass]&#x3D;&quot;currentClasses&quot;&gt;This div is initially saveable, unchanged, and special.&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>For this use case, Angular applies the classes on initialization and in case of changes. The full example calls <code>setCurrentClasses()</code> initially with <code>ngOnInit()</code> and when the dependent properties change through a button click. These steps are not necessary to implement <code>ngClass</code>. For more information, see the <a target="_blank" rel="noopener" href="https://angular.io/generated/live-examples/built-in-directives/stackblitz.html">live example</a> / <a target="_blank" rel="noopener" href="https://angular.io/generated/zips/built-in-directives/built-in-directives.zip">download example</a> <code>app.component.ts</code> and <code>app.component.html</code>.</p>
+<h2 id="Setting-inline-styles-with-NgStyle"><a href="#Setting-inline-styles-with-NgStyle" class="headerlink" title="Setting inline styles with NgStyle"></a>Setting inline styles with <code>NgStyle</code></h2><p>You can use <code>NgStyle</code> to set multiple inline styles simultaneously, based on the state of the component.</p>
+<ol>
+<li><p>To use <code>NgStyle</code>, add a method to the component class.</p>
+<p>In the following example, <code>setCurrentStyles()</code> sets the property <code>currentStyles</code> with an object that defines three styles, based on the state of three other component properties.</p>
+<p>src/app/app.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">content_copycurrentStyles: Record&lt;string, string&gt; &#x3D; &#123;&#125;;</span><br><span class="line">&#x2F;* . . . *&#x2F;</span><br><span class="line">  setCurrentStyles() &#123;</span><br><span class="line">    &#x2F;&#x2F; CSS styles: set per current state of component properties</span><br><span class="line">    this.currentStyles &#x3D; &#123;</span><br><span class="line">      &#39;font-style&#39;:  this.canSave      ? &#39;italic&#39; : &#39;normal&#39;,</span><br><span class="line">      &#39;font-weight&#39;: !this.isUnchanged ? &#39;bold&#39;   : &#39;normal&#39;,</span><br><span class="line">      &#39;font-size&#39;:   this.isSpecial    ? &#39;24px&#39;   : &#39;12px&#39;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>To set the element’s styles, add an <code>ngStyle</code> property binding to <code>currentStyles</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div [ngStyle]&#x3D;&quot;currentStyles&quot;&gt;</span><br><span class="line">  This div is initially italic, normal weight, and extra large (24px).</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>For this use case, Angular applies the styles upon initialization and in case of changes. To do this, the full example calls <code>setCurrentStyles()</code> initially with <code>ngOnInit()</code> and when the dependent properties change through a button click. However, these steps are not necessary to implement <code>ngStyle</code> on its own. See the <a target="_blank" rel="noopener" href="https://angular.io/generated/live-examples/built-in-directives/stackblitz.html">live example</a> / <a target="_blank" rel="noopener" href="https://angular.io/generated/zips/built-in-directives/built-in-directives.zip">download example</a> <code>app.component.ts</code> and <code>app.component.html</code> for this optional implementation.</p>
+<h2 id="Displaying-and-updating-properties-with-ngModel"><a href="#Displaying-and-updating-properties-with-ngModel" class="headerlink" title="Displaying and updating properties with ngModel"></a>Displaying and updating properties with <code>ngModel</code></h2><p>You can use the <code>NgModel</code> directive to display a data property and update that property when the user makes changes.</p>
+<ol>
+<li><p>Import <code>FormsModule</code> and add it to the NgModule’s <code>imports</code> list.</p>
+<p>src/app/app.module.ts (FormsModule import)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">content_copyimport &#123; FormsModule &#125; from &#39;@angular&#x2F;forms&#39;; &#x2F;&#x2F; &lt;--- JavaScript import from Angular</span><br><span class="line">&#x2F;* . . . *&#x2F;</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">&#x2F;* . . . *&#x2F;</span><br><span class="line"></span><br><span class="line">  imports: [</span><br><span class="line">    BrowserModule,</span><br><span class="line">    FormsModule &#x2F;&#x2F; &lt;--- import into the NgModule</span><br><span class="line">  ],</span><br><span class="line">&#x2F;* . . . *&#x2F;</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123; &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Add an <code>[(ngModel)]</code> binding on an HTML <code>&lt;form&gt;</code> element and set it equal to the property, here <code>name</code>.</p>
+<p>src/app/app.component.html (NgModel example)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;label for&#x3D;&quot;example-ngModel&quot;&gt;[(ngModel)]:&lt;&#x2F;label&gt;</span><br><span class="line">&lt;input [(ngModel)]&#x3D;&quot;currentItem.name&quot; id&#x3D;&quot;example-ngModel&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This <code>[(ngModel)]</code> syntax can only set a data-bound property.</p>
+</li>
+</ol>
+<p>To customize your configuration, you can write the expanded form, which separates the property and event binding. Use <a target="_blank" rel="noopener" href="https://angular.io/guide/property-binding">property binding</a> to set the property and <a target="_blank" rel="noopener" href="https://angular.io/guide/event-binding">event binding</a> to respond to changes. The following example changes the <code>&lt;input&gt;</code> value to uppercase:</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;input [ngModel]&#x3D;&quot;currentItem.name&quot; (ngModelChange)&#x3D;&quot;setUppercaseName($event)&quot; id&#x3D;&quot;example-uppercase&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Here are all variations in action, including the uppercase version:</p>
+<p><img src="https://angular.io/generated/images/guide/built-in-directives/ng-model-anim.gif" alt="NgModel variations"></p>
+<h3 id="NgModel-and-value-accessors"><a href="#NgModel-and-value-accessors" class="headerlink" title="NgModel and value accessors"></a><code>NgModel</code> and value accessors</h3><p>The <code>NgModel</code> directive works for an element supported by a <a target="_blank" rel="noopener" href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Angular provides <em>value accessors</em> for all of the basic HTML form elements. For more information, see <a target="_blank" rel="noopener" href="https://angular.io/guide/forms">Forms</a>.</p>
+<p>To apply <code>[(ngModel)]</code> to a non-form native element or a third-party custom component, you have to write a value accessor. For more information, see the API documentation on <a target="_blank" rel="noopener" href="https://angular.io/api/forms/DefaultValueAccessor">DefaultValueAccessor</a>.</p>
+<p>When you write an Angular component, you don’t need a value accessor or <code>NgModel</code> if you name the value and event properties according to Angular’s <a target="_blank" rel="noopener" href="https://angular.io/guide/two-way-binding#how-two-way-binding-works">two-way binding syntax</a>.</p>
+<h2 id="Built-in-structural-directives"><a href="#Built-in-structural-directives" class="headerlink" title="Built-in structural directives"></a>Built-in structural directives</h2><p>Structural directives are responsible for HTML layout. They shape or reshape the DOM’s structure, typically by adding, removing, and manipulating the host elements to which they are attached.</p>
+<p>This section introduces the most common built-in structural directives:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#ngIf"><code>NgIf</code></a>—conditionally creates or disposes of subviews from the template.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#ngFor"><code>NgFor</code></a>—repeat a node for each item in a list.</li>
+<li><a target="_blank" rel="noopener" href="https://angular.io/guide/built-in-directives#ngSwitch"><code>NgSwitch</code></a>—a set of directives that switch among alternative views.</li>
+</ul>
+<p>For more information, see <a target="_blank" rel="noopener" href="https://angular.io/guide/structural-directives">Structural Directives</a>.</p>
+<h2 id="Adding-or-removing-an-element-with-NgIf"><a href="#Adding-or-removing-an-element-with-NgIf" class="headerlink" title="Adding or removing an element with NgIf"></a>Adding or removing an element with <code>NgIf</code></h2><p>You can add or remove an element by applying an <code>NgIf</code> directive to a host element.</p>
+<p>When <code>NgIf</code> is <code>false</code>, Angular removes an element and its descendants from the DOM. Angular then disposes of their components, which frees up memory and resources.</p>
+<p>To add or remove an element, bind <code>*ngIf</code> to a condition expression such as <code>isActive</code> in the following example.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-item-detail *ngIf&#x3D;&quot;isActive&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;&#x2F;app-item-detail&gt;</span><br></pre></td></tr></table></figure>
+
+<p>When the <code>isActive</code> expression returns a truthy value, <code>NgIf</code> adds the <code>ItemDetailComponent</code> to the DOM. When the expression is falsy, <code>NgIf</code> removes the <code>ItemDetailComponent</code> from the DOM and disposes of the component and all of its sub-components.</p>
+<p>For more information on <code>NgIf</code> and <code>NgIfElse</code>, see the <a target="_blank" rel="noopener" href="https://angular.io/api/common/NgIf">NgIf API documentation</a>.</p>
+<h3 id="Guarding-against-null"><a href="#Guarding-against-null" class="headerlink" title="Guarding against null"></a>Guarding against <code>null</code></h3><p>By default, <code>NgIf</code> prevents display of an element bound to a null value.</p>
+<p>To use <code>NgIf</code> to guard a <code>&lt;div&gt;</code>, add <code>*ngIf=&quot;yourProperty&quot;</code> to the <code>&lt;div&gt;</code>. In the following example, the <code>currentCustomer</code> name appears because there is a <code>currentCustomer</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div *ngIf&#x3D;&quot;currentCustomer&quot;&gt;Hello, &#123;&#123;currentCustomer.name&#125;&#125;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>However, if the property is <code>null</code>, Angular does not display the <code>&lt;div&gt;</code>. In this example, Angular does not display the <code>nullCustomer</code> because it is <code>null</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div *ngIf&#x3D;&quot;nullCustomer&quot;&gt;Hello, &lt;span&gt;&#123;&#123;nullCustomer&#125;&#125;&lt;&#x2F;span&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Listing-items-with-NgFor"><a href="#Listing-items-with-NgFor" class="headerlink" title="Listing items with NgFor"></a>Listing items with <code>NgFor</code></h2><p>You can use the <code>NgFor</code> directive to present a list of items.</p>
+<ol>
+<li>Define a block of HTML that determines how Angular renders a single item.</li>
+<li>To list your items, assign the short hand <code>let item of items</code> to <code>*ngFor</code>.</li>
+</ol>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div *ngFor&#x3D;&quot;let item of items&quot;&gt;&#123;&#123;item.name&#125;&#125;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The string <code>&quot;let item of items&quot;</code> instructs Angular to do the following:</p>
+<ul>
+<li>Store each item in the <code>items</code> array in the local <code>item</code> looping variable</li>
+<li>Make each item available to the templated HTML for each iteration</li>
+<li>Translate <code>&quot;let item of items&quot;</code> into an <code>&lt;ng-template&gt;</code> around the host element</li>
+<li>Repeat the <code>&lt;ng-template&gt;</code> for each <code>item</code> in the list</li>
+</ul>
+<p>For more information see the <a target="_blank" rel="noopener" href="https://angular.io/guide/structural-directives#shorthand">Structural directive shorthand</a> section of <a target="_blank" rel="noopener" href="https://angular.io/guide/structural-directives">Structural directives</a>.</p>
+<h3 id="Repeating-a-component-view"><a href="#Repeating-a-component-view" class="headerlink" title="Repeating a component view"></a>Repeating a component view</h3><p>To repeat a component element, apply <code>*ngFor</code> to the selector. In the following example, the selector is <code>&lt;app-item-detail&gt;</code>.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;app-item-detail *ngFor&#x3D;&quot;let item of items&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;&#x2F;app-item-detail&gt;</span><br></pre></td></tr></table></figure>
+
+<p>You can reference a template input variable, such as <code>item</code>, in the following locations:</p>
+<ul>
+<li>within the <code>ngFor</code> host element</li>
+<li>within the host element descendants to access the item’s properties</li>
+</ul>
+<p>The following example references <code>item</code> first in an interpolation and then passes in a binding to the <code>item</code>property of the <code>&lt;app-item-detail&gt;</code> component.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div *ngFor&#x3D;&quot;let item of items&quot;&gt;&#123;&#123;item.name&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;!-- . . . --&gt;</span><br><span class="line">  &lt;app-item-detail *ngFor&#x3D;&quot;let item of items&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;&#x2F;app-item-detail&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For more information about template input variables, see <a target="_blank" rel="noopener" href="https://angular.io/guide/structural-directives#shorthand">Structural directive shorthand</a>.</p>
+<h3 id="Getting-the-index-of-ngFor"><a href="#Getting-the-index-of-ngFor" class="headerlink" title="Getting the index of *ngFor"></a>Getting the <code>index</code> of <code>*ngFor</code></h3><p>You can get the <code>index</code> of <code>*ngFor</code> in a template input variable and use it in the template.</p>
+<p>In the <code>*ngFor</code>, add a semicolon and <code>let i=index</code> to the short hand. The following example gets the <code>index</code> in a variable named <code>i</code> and displays it with the item name.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div *ngFor&#x3D;&quot;let item of items; let i&#x3D;index&quot;&gt;&#123;&#123;i + 1&#125;&#125; - &#123;&#123;item.name&#125;&#125;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>The index property of the <code>NgFor</code> directive context returns the zero-based index of the item in each iteration.</p>
+<p>Angular translates this instruction into an <code>&lt;ng-template&gt;</code> around the host element, then uses this template repeatedly to create a new set of elements and bindings for each <code>item</code> in the list. For more information about shorthand, see the <a target="_blank" rel="noopener" href="https://angular.io/guide/structural-directives#shorthand">Structural Directives</a> guide.</p>
+<h2 id="Repeating-elements-when-a-condition-is-true"><a href="#Repeating-elements-when-a-condition-is-true" class="headerlink" title="Repeating elements when a condition is true"></a>Repeating elements when a condition is true</h2><p>To repeat a block of HTML when a particular condition is true, put the <code>*ngIf</code> on a container element that wraps an <code>*ngFor</code> element. One or both elements can be an <code>&lt;ng-container&gt;</code> so you don’t have to introduce extra levels of HTML.</p>
+<p>Because structural directives add and remove nodes from the DOM, apply only one structural directive per element.</p>
+<p>For more information about <code>NgFor</code> see the <a target="_blank" rel="noopener" href="https://angular.io/api/common/NgForOf">NgForOf API reference</a>.</p>
+<h3 id="Tracking-items-with-ngFor-trackBy"><a href="#Tracking-items-with-ngFor-trackBy" class="headerlink" title="Tracking items with *ngFor trackBy"></a>Tracking items with <code>*ngFor</code> <code>trackBy</code></h3><p>By tracking changes to an item list, you can reduce the number of calls your application makes to the server. With the <code>*ngFor</code> <code>trackBy</code> property, Angular can change and re-render only those items that have changed, rather than reloading the entire list of items.</p>
+<ol>
+<li><p>Add a method to the component that returns the value <code>NgFor</code> should track. In this example, the value to track is the item’s <code>id</code>. If the browser has already rendered <code>id</code>, Angular keeps track of it and doesn’t re-query the server for the same <code>id</code>.</p>
+<p>src/app/app.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copytrackByItems(index: number, item: Item): number &#123; return item.id; &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>In the short hand expression, set <code>trackBy</code> to the <code>trackByItems()</code> method.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div *ngFor&#x3D;&quot;let item of items; trackBy: trackByItems&quot;&gt;</span><br><span class="line">  (&#123;&#123;item.id&#125;&#125;) &#123;&#123;item.name&#125;&#125;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>Change ids</strong> creates new items with new <code>item.id</code>s. In the following illustration of the <code>trackBy</code> effect, <strong>Reset items</strong> creates new items with the same <code>item.id</code>s.</p>
+<ul>
+<li>With no <code>trackBy</code>, both buttons trigger complete DOM element replacement.</li>
+<li>With <code>trackBy</code>, only changing the <code>id</code> triggers element replacement.</li>
+</ul>
+<p><img src="https://angular.io/generated/images/guide/built-in-directives/ngfor-trackby.gif" alt="Animation of trackBy"></p>
+<h2 id="Hosting-a-directive-without-a-DOM-element"><a href="#Hosting-a-directive-without-a-DOM-element" class="headerlink" title="Hosting a directive without a DOM element"></a>Hosting a directive without a DOM element</h2><p>The Angular <code>&lt;ng-container&gt;</code> is a grouping element that doesn’t interfere with styles or layout because Angular doesn’t put it in the DOM.</p>
+<p>You can use <code>&lt;ng-container&gt;</code> when there’s no single element to host the directive.</p>
+<p>Here’s a conditional paragraph using <code>&lt;ng-container&gt;</code>.</p>
+<p>src/app/app.component.html (ngif-ngcontainer)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;p&gt;</span><br><span class="line">  I turned the corner</span><br><span class="line">  &lt;ng-container *ngIf&#x3D;&quot;hero&quot;&gt;</span><br><span class="line">    and saw &#123;&#123;hero.name&#125;&#125;. I waved</span><br><span class="line">  &lt;&#x2F;ng-container&gt;</span><br><span class="line">  and continued on my way.</span><br><span class="line">&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://angular.io/generated/images/guide/structural-directives/good-paragraph.png" alt="ngcontainer paragraph with proper style"></p>
+<ol>
+<li><p>Import the <code>ngModel</code> directive from <code>FormsModule</code>.</p>
+</li>
+<li><p>Add <code>FormsModule</code> to the imports section of the relevant Angular module.</p>
+</li>
+<li><p>To conditionally exclude an <code>&lt;option&gt;</code>, wrap the <code>&lt;option&gt;</code> in an <code>&lt;ng-container&gt;</code>.</p>
+<p>src/app/app.component.html (select-ngcontainer)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div&gt;</span><br><span class="line">  Pick your favorite hero</span><br><span class="line">  (&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; checked (change)&#x3D;&quot;showSad &#x3D; !showSad&quot;&gt;show sad&lt;&#x2F;label&gt;)</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;select [(ngModel)]&#x3D;&quot;hero&quot;&gt;</span><br><span class="line">  &lt;ng-container *ngFor&#x3D;&quot;let h of heroes&quot;&gt;</span><br><span class="line">    &lt;ng-container *ngIf&#x3D;&quot;showSad || h.emotion !&#x3D;&#x3D; &#39;sad&#39;&quot;&gt;</span><br><span class="line">      &lt;option [ngValue]&#x3D;&quot;h&quot;&gt;&#123;&#123;h.name&#125;&#125; (&#123;&#123;h.emotion&#125;&#125;)&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;&#x2F;ng-container&gt;</span><br><span class="line">  &lt;&#x2F;ng-container&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://angular.io/generated/images/guide/structural-directives/select-ngcontainer-anim.gif" alt="ngcontainer options work properly"></p>
+</li>
+</ol>
+<h2 id="Switching-cases-with-NgSwitch"><a href="#Switching-cases-with-NgSwitch" class="headerlink" title="Switching cases with NgSwitch"></a>Switching cases with <code>NgSwitch</code></h2><p>Like the JavaScript <code>switch</code> statement, <code>NgSwitch</code> displays one element from among several possible elements, based on a switch condition. Angular puts only the selected element into the DOM.</p>
+<p><code>NgSwitch</code> is a set of three directives:</p>
+<ul>
+<li><code>NgSwitch</code>—an attribute directive that changes the behavior of its companion directives.</li>
+<li><code>NgSwitchCase</code>—structural directive that adds its element to the DOM when its bound value equals the switch value and removes its bound value when it doesn’t equal the switch value.</li>
+<li><code>NgSwitchDefault</code>—structural directive that adds its element to the DOM when there is no selected <code>NgSwitchCase</code>.</li>
+</ul>
+<ol>
+<li><p>On an element, such as a <code>&lt;div&gt;</code>, add <code>[ngSwitch]</code> bound to an expression that returns the switch value, such as <code>feature</code>. Though the <code>feature</code> value in this example is a string, the switch value can be of any type.</p>
+</li>
+<li><p>Bind to <code>*ngSwitchCase</code> and <code>*ngSwitchDefault</code> on the elements for the cases.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div [ngSwitch]&#x3D;&quot;currentItem.feature&quot;&gt;</span><br><span class="line">  &lt;app-stout-item    *ngSwitchCase&#x3D;&quot;&#39;stout&#39;&quot;    [item]&#x3D;&quot;currentItem&quot;&gt;&lt;&#x2F;app-stout-item&gt;</span><br><span class="line">  &lt;app-device-item   *ngSwitchCase&#x3D;&quot;&#39;slim&#39;&quot;     [item]&#x3D;&quot;currentItem&quot;&gt;&lt;&#x2F;app-device-item&gt;</span><br><span class="line">  &lt;app-lost-item     *ngSwitchCase&#x3D;&quot;&#39;vintage&#39;&quot;  [item]&#x3D;&quot;currentItem&quot;&gt;&lt;&#x2F;app-lost-item&gt;</span><br><span class="line">  &lt;app-best-item     *ngSwitchCase&#x3D;&quot;&#39;bright&#39;&quot;   [item]&#x3D;&quot;currentItem&quot;&gt;&lt;&#x2F;app-best-item&gt;</span><br><span class="line">&lt;!-- . . . --&gt;</span><br><span class="line">  &lt;app-unknown-item  *ngSwitchDefault           [item]&#x3D;&quot;currentItem&quot;&gt;&lt;&#x2F;app-unknown-item&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>In the parent component, define <code>currentItem</code> so you can use it in the <code>[ngSwitch]</code> expression.</p>
+<p>src/app/app.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copycurrentItem!: Item;</span><br></pre></td></tr></table></figure></li>
+<li><p>In each child component, add an <code>item</code> <a target="_blank" rel="noopener" href="https://angular.io/guide/inputs-outputs#input">input property</a> which is bound to the <code>currentItem</code> of the parent component. The following two snippets show the parent component and one of the child components. The other child components are identical to <code>StoutItemComponent</code>.</p>
+<p>In each child component, here StoutItemComponent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content_copyexport class StoutItemComponent &#123;</span><br><span class="line">  @Input() item!: Item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://angular.io/generated/images/guide/built-in-directives/ngswitch.gif" alt="Animation of NgSwitch"></p>
+</li>
+</ol>
+<p>Switch directives also work with native HTML elements and web components. For example, you could replace the <code>&lt;app-best-item&gt;</code> switch case with a <code>&lt;div&gt;</code> as follows.</p>
+<p>src/app/app.component.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content_copy&lt;div *ngSwitchCase&#x3D;&quot;&#39;bright&#39;&quot;&gt; Are you as bright as &#123;&#123;currentItem.name&#125;&#125;?&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Ng-book</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/06/16/2021/Angular:%20Directives/">http://pajarnas.github.io/06/16/2021/Angular:%20Directives/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/Angular/">Angular</a><a class="post-meta__tags" href="/tags/Angular-Routing/">Angular-Routing</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/06/16/2021/Angular:%20Data%20Binding/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Angular Routing</div></div></a></div><div class="next-post pull-right"><a href="/06/15/2021/C#%20Core%20I:%20LINQ/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">C# Core LINQ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/06/16/2021/Angular : References/" title="Angular References"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular References</div></div></a></div><div><a href="/06/16/2021/Angular I: Core/" title="Angular I Core"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular I Core</div></div></a></div><div><a href="/06/16/2021/Angular II: Services/" title="Angular II Services"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular II Services</div></div></a></div><div><a href="/06/16/2021/Angular: Sercuity/" title="Angular Routing"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular Routing</div></div></a></div><div><a href="/06/16/2021/Angular: Data Binding/" title="Angular Routing"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular Routing</div></div></a></div><div><a href="/06/16/2021/ASP Automapper/" title="ASP Pagination Implementation Based On Entity Framework"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">ASP Pagination Implementation Based On Entity Framework</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Built-in-directives"><span class="toc-text">Built-in directives</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Built-in-attribute-directives"><span class="toc-text">Built-in attribute directives</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-and-removing-classes-with-NgClass"><span class="toc-text">Adding and removing classes with NgClass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-NgClass-with-an-expression"><span class="toc-text">Using NgClass with an expression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-NgClass-with-a-method"><span class="toc-text">Using NgClass with a method</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setting-inline-styles-with-NgStyle"><span class="toc-text">Setting inline styles with NgStyle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Displaying-and-updating-properties-with-ngModel"><span class="toc-text">Displaying and updating properties with ngModel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NgModel-and-value-accessors"><span class="toc-text">NgModel and value accessors</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Built-in-structural-directives"><span class="toc-text">Built-in structural directives</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-or-removing-an-element-with-NgIf"><span class="toc-text">Adding or removing an element with NgIf</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Guarding-against-null"><span class="toc-text">Guarding against null</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Listing-items-with-NgFor"><span class="toc-text">Listing items with NgFor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Repeating-a-component-view"><span class="toc-text">Repeating a component view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-the-index-of-ngFor"><span class="toc-text">Getting the index of *ngFor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Repeating-elements-when-a-condition-is-true"><span class="toc-text">Repeating elements when a condition is true</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tracking-items-with-ngFor-trackBy"><span class="toc-text">Tracking items with *ngFor trackBy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hosting-a-directive-without-a-DOM-element"><span class="toc-text">Hosting a directive without a DOM element</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Switching-cases-with-NgSwitch"><span class="toc-text">Switching cases with NgSwitch</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/ASP%20Automapper/" title="ASP Pagination Implementation Based On Entity Framework">ASP Pagination Implementation Based On Entity Framework</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20:%20References/" title="Angular References">Angular References</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20I:%20Core/" title="Angular I Core">Angular I Core</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20II:%20Services/" title="Angular II Services">Angular II Services</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular:%20Sercuity/" title="Angular Routing">Angular Routing</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
