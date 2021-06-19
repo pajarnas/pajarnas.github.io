@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Angular Routing | Saige Blog</title><meta name="keywords" content="notes,Angular,Angular-Routing"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="RoutingHow client-side routing worksPerhaps you’ve written server-side routing code before (though, it isn’t necessary to complete this chapter). Generally with server-side routing, the HTTP request c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Routing">
+<meta property="og:url" content="http://pajarnas.github.io/06/16/2021/Angular:%20Routing/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="RoutingHow client-side routing worksPerhaps you’ve written server-side routing code before (though, it isn’t necessary to complete this chapter). Generally with server-side routing, the HTTP request c">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-06-16T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-19T17:31:47.624Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="Angular">
+<meta property="article:tag" content="Angular-Routing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/06/16/2021/Angular:%20Routing/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '06-19-2021 12:31:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Angular Routing</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-06-19T17:31:47.624Z" title="Updated 06-19-2021 12:31:47">06-19-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Angular/">Angular</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h1><h2 id="How-client-side-routing-works"><a href="#How-client-side-routing-works" class="headerlink" title="How client-side routing works"></a>How client-side routing works</h2><p>Perhaps you’ve written server-side routing code before (though, it isn’t necessary to complete this chapter). Generally with server-side routing, the HTTP request comes in and the server will render a different controller depending on the incoming URL.</p>
+<h3 id="The-beginning-using-anchor-tags"><a href="#The-beginning-using-anchor-tags" class="headerlink" title="The beginning: using anchor tags"></a>The beginning: using anchor tags</h3><p>Client-side routing started out with a clever hack: Instead of using a normal server-side URL for a page in our SPA, we use the <em>anchor tag</em> as the client-side URL.</p>
+<p>As you may already know, anchor tags were traditionally used to link directly to a place <em>within</em> the webpage and make the browser scroll all the way to where that anchor was defined. For instance, if we define an anchor tag in an HTML page:</p>
+<p><strong>And we visited the URL <code>http://something/#about</code>, the browser would jump straight to that H1 tag that identified by the <code>about</code> anchor.</strong></p>
+<p>The clever move for client-side frameworks used for SPAs was to take the anchor tags and use them represent the routes within the app by formatting them as paths.</p>
+<p>For example, the <code>about</code> route for an SPA would be something like <code>http://something/#/about</code>. This is what is known as <strong>hash-based routing</strong>.</p>
+<p>What’s neat about this trick is that it looks like a “normal” URL because we’re starting our anchor with a slash (<code>/about</code>).</p>
+<h2 id="Components-of-Angular-routing"><a href="#Components-of-Angular-routing" class="headerlink" title="Components of Angular routing"></a>Components of Angular routing</h2><p>There are <strong>three main components</strong> that we use to configure routing in Angular:</p>
+<ul>
+<li><code>Routes</code> describes the routes our application supports</li>
+<li><code>RouterOutlet</code> is a “placeholder” component that shows Angular where to put the content of each route</li>
+<li><code>RouterLink</code> directive is used to link to routes</li>
+</ul>
+<h3 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h3><p>In order to use the router in Angular, we import constants from the <code>@angular/router</code> package:</p>
+<p>Now we can define our router configuration.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/app/app.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  RouterModule,</span><br><span class="line">  Routes</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/router&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="RouterOutlet-using-lt-router-outlet-gt"><a href="#RouterOutlet-using-lt-router-outlet-gt" class="headerlink" title="RouterOutlet using &lt;router-outlet&gt;"></a><code>RouterOutlet</code> using <code>&lt;router-outlet&gt;</code></h3><figure class="highlight plain"><figcaption><span>in Angular works as a placeholder which **is used to load the different components dynamically based on the activated component or current route state.**</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">When we change routes, we want to keep our outer &quot;layout&quot; template and only substitute the &quot;inner section&quot; of the page with the route&#39;s component.</span><br><span class="line"></span><br><span class="line">In order to describe to Angular where in our page we want to render the contents for each route, we use the &#96;RouterOutlet&#96;directive.</span><br><span class="line"></span><br><span class="line">Our component &#96;@Component&#96; has a &#96;template&#96; which specifies some &#96;div&#96; structure, a section for &#96;Navigation&#96;, and a directive called &#96;router-outlet&#96;.</span><br><span class="line"></span><br><span class="line">**The &#96;router-outlet&#96; element indicates where the contents of each route component will be rendered.**</span><br><span class="line"></span><br><span class="line">&gt; We are are able to use the &#96;router-outlet&#96; directive in our template because we imported the &#96;RouterModule&#96;in our &#96;NgModule&#96;.</span><br><span class="line"></span><br><span class="line">Here&#39;s the component and template for the navigation wrapper of our app:</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;typescript</span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &#39;app-root&#39;,</span><br><span class="line">  templateUrl: &#39;.&#x2F;app.component.html&#39;,</span><br><span class="line">  styleUrls: [&#39;.&#x2F;app.component.css&#39;]</span><br><span class="line">&#125;)</span><br><span class="line">export class AppComponent &#123;</span><br><span class="line">  constructor(private router: Router) &#123;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>and the template:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;page-header&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Router Sample<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navLinks&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/home&#x27;]&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/about&#x27;]&quot;</span>&gt;</span>About Us<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/contact&#x27;]&quot;</span>&gt;</span>Contact Us<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      |</span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/products&#x27;]&quot;</span>&gt;</span>Products<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/login&#x27;]&quot;</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/protected&#x27;]&quot;</span>&gt;</span>Protected<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>If we look at the template above, you will note the <code>router-outlet</code> element right below the navigation menu. When we visit <code>/home</code>, that’s where <code>HomeComponent</code> template will be rendered. The same happens for the other components.</p>
+<h3 id="RouterLink-using-routerLink"><a href="#RouterLink-using-routerLink" class="headerlink" title="RouterLink using [routerLink]"></a><code>RouterLink</code> using <code>[routerLink]</code></h3><p>Now that we know where route templates will be rendered, how do we tell Angular to navigate to a given route?</p>
+<p>We might try linking to the routes directly using pure HTML:</p>
+<p>Home</p>
+<p>But if we do this, we’ll notice that clicking the link triggers a page reload and that’s definitely not what we want when programming single page apps.</p>
+<p>To solve this problem, Angular provides a solution that can be used to link to routes <strong>with no page reload</strong>: the <code>RouterLink</code> directive.</p>
+<p>This directive allows you to write links using a special syntax:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Router Sample<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navLinks&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/home&#x27;]&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/about&#x27;]&quot;</span>&gt;</span>About Us<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">&quot;[&#x27;/contact&#x27;]&quot;</span>&gt;</span>Contact Us<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+
+
+<p>We can see on the left-hand side the <code>[routerLink]</code> that applies the directive to the current element (in our case <code>a</code> tags).</p>
+<p>Now, on the right-hand side we have an array with the route path as the first element, like <code>&quot;[&#39;/home&#39;]&quot;</code> or <code>&quot;[&#39;/about&#39;]&quot;</code>that will indicate which route to navigate to when we click the element.</p>
+<p>It might seem a little odd that the value of <code>routerLink</code> is a string with an array containing a string (<code>&quot;[&#39;/home&#39;]&quot;</code>, for example). This is because there are more things you can provide when linking to routes, but we’ll look at this into more detail when we talk about child routes and route parameters.</p>
+<p>For now, we’re only using routes names from the root app component.</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Ng-book</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/06/16/2021/Angular:%20Routing/">http://pajarnas.github.io/06/16/2021/Angular:%20Routing/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/Angular/">Angular</a><a class="post-meta__tags" href="/tags/Angular-Routing/">Angular-Routing</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/06/16/2021/Angular%20II:%20Services/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Angular II Services</div></div></a></div><div class="next-post pull-right"><a href="/06/16/2021/Angular:%20Sercuity/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Angular Routing</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/06/16/2021/Angular : References/" title="Angular References"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular References</div></div></a></div><div><a href="/06/16/2021/Angular I: Core/" title="Angular I Core"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular I Core</div></div></a></div><div><a href="/06/16/2021/Angular: Directives/" title="Angular Routing"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular Routing</div></div></a></div><div><a href="/06/16/2021/Angular II: Services/" title="Angular II Services"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular II Services</div></div></a></div><div><a href="/06/16/2021/Angular: Sercuity/" title="Angular Routing"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular Routing</div></div></a></div><div><a href="/06/16/2021/Angular: Data Binding/" title="Angular Routing"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">Angular Routing</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Routing"><span class="toc-text">Routing</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-client-side-routing-works"><span class="toc-text">How client-side routing works</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-beginning-using-anchor-tags"><span class="toc-text">The beginning: using anchor tags</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Components-of-Angular-routing"><span class="toc-text">Components of Angular routing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Imports"><span class="toc-text">Imports</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RouterOutlet-using-lt-router-outlet-gt"><span class="toc-text">RouterOutlet using &lt;router-outlet&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RouterLink-using-routerLink"><span class="toc-text">RouterLink using [routerLink]</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text"></span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/ASP%20Automapper/" title="ASP Pagination Implementation Based On Entity Framework">ASP Pagination Implementation Based On Entity Framework</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20:%20References/" title="Angular References">Angular References</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20I:%20Core/" title="Angular I Core">Angular I Core</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20II:%20Services/" title="Angular II Services">Angular II Services</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular:%20Routing/" title="Angular Routing">Angular Routing</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
