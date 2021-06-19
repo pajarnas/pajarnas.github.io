@@ -468,3 +468,159 @@ In PagedIndex.cshtml:
 </a>
 ```
 
+# Another Automapper Example
+
+```c#
+
+//Movie.cs
+ public class Movie
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Overview { get; set; }
+        ...
+          
+        public IEnumerable<MovieCast> MovieCasts { get; set; }
+        public IEnumerable<MovieGenre> MovieGenres { get; set; }
+   
+
+    }
+
+//MovieCast.cs
+  public class MovieCast
+    {
+        public int MovieId { get; set; }
+        public int CastId { get; set; }
+        public string Character { get; set; }
+        public Cast Cast { get; set; }
+        public Movie Movie { get; set; }
+       
+    }
+//MovieGenre.cs
+    public class MovieGenre
+    {
+        public int MovieId { get; set; }
+        public int GenreId { get; set; }
+
+        public Movie Movie { get; set; }
+        public Genre Genre { get; set; }
+    }
+
+
+//MovieDetailResponseModel.cs
+public class MovieDetailResponseModel
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+       
+        ...
+  
+        public List<CastResponseModel> Casts { get; set; }
+        
+        public class CastResponseModel
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Gender { get; set; }
+            public string TmdbUrl { get; set; }
+            public string ProfilePath { get; set; }
+            public string Character { get; set; }
+        }
+        public List<GenreResponseModel> Genres { get; set; }
+        public class GenreResponseModel
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+
+        
+        }
+    }
+
+//EfRepository.cs
+public virtual async Task<T> GetByIdWithIncludesAsync(int id,Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+
+        {
+            var query = _dbContext.Set<T>().AsQueryable();
+
+            if (include != null)
+                query = include(query);
+            
+            if (filter != null)
+                query = query.Where(filter);
+
+            return await query.SingleOrDefaultAsync();
+        }
+
+//MovieRepository.cs
+ public async Task<Movie> GetMovieWithGenresAndCast(int id)
+        {
+            
+            var movie = GetByIdWithIncludesAsync(id: id, filter: m => m.Id == id, 
+                include:m =>m
+                    .Include( m=>m.MovieCasts)
+                    .ThenInclude(mc=>mc.Cast)
+                    .Include(m=>m.MovieGenres)
+                    .ThenInclude(mg=>mg.Genre) );
+            return await movie;
+        }
+
+//MovieService
+   public async Task<MovieDetailResponseModel> GetMovieDetailsById(int id)
+        {
+            var movie = await _movieRepository.GetMovieWithGenresAndCast(id);
+            var movieDetailResponseModel = _mapper.Map<Movie,MovieDetailResponseModel>(movie);
+            return movieDetailResponseModel;
+        }
+
+
+//MappingProfile
+   CreateMap<Movie, MovieDetailResponseModel>()
+                    .ForMember(md => md.Casts, opt => opt.MapFrom(src => GetCasts(src)))
+                    .ForMember(md => md.Genres, opt => opt.MapFrom(src => GetGenres(src.MovieGenres)));
+
+           
+
+//MappingProfile
+  private static List<MovieDetailResponseModel.CastResponseModel> GetCasts(Movie movie)
+        {
+            IEnumerable<MovieCast> srcMovieCasts = movie.MovieCasts;
+            var movieDetailResponseModel = new MovieDetailResponseModel
+            {
+                Casts = new List<MovieDetailResponseModel.CastResponseModel>(),
+                
+            };
+            foreach (var cast in srcMovieCasts)
+            {
+                movieDetailResponseModel.Casts.Add(new MovieDetailResponseModel.CastResponseModel
+                {
+                    Id = cast.CastId,
+                    Gender = cast.Cast.Gender,
+                    Name = cast.Cast.Name,
+                    ProfilePath = cast.Cast.ProfilePath,
+                    TmdbUrl = cast.Cast.TmdbUrl,
+                    Character = cast.Character
+                });
+            }
+            
+            return movieDetailResponseModel.Casts;
+        }
+        
+        private static List<MovieDetailResponseModel.GenreResponseModel> GetGenres(IEnumerable<MovieGenre> srcMovieGenres)
+        {
+            var movieDetailResponseModel = new MovieDetailResponseModel
+            {
+                Genres = new List<MovieDetailResponseModel.GenreResponseModel>(),
+                
+            };
+            foreach (var genre in srcMovieGenres)
+                movieDetailResponseModel.Genres.Add(new MovieDetailResponseModel.GenreResponseModel
+                {
+                    Id = genre.GenreId,
+                   
+                    Name = genre.Genre.Name,
+                    
+                });
+
+            return movieDetailResponseModel.Genres;
+        }
+```

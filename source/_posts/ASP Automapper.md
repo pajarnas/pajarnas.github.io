@@ -321,3 +321,98 @@ In PagedIndex.cshtml:
 </a>
 ```
 
+
+
+
+
+```c#
+
+
+
+public virtual async Task<T> GetByIdWithIncludesAsync(int id,Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+
+        {
+            var query = _dbContext.Set<T>().AsQueryable();
+
+            if (include != null)
+                query = include(query);
+            
+            if (filter != null)
+                query = query.Where(filter);
+
+            return await query.SingleOrDefaultAsync();
+        }
+
+
+ public async Task<Movie> GetMovieWithGenresAndCast(int id)
+        {
+            
+            var movie = GetByIdWithIncludesAsync(id: id, filter: m => m.Id == id, 
+                include:m =>m
+                    .Include( m=>m.MovieCasts)
+                    .ThenInclude(mc=>mc.Cast)
+                    .Include(m=>m.MovieGenres)
+                    .ThenInclude(mg=>mg.Genre) );
+            return await movie;
+        }
+
+   public async Task<MovieDetailResponseModel> GetMovieDetailsById(int id)
+        {
+            var movie = await _movieRepository.GetMovieWithGenresAndCast(id);
+            var movieDetailResponseModel = _mapper.Map<Movie,MovieDetailResponseModel>(movie);
+            return movieDetailResponseModel;
+        }
+
+
+
+   CreateMap<Movie, MovieDetailResponseModel>()
+                    .ForMember(md => md.Casts, opt => opt.MapFrom(src => GetCasts(src)))
+                    .ForMember(md => md.Genres, opt => opt.MapFrom(src => GetGenres(src.MovieGenres)));
+
+           
+
+
+  private static List<MovieDetailResponseModel.CastResponseModel> GetCasts(Movie movie)
+        {
+            IEnumerable<MovieCast> srcMovieCasts = movie.MovieCasts;
+            var movieDetailResponseModel = new MovieDetailResponseModel
+            {
+                Casts = new List<MovieDetailResponseModel.CastResponseModel>(),
+                
+            };
+            foreach (var cast in srcMovieCasts)
+            {
+                movieDetailResponseModel.Casts.Add(new MovieDetailResponseModel.CastResponseModel
+                {
+                    Id = cast.CastId,
+                    Gender = cast.Cast.Gender,
+                    Name = cast.Cast.Name,
+                    ProfilePath = cast.Cast.ProfilePath,
+                    TmdbUrl = cast.Cast.TmdbUrl,
+                    Character = cast.Character
+                });
+            }
+            
+            return movieDetailResponseModel.Casts;
+        }
+        
+        private static List<MovieDetailResponseModel.GenreResponseModel> GetGenres(IEnumerable<MovieGenre> srcMovieGenres)
+        {
+            var movieDetailResponseModel = new MovieDetailResponseModel
+            {
+                Genres = new List<MovieDetailResponseModel.GenreResponseModel>(),
+                
+            };
+            foreach (var genre in srcMovieGenres)
+                movieDetailResponseModel.Genres.Add(new MovieDetailResponseModel.GenreResponseModel
+                {
+                    Id = genre.GenreId,
+                   
+                    Name = genre.Genre.Name,
+                    
+                });
+
+            return movieDetailResponseModel.Genres;
+        }
+```
+
