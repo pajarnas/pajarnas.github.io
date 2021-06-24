@@ -1,0 +1,1062 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Angular Routing | Saige Blog</title><meta name="keywords" content="Angular-Property-Binding,Angular-Event-Binding,Angular-Two-Way-Binding"><meta name="author" content="Shiqi Zhang"><meta name="copyright" content="Shiqi Zhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="The HTML DOM is an Object Model for HTML. It defines:  HTML elements as objects Properties for all HTML elements Methods for all HTML elements Events for all HTML elements  The HTML DOM is an API (Pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Routing">
+<meta property="og:url" content="http://pajarnas.github.io/06/16/2021/HTML%20DOM%20Event/index.html">
+<meta property="og:site_name" content="Saige Blog">
+<meta property="og:description" content="The HTML DOM is an Object Model for HTML. It defines:  HTML elements as objects Properties for all HTML elements Methods for all HTML elements Events for all HTML elements  The HTML DOM is an API (Pro">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-06-16T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-24T16:30:06.646Z">
+<meta property="article:author" content="Shiqi Zhang">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="DOM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://pajarnas.github.io/06/16/2021/HTML%20DOM%20Event/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '06-24-2021 11:30:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">36</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Saige Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Angular Routing</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-06-24T16:30:06.646Z" title="Updated 06-24-2021 11:30:06">06-24-2021</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Angular/">Angular</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>The <strong>HTML DOM</strong> is an <strong>Object Model</strong> for <strong>HTML</strong>. It defines:</p>
+<ul>
+<li>HTML elements as <strong>objects</strong></li>
+<li><strong>Properties</strong> for all HTML elements</li>
+<li><strong>Methods</strong> for all HTML elements</li>
+<li><strong>Events</strong> for all HTML elements</li>
+</ul>
+<p>The <strong>HTML DOM</strong> is an <strong>API</strong> (Programming Interface) for <strong>JavaScript</strong>:</p>
+<ul>
+<li>JavaScript can add/change/remove HTML elements</li>
+<li>JavaScript can add/change/remove HTML attributes</li>
+<li>JavaScript can add/change/remove CSS styles</li>
+<li>JavaScript can react to HTML events</li>
+<li>JavaScript can add/change/remove HTML events</li>
+</ul>
+<h2 id="The-HTML-DOM-Document-Object-Model"><a href="#The-HTML-DOM-Document-Object-Model" class="headerlink" title="The HTML DOM (Document Object Model)"></a>The HTML DOM (Document Object Model)</h2><p>When a web page is loaded, the browser creates a <strong>D</strong>ocument <strong>O</strong>bject <strong>M</strong>odel of the page. </p>
+<p>The <strong>HTML DOM</strong> model is constructed as a tree of <strong>Objects</strong>:</p>
+<p><img src="https://www.w3schools.com/whatis/img_htmltree.gif" alt="DOM HTML tree"></p>
+<h2 id="HTML-DOM-Events"><a href="#HTML-DOM-Events" class="headerlink" title="HTML DOM Events"></a>HTML DOM Events</h2><p>HTML DOM events allow JavaScript to <strong>register different event handlers on elements in an HTML document</strong>.</p>
+<p>Events are normally used in combination with functions, and <strong>the function will not be executed before the event occurs</strong> (such as when a user clicks a button).</p>
+<p>For a tutorial about Events, read our <a target="_blank" rel="noopener" href="https://www.w3schools.com/js/js_events.asp">JavaScript Events Tutorial</a>.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Belongs To</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onabort_media.asp">abort</a></td>
+<td align="left">The event occurs when the loading of a media is aborted</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onafterprint.asp">afterprint</a></td>
+<td align="left">The event occurs when a page has started printing, or if the print dialogue box has been closed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_animationend.asp">animationend</a></td>
+<td align="left">The event occurs when a CSS animation has completed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_animationevent.asp">AnimationEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_animationiteration.asp">animationiteration</a></td>
+<td align="left">The event occurs when a CSS animation is repeated</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_animationevent.asp">AnimationEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_animationstart.asp">animationstart</a></td>
+<td align="left">The event occurs when a CSS animation has started</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_animationevent.asp">AnimationEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onbeforeprint.asp">beforeprint</a></td>
+<td align="left">The event occurs when a page is about to be printed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onbeforeunload.asp">beforeunload</a></td>
+<td align="left">The event occurs before the document is about to be unloaded</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onblur.asp">blur</a></td>
+<td align="left">The event occurs when an element loses focus</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_focusevent.asp">FocusEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_oncanplay.asp">canplay</a></td>
+<td align="left">The event occurs when the browser can start playing the media (when it has buffered enough to begin)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_oncanplaythrough.asp">canplaythrough</a></td>
+<td align="left">The event occurs when the browser can play through the media without stopping for buffering</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onchange.asp">change</a></td>
+<td align="left">The event occurs <strong>when the content of a form element,</strong> the selection, or the checked state have changed (for <input>, <select>, and <textarea>)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onclick.asp">click</a></td>
+<td align="left">The event occurs when the <strong>user clicks on an element</strong></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_oncontextmenu.asp">contextmenu</a></td>
+<td align="left">The event occurs when the user right-clicks on an element to open a context menu</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_oncopy.asp">copy</a></td>
+<td align="left">The event occurs when the user <strong>copies the content of an element</strong></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_clipboardevent.asp">ClipboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_oncut.asp">cut</a></td>
+<td align="left">The event occurs when the user cuts the content of an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_clipboardevent.asp">ClipboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondblclick.asp">dblclick</a></td>
+<td align="left">The event occurs when the user double-clicks on an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondrag.asp">drag</a></td>
+<td align="left">The event occurs when an element is being dragged</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondragend.asp">dragend</a></td>
+<td align="left">The event occurs when the user has finished dragging an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondragenter.asp">dragenter</a></td>
+<td align="left">The event occurs when the dragged element enters the drop target</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondragleave.asp">dragleave</a></td>
+<td align="left">The event occurs when the dragged element leaves the drop target</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondragover.asp">dragover</a></td>
+<td align="left">The event occurs when the dragged element is over the drop target</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondragstart.asp">dragstart</a></td>
+<td align="left">The event occurs when the user starts to drag an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondrop.asp">drop</a></td>
+<td align="left">The event occurs when the dragged element is dropped on the drop target</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ondurationchange.asp">durationchange</a></td>
+<td align="left">The event occurs when the duration of the media is changed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onended.asp">ended</a></td>
+<td align="left">The event occurs when the media has reach the end (useful for messages like “thanks for listening”)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onerror.asp">error</a></td>
+<td align="left">The event occurs when an error occurs while loading an external file</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_progressevent.asp">ProgressEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onfocus.asp">focus</a></td>
+<td align="left">The event occurs when an element gets focus</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_focusevent.asp">FocusEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onfocusin.asp">focusin</a></td>
+<td align="left">The event occurs when an element is about to get focus</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_focusevent.asp">FocusEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onfocusout.asp">focusout</a></td>
+<td align="left">The event occurs when an element is about to lose focus</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_focusevent.asp">FocusEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_fullscreenchange.asp">fullscreenchange</a></td>
+<td align="left">The event occurs when an element is displayed in fullscreen mode</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_fullscreenerror.asp">fullscreenerror</a></td>
+<td align="left">The event occurs when an element can not be displayed in fullscreen mode</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onhashchange.asp">hashchange</a></td>
+<td align="left">The event occurs when there has been changes to the anchor part of a URL</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_hashchangeevent.asp">HashChangeEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_oninput.asp">input</a></td>
+<td align="left">The event occurs <strong>when an element gets user input</strong></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_inputevent.asp">InputEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_oninvalid.asp">invalid</a></td>
+<td align="left">The event occurs <strong>when an element is invalid</strong></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onkeydown.asp">keydown</a></td>
+<td align="left">The event occurs when the user is pressing a key</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onkeypress.asp">keypress</a></td>
+<td align="left">The event occurs when the user presses a key</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onkeyup.asp">keyup</a></td>
+<td align="left">The event occurs when the user releases a key</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onload.asp">load</a></td>
+<td align="left">The event occurs when an object has loaded</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onloadeddata.asp">loadeddata</a></td>
+<td align="left">The event occurs when media data is loaded</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onloadedmetadata.asp">loadedmetadata</a></td>
+<td align="left">The event occurs when meta data (like dimensions and duration) are loaded</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onloadstart.asp">loadstart</a></td>
+<td align="left">The event occurs when the browser starts looking for the specified media</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_progressevent.asp">ProgressEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmessage_sse.asp">message</a></td>
+<td align="left">The event occurs when a message is received through the event source</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmousedown.asp">mousedown</a></td>
+<td align="left">The event occurs when the user presses a mouse button over an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmouseenter.asp">mouseenter</a></td>
+<td align="left">The event occurs when the pointer is moved onto an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmouseleave.asp">mouseleave</a></td>
+<td align="left">The event occurs when the pointer is moved out of an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmousemove.asp">mousemove</a></td>
+<td align="left">The event occurs when the pointer is moving while it is over an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmouseover.asp">mouseover</a></td>
+<td align="left">The event occurs when the pointer is moved onto an element, or onto one of its children</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmouseout.asp">mouseout</a></td>
+<td align="left">The event occurs when a user moves the mouse pointer out of an element, or out of one of its children</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onmouseup.asp">mouseup</a></td>
+<td align="left">The event occurs when a user releases a mouse button over an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left">mousewheel</td>
+<td align="left">Deprecated. Use the <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onwheel.asp">wheel</a> event instead</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_wheelevent.asp">WheelEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onoffline.asp">offline</a></td>
+<td align="left">The event occurs when the browser starts to work offline</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ononline.asp">online</a></td>
+<td align="left">The event occurs when the browser starts to work online</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onopen_sse.asp">open</a></td>
+<td align="left">The event occurs when a connection with the event source is opened</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onpagehide.asp">pagehide</a></td>
+<td align="left">The event occurs when the user navigates away from a webpage</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_pagetransitionevent.asp">PageTransitionEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onpageshow.asp">pageshow</a></td>
+<td align="left">The event occurs when the user navigates to a webpage</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_pagetransitionevent.asp">PageTransitionEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onpaste.asp">paste</a></td>
+<td align="left">The event occurs when the user pastes some content in an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_clipboardevent.asp">ClipboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onpause.asp">pause</a></td>
+<td align="left">The event occurs when the media is paused either by the user or programmatically</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onplay.asp">play</a></td>
+<td align="left">The event occurs when the media has been started or is no longer paused</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onplaying.asp">playing</a></td>
+<td align="left">The event occurs when the media is playing after having been paused or stopped for buffering</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left">popstate</td>
+<td align="left">The event occurs when the window’s history changes</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_popstateevent.asp">PopStateEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onprogress.asp">progress</a></td>
+<td align="left">The event occurs when the browser is in the process of getting the media data (downloading the media)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onratechange.asp">ratechange</a></td>
+<td align="left">The event occurs when the playing speed of the media is changed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onresize.asp">resize</a></td>
+<td align="left">The event occurs when the document view is resized</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onreset.asp">reset</a></td>
+<td align="left">The event occurs when a form is reset</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onscroll.asp">scroll</a></td>
+<td align="left">The event occurs when an element’s scrollbar is being scrolled</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onsearch.asp">search</a></td>
+<td align="left">The event occurs when the user writes something in a search field (for &lt;input=”search”&gt;)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onseeked.asp">seeked</a></td>
+<td align="left">The event occurs when the user is finished moving/skipping to a new position in the media</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onseeking.asp">seeking</a></td>
+<td align="left">The event occurs when the user starts moving/skipping to a new position in the media</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onselect.asp">select</a></td>
+<td align="left">The event occurs after the user selects some text (for <input> and <textarea>)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onshow.asp">show</a></td>
+<td align="left">The event occurs when a <menu> element is shown as a context menu</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onstalled.asp">stalled</a></td>
+<td align="left">The event occurs when the browser is trying to get media data, but data is not available</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left">storage</td>
+<td align="left">The event occurs when a Web Storage area is updated</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_storageevent.asp">StorageEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onsubmit.asp">submit</a></td>
+<td align="left">The event occurs when a form is submitted</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onsuspend.asp">suspend</a></td>
+<td align="left">The event occurs when the browser is intentionally not getting media data</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ontimeupdate.asp">timeupdate</a></td>
+<td align="left">The event occurs when the playing position has changed (like when the user fast forwards to a different point in the media)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ontoggle.asp">toggle</a></td>
+<td align="left">The event occurs when the user opens or closes the <details> element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_touchcancel.asp">touchcancel</a></td>
+<td align="left">The event occurs when the touch is interrupted</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_touchend.asp">touchend</a></td>
+<td align="left">The event occurs when a finger is removed from a touch screen</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_touchmove.asp">touchmove</a></td>
+<td align="left">The event occurs when a finger is dragged across the screen</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_touchstart.asp">touchstart</a></td>
+<td align="left">The event occurs when a finger is placed on a touch screen</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_transitionend.asp">transitionend</a></td>
+<td align="left">The event occurs when a CSS transition has completed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_transitionevent.asp">TransitionEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onunload.asp">unload</a></td>
+<td align="left">The event occurs once a page has unloaded (for <body>)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onvolumechange.asp">volumechange</a></td>
+<td align="left">The event occurs when the volume of the media has changed (includes setting the volume to “mute”)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onwaiting.asp">waiting</a></td>
+<td align="left">The event occurs when the media has paused but is expected to resume (like when the media pauses to buffer more data)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_onwheel.asp">wheel</a></td>
+<td align="left">The event occurs when the mouse wheel rolls up or down over an element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_wheelevent.asp">WheelEvent</a></td>
+</tr>
+</tbody></table>
+<h2 id="HTML-DOM-Event-Properties-and-Methods"><a href="#HTML-DOM-Event-Properties-and-Methods" class="headerlink" title="HTML DOM Event Properties and Methods"></a>HTML DOM Event Properties and Methods</h2><table>
+<thead>
+<tr>
+<th align="left">Property/Method</th>
+<th align="left">Description</th>
+<th align="left">Belongs To</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_altkey.asp">altKey</a></td>
+<td align="left">Returns whether the “ALT” key was pressed when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_altkey.asp">altKey</a></td>
+<td align="left">Returns whether the “ALT” key was pressed when the key event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_animation_animationName.asp">animationName</a></td>
+<td align="left">Returns the name of the animation</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_animationevent.asp">AnimationEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_bubbles.asp">bubbles</a></td>
+<td align="left">Returns whether or not a specific event is a bubbling event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_button.asp">button</a></td>
+<td align="left">Returns which mouse button was pressed when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_buttons.asp">buttons</a></td>
+<td align="left">Returns which mouse buttons were pressed when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_cancelable.asp">cancelable</a></td>
+<td align="left">Returns whether or not an event can have its default action prevented</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_charcode.asp">charCode</a></td>
+<td align="left">Returns the Unicode character code of the key that triggered the onkeypress event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left">changeTouches</td>
+<td align="left">Returns a list of all the touch objects whose state changed between the previous touch and this touch</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_clientx.asp">clientX</a></td>
+<td align="left">Returns the horizontal coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_clienty.asp">clientY</a></td>
+<td align="left">Returns the vertical coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left">clipboardData</td>
+<td align="left">Returns an object containing the data affected by the clipboard operation</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_clipboardevent.asp">ClipboardData</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_code.asp">code</a></td>
+<td align="left">Returns the code of the key that triggered the event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left">composed</td>
+<td align="left">Returns whether the event is composed or not</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_createevent.asp">createEvent()</a></td>
+<td align="left">Creates a new event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_ctrlkey.asp">ctrlKey</a></td>
+<td align="left">Returns whether the “CTRL” key was pressed when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_ctrlkey.asp">ctrlKey</a></td>
+<td align="left">Returns whether the “CTRL” key was pressed when the key event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_currenttarget.asp">currentTarget</a></td>
+<td align="left">Returns the element whose event listeners triggered the event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_inputevent_data.asp">data</a></td>
+<td align="left">Returns the inserted characters</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_inputevent.asp">InputEvent</a></td>
+</tr>
+<tr>
+<td align="left">dataTransfer</td>
+<td align="left">Returns an object containing the data being dragged/dropped, or inserted/deleted</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_dragevent.asp">DragEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_inputevent.asp">InputEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_defaultprevented.asp">defaultPrevented</a></td>
+<td align="left">Returns whether or not the preventDefault() method was called for the event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_wheel_deltax.asp">deltaX</a></td>
+<td align="left">Returns the horizontal scroll amount of a mouse wheel (x-axis)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_wheelevent.asp">WheelEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_wheel_deltay.asp">deltaY</a></td>
+<td align="left">Returns the vertical scroll amount of a mouse wheel (y-axis)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_wheelevent.asp">WheelEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_wheel_deltaz.asp">deltaZ</a></td>
+<td align="left">Returns the scroll amount of a mouse wheel for the z-axis</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_wheelevent.asp">WheelEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_wheel_deltamode.asp">deltaMode</a></td>
+<td align="left">Returns a number that represents the unit of measurements for delta values (pixels, lines or pages)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_wheelevent.asp">WheelEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_detail.asp">detail</a></td>
+<td align="left">Returns a number that indicates how many times the mouse was clicked</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_animation_elapsedtime.asp">elapsedTime</a></td>
+<td align="left">Returns the number of seconds an animation has been running</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_animationevent.asp">AnimationEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_transition_elapsedtime.asp">elapsedTime</a></td>
+<td align="left">Returns the number of seconds a transition has been running</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_eventphase.asp">eventPhase</a></td>
+<td align="left">Returns which phase of the event flow is currently being evaluated</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left">getTargetRanges()</td>
+<td align="left">Returns an array containing target ranges that will be affected by the insertion/deletion</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_inputevent.asp">InputEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_mouse_getmodifierstate.asp">getModifierState()</a></td>
+<td align="left">Returns an array containing target ranges that will be affected by the insertion/deletion</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_inputevent_inputtype.asp">inputType</a></td>
+<td align="left">Returns the type of the change (i.e “inserting” or “deleting”)</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_inputevent.asp">InputEvent</a></td>
+</tr>
+<tr>
+<td align="left">isComposing</td>
+<td align="left">Returns whether the state of the event is composing or not</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_inputevent.asp">InputEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_istrusted.asp">isTrusted</a></td>
+<td align="left">Returns whether or not an event is trusted</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_key.asp">key</a></td>
+<td align="left">Returns the key value of the key represented by the event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left">key</td>
+<td align="left">Returns the key of the changed storage item</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_storageevent.asp">StorageEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_keycode.asp">keyCode</a></td>
+<td align="left">Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_location.asp">location</a></td>
+<td align="left">Returns the location of a key on the keyboard or device</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left">lengthComputable</td>
+<td align="left">Returns whether the length of the progress can be computable or not</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_progressevent.asp">ProgressEvent</a></td>
+</tr>
+<tr>
+<td align="left">loaded</td>
+<td align="left">Returns how much work has been loaded</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_progressevent.asp">ProgressEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_metakey.asp">metaKey</a></td>
+<td align="left">Returns whether the “META” key was pressed when an event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_metakey.asp">metaKey</a></td>
+<td align="left">Returns whether the “meta” key was pressed when the key event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left">MovementX</td>
+<td align="left">Returns the horizontal coordinate of the mouse pointer relative to the position of the last mousemove event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left">MovementY</td>
+<td align="left">Returns the vertical coordinate of the mouse pointer relative to the position of the last mousemove event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left">newValue</td>
+<td align="left">Returns the new value of the changed storage item</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_storageevent.asp">StorageEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_hashchange_newurl.asp">newURL</a></td>
+<td align="left">Returns the URL of the document, after the hash has been changed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_hashchangeevent.asp">HasChangeEvent</a></td>
+</tr>
+<tr>
+<td align="left">offsetX</td>
+<td align="left">Returns the horizontal coordinate of the mouse pointer relative to the position of the edge of the target element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left">offsetY</td>
+<td align="left">Returns the vertical coordinate of the mouse pointer relative to the position of the edge of the target element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left">oldValue</td>
+<td align="left">Returns the old value of the changed storage item</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_storageevent.asp">StorageEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_hashchange_oldurl.asp">oldURL</a></td>
+<td align="left">Returns the URL of the document, before the hash was changed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_hashchangeevent.asp">HasChangeEvent</a></td>
+</tr>
+<tr>
+<td align="left">onemptied</td>
+<td align="left">The event occurs when something bad happens and the media file is suddenly unavailable (like unexpectedly disconnects)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_pagex.asp">pageX</a></td>
+<td align="left">Returns the horizontal coordinate of the mouse pointer, relative to the document, when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_pagey.asp">pageY</a></td>
+<td align="left">Returns the vertical coordinate of the mouse pointer, relative to the document, when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_pagetransition_persisted.asp">persisted</a></td>
+<td align="left">Returns whether the webpage was cached by the browser</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_pagetransitionevent.asp">PageTransitionEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_preventdefault.asp">preventDefault()</a></td>
+<td align="left">Cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_transition_propertyName.asp">propertyName</a></td>
+<td align="left">Returns the name of the CSS property associated with the animation or transition</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_animationevent.asp">AnimationEvent</a>,<a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_transitionevent.asp">TransitionEvent</a></td>
+</tr>
+<tr>
+<td align="left">pseudoElement</td>
+<td align="left">Returns the name of the pseudo-element of the animation or transition</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_animationevent.asp">AnimationEvent</a>,<a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_transitionevent.asp">TransitionEvent</a></td>
+</tr>
+<tr>
+<td align="left">region</td>
+<td align="left"></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_relatedtarget.asp">relatedTarget</a></td>
+<td align="left">Returns the element related to the element that triggered the mouse event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_focus_relatedtarget.asp">relatedTarget</a></td>
+<td align="left">Returns the element related to the element that triggered the event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_focusevent.asp">FocusEvent</a></td>
+</tr>
+<tr>
+<td align="left">repeat</td>
+<td align="left">Returns whether a key is being hold down repeatedly, or not</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_screenx.asp">screenX</a></td>
+<td align="left">Returns the horizontal coordinate of the mouse pointer, relative to the screen, when an event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_screeny.asp">screenY</a></td>
+<td align="left">Returns the vertical coordinate of the mouse pointer, relative to the screen, when an event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_shiftkey.asp">shiftKey</a></td>
+<td align="left">Returns whether the “SHIFT” key was pressed when an event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_shiftkey.asp">shiftKey</a></td>
+<td align="left">Returns whether the “SHIFT” key was pressed when the key event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a>, <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">Returns an object containing a copy of the history entries</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_popstateevent.asp">PopStateEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_stopimmediatepropagation.asp">stopImmediatePropagation()</a></td>
+<td align="left">Prevents other listeners of the same event from being called</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_stoppropagation.asp">stopPropagation()</a></td>
+<td align="left">Prevents further propagation of an event during event flow</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left">storageArea</td>
+<td align="left">Returns an object representing the affected storage object</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_storageevent.asp">StorageEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_target.asp">target</a></td>
+<td align="left">Returns the element that triggered the event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_touch_targettouches.asp">targetTouches</a></td>
+<td align="left">Returns a list of all the touch objects that are in contact with the surface and where the touchstart event occured on the same target element as the current target element</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_timestamp.asp">timeStamp</a></td>
+<td align="left">Returns the time (in milliseconds relative to the epoch) at which the event was created</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left">total</td>
+<td align="left">Returns the total amount of work that will be loaded</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_progressevent.asp">ProgressEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_touch_touches.asp">touches</a></td>
+<td align="left">Returns a list of all the touch objects that are currently in contact with the surface</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_touchevent.asp">TouchEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_transitionend.asp">transitionend</a></td>
+<td align="left">The event occurs when a CSS transition has completed</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_transitionevent.asp">TransitionEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_type.asp">type</a></td>
+<td align="left">Returns the name of the event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_event.asp">Event</a></td>
+</tr>
+<tr>
+<td align="left">url</td>
+<td align="left">Returns the URL of the changed item’s document</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_storageevent.asp">StorageEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_which.asp">which</a></td>
+<td align="left">Returns which mouse button was pressed when the mouse event was triggered</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_mouseevent.asp">MouseEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_key_which.asp">which</a></td>
+<td align="left">Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_keyboardevent.asp">KeyboardEvent</a></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/event_view.asp">view</a></td>
+<td align="left">Returns a reference to the Window object where the event occurred</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/obj_uievent.asp">UiEvent</a></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Angular</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://pajarnas.github.io/06/16/2021/HTML%20DOM%20Event/">http://pajarnas.github.io/06/16/2021/HTML%20DOM%20Event/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/notes/">notes</a><a class="post-meta__tags" href="/tags/HTML/">HTML</a><a class="post-meta__tags" href="/tags/DOM/">DOM</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/06/16/2021/Angular:%20Directives/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Angular Routing</div></div></a></div><div class="next-post pull-right"><a href="/06/15/2021/C#%20Core%20I:%20LINQ/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">C# Core LINQ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/05/11/2021/Front-End II: CSS, Bootstrap/" title="Front-End I CSS, Bootstrap"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">Front-End I CSS, Bootstrap</div></div></a></div><div><a href="/05/11/2021/Front-End III: JS/" title="Front-End III Introduction, Http, Elements"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-11-2021</div><div class="title">Front-End III Introduction, Http, Elements</div></div></a></div><div><a href="/05/18/2021/Net Framework I: Basic/" title=".Net Framework I Basic"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-18-2021</div><div class="title">.Net Framework I Basic</div></div></a></div><div><a href="/05/19/2021/Net Framework II: C# Basic (copy)/" title=".Net Framework II C# Ba"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-19-2021</div><div class="title">.Net Framework II C# Ba</div></div></a></div><div><a href="/05/19/2021/Net Framework III: OOP/" title=".Net Framework II C# Ba"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 05-19-2021</div><div class="title">.Net Framework II C# Ba</div></div></a></div><div><a href="/06/16/2021/ASP Automapper/" title="ASP Pagination Implementation Based On Entity Framework"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 06-16-2021</div><div class="title">ASP Pagination Implementation Based On Entity Framework</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Livere</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mjk2MS8yOTQzOA=="></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/pajarnas.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Shiqi Zhang</div><div class="author-info__description">Personal website</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">36</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pajarnas" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:saigezhang17@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-HTML-DOM-Document-Object-Model"><span class="toc-text">The HTML DOM (Document Object Model)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-DOM-Events"><span class="toc-text">HTML DOM Events</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-DOM-Event-Properties-and-Methods"><span class="toc-text">HTML DOM Event Properties and Methods</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/ASP%20Automapper/" title="ASP Pagination Implementation Based On Entity Framework">ASP Pagination Implementation Based On Entity Framework</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20:%20References/" title="Angular References">Angular References</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20I:%20Core/" title="Angular I Core">Angular I Core</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular%20II:%20Services/" title="Angular II Services">Angular II Services</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/06/16/2021/Angular:%20Forms%20(copy)/" title="Angular Routing">Angular Routing</a><time datetime="2021-06-16T05:00:00.000Z" title="Created 06-16-2021 00:00:00">06-16-2021</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Shiqi Zhang</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    let initData = {
+      el: '#waline-wrap',
+      serverURL: 'n9jnbwbv.us-w1-cname.avosapps.us',
+      avatar: 'monsterid',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const waline = new Waline(initData)
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Livere' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
