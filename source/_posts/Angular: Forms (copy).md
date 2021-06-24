@@ -17,7 +17,7 @@ toc:
 toc_number: 
 copyright:
 copyright_author: Ng-book
-copyright_author_href:https://www.newline.co/books/ng-book-2/
+copyright_author_href: 
 copyright_url: 
 copyright_info:
 mathjax:

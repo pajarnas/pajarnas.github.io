@@ -1,5 +1,5 @@
 ---
-
+``
 title: Angular Routing
 date: 06/16/2021
 updated: 
@@ -46,3 +46,4 @@ Security of your Application - We have used JWT (JSON Web Token) in our Project.
 发现问题，解决问题其实不难，最大的挑战是发现不了问题。 比如某个缺陷，自己并没有注意。
 
 代码架构的问题，不知道什么样的代码是最优架构，经常花很多时间去重构代码。代码的重构并没有一个标准。是以可读性，复用性为标准，还是性能为标准。
+

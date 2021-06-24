@@ -122,7 +122,7 @@ handle collisions
 
 - open addressing(close hashing)
 
-  In Closed Hashing you use only one array for everything. You store the collisions in the same array. The trick is to use some smart way to jump from collision to collision until you find what you want. And do this in a reproducible / deterministic way.
+  In Closed Hashing you use only one array for everything. You store the collisions in the same array. The trick is to use some smart way to jump from collision to collision until you find what you want. And do this in a reproducible / deterministic way.````
 
 ```java
 public class MyHashMap {

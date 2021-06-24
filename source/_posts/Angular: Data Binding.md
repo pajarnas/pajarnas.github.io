@@ -120,7 +120,7 @@ Event binding allows you to listen for and respond to user actions such as keyst
 
 ## Binding to events
 
-To bind to an event you use the Angular event binding syntax. This syntax consists of a target event name within parentheses to the left of an equal sign, and a quoted template statement to the right. In the following example, the target event name is `click` and the template statement is `onSave()`.
+To bind to an event you use the Angular event binding syntax. This syntax consists of a **target event name within parentheses to the left of an equal sign**, and **a quoted template statement to the right**. In the following example, the target event name is `click` and the template statement is `onSave()`.
 
 Event binding syntax
 
@@ -140,7 +140,7 @@ Event binding syntax
 
 The event binding listens for the button's click events and calls the component's `onSave()` method whenever a click occurs.
 
-```
+```typescript
 onSave(event?: MouseEvent) {
     const evtMsg = event ? ' Event target is ' + (event.target as HTMLElement).textContent : '';
     alert('Saved.' + evtMsg);
@@ -156,16 +156,16 @@ onSave(event?: MouseEvent) {
 
 [Directives](https://angular.io/guide/built-in-directives) typically raise custom events with an Angular [EventEmitter](https://angular.io/api/core/EventEmitter) as follows.
 
-1. The directive creates an `EventEmitter` and exposes it as a property.
-2. The directive then calls `EventEmitter.emit(data)` to emit an event, passing in message data, which can be anything.
-3. Parent directives listen for the event by binding to this property and accessing the data through the `$event`object.
+1. **The directive creates an `EventEmitter` and exposes it as a property.**
+2. The directive then **calls `EventEmitter.emit(data)` to emit an event, passing in message data**, which can be anything.
+3. **Parent directives listen for the event by binding to this property and accessing the data through the `$event`object.**
 
 Consider an `ItemDetailComponent` that presents item information and responds to user actions. Although the `ItemDetailComponent` has a delete button, it doesn't contain the functionality to delete the hero. It can only raise an event reporting the user's delete request.
 
 src/app/item-detail/item-detail.component.html (template)
 
 ```
-content_copy<img src="{{itemImageUrl}}" [style.display]="displayNone">
+<img src="{{itemImageUrl}}" [style.display]="displayNone">
 <span [style.text-decoration]="lineThrough">{{ item.name }}
 </span>
 <button (click)="delete()">Delete</button>
@@ -176,7 +176,7 @@ The component defines a `deleteRequest` property that returns an `EventEmitter`.
 src/app/item-detail/item-detail.component.ts (deleteRequest)
 
 ```
-content_copy// This component makes a request but it can't actually delete a hero.
+This component makes a request but it can't actually delete a hero.
 @Output() deleteRequest = new EventEmitter<Item>();
 
 delete() {
@@ -191,7 +191,7 @@ The hosting parent component binds to the `deleteRequest` event of the `ItemDeta
 src/app/app.component.html (event-binding-to-component)
 
 ```
-content_copy<app-item-detail (deleteRequest)="deleteItem($event)" [item]="currentItem"></app-item-detail>
+<app-item-detail (deleteRequest)="deleteItem($event)" [item]="currentItem"></app-item-detail>
 ```
 
 When the `deleteRequest` event fires, Angular calls the parent component's `deleteItem()` method with the item.
@@ -349,7 +349,7 @@ The child's template has two controls. The first is an HTML `<input>` with a [te
 src/app/item-output/item-output.component.html
 
 ```
-content_copy<label for="item-input">Add an item:</label>
+<label for="item-input">Add an item:</label>
 <input type="text" id="item-input" #newItem>
 <button (click)="addNewItem(newItem.value)">Add to parent's list</button>
 ```
@@ -395,7 +395,7 @@ The `addItem()` method takes an argument in the form of a string and then adds t
    To see the `@Output()` working, you can add the following to the parent's template:
 
    ```html
-   content_copy<ul>
+   <ul>
      <li *ngFor="let item of items">{{item}}</li>
    </ul>
    ```
@@ -422,6 +422,30 @@ The child selector is `<app-input-output>` with `item` and `deleteRequest` being
 
 To combine property and event bindings using the banana-in-a-box syntax, `[()]`, see [Two-way Binding](https://angular.io/guide/two-way-binding).
 
+# Difference 
+
+# Property binding -
+
+In case you have to pass the value from parent component to child component (whether the value is static or dynamic) we have to use the `property binding` that mean by doing so we send the value using attribute on component and receive it in the child component by using `@Input` decorator for example of property binding see here -
+
+```js
+<my-child [myProp]="myProp" />
+```
+
+# Event Binding -
+
+Catching the Child's Event/method from the parent component
+
+whenever we have to fire some event on click or something else from child component and pass to the parent component, we have to use `Event Binding` see here in the example below - 
+
+```js
+<my-child [myProp]="myProp" (onPropChange)="onPropChange($event)" />
+```
+
+here we have `onPropChange` as output event binding, we can fire that event using EventEmitter.
+
+for more detail see here
+
 # Two way data binding
 
 To get the most out of two-way binding, you should have a basic understanding of the following concepts:
@@ -444,7 +468,7 @@ Two-way binding combines property binding with event binding:
 src/app/app.component.html
 
 ```
-content_copy<app-sizer [(size)]="fontSizePx"></app-sizer>
+<app-sizer [(size)]="fontSizePx"></app-sizer>
 ```
 
 ## How two-way binding works

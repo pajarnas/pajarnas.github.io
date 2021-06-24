@@ -41,6 +41,26 @@ The *Angular CLI* is a command-line interface tool that you use to initialize, d
 
 
 
+# Template statements
+
+
+
+**Template statements are methods or properties that you can use in your HTML to respond to user events.** With template statements, your application can engage users through actions such as displaying dynamic content or submitting forms.
+
+See the [Template syntax](https://angular.io/generated/live-examples/template-syntax/stackblitz.html) / [download example](https://angular.io/generated/zips/template-syntax/template-syntax.zip) for the syntax and code snippets in this guide.
+
+In the following example, the template statement `deleteHero()` appears in quotes to the right of the `=` symbol as in `(event)="statement"`.
+
+src/app/app.component.html
+
+```
+content_copy<button (click)="deleteHero()">Delete hero</button>
+```
+
+When the user clicks the **Delete hero** button, Angular calls the `deleteHero()` method in the component class.
+
+You can use template statements with elements, components, or directives in response to events.
+
 # NgModules
 
 

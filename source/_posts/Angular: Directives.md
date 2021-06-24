@@ -183,7 +183,7 @@ To customize your configuration, you can write the expanded form, which separate
 src/app/app.component.html
 
 ```
-content_copy<input [ngModel]="currentItem.name" (ngModelChange)="setUppercaseName($event)" id="example-uppercase">
+<input [ngModel]="currentItem.name" (ngModelChange)="setUppercaseName($event)" id="example-uppercase">
 ```
 
 Here are all variations in action, including the uppercase version:
